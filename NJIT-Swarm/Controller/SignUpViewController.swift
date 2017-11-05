@@ -55,6 +55,7 @@ class SignUpViewController: UIViewController {
     }
     
     func login() {
+        print("Test")
         if emailTxt.text != "" && passwordTxt.text != "" {
             AuthProvider.Instance.login(email: emailTxt.text!, password: passwordTxt.text!, authHandler: { (message) in
                 if message != nil {
