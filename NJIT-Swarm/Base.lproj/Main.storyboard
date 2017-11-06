@@ -162,7 +162,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WzC-gJ-zYr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Check-In" selectedImage="check-In" id="bzw-1W-tJm"/>
+                    <tabBarItem key="tabBarItem" title="Check-In" image="check-In" selectedImage="check-In" id="bzw-1W-tJm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WX-P3-xbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -266,7 +266,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xNY-cw-Gbh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Notification" selectedImage="notification" id="Dbk-vJ-inE"/>
+                    <tabBarItem key="tabBarItem" title="Notification" image="notification" selectedImage="notification" id="Dbk-vJ-inE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyC-ca-trb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -282,7 +282,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Lr4-nu-hBj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Plan Trip" selectedImage="plan-trip" id="Mxz-uC-IZH"/>
+                    <tabBarItem key="tabBarItem" title="Plan Trip" image="plan-trip" selectedImage="plan-trip" id="Mxz-uC-IZH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJS-2N-WuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -481,7 +481,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="1Hr-AO-Upd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" selectedImage="home" id="Cyt-Rp-9Sq"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home.png" selectedImage="home" id="Cyt-Rp-9Sq"/>
                     <connections>
                         <outlet property="mapView" destination="OMJ-AJ-oUu" id="BPF-CQ-Cin"/>
                         <outlet property="profilePicture" destination="1aI-Co-aw0" id="y3c-91-7At"/>
@@ -607,6 +607,7 @@
     <resources>
         <image name="check-In" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
+        <image name="home.png" width="30" height="30"/>
         <image name="notification" width="30" height="30"/>
         <image name="plan-trip" width="30" height="30"/>
     </resources>

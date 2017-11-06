@@ -43,6 +43,10 @@
 		E5B7364C1FAFDBD9009442AD /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B7364B1FAFDBD9009442AD /* home.png */; };
 		E5B7364E1FAFDBE3009442AD /* notification.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B7364D1FAFDBE2009442AD /* notification.png */; };
 		E5B736501FAFDBE9009442AD /* plan-trip.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B7364F1FAFDBE9009442AD /* plan-trip.png */; };
+		E5D5B4341FB01C6800BE6669 /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5B4321FB01C6700BE6669 /* LikesViewController.swift */; };
+		E5D5B4351FB01C6800BE6669 /* LikesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D5B4331FB01C6700BE6669 /* LikesViewController.xib */; };
+		E5D5B4381FB0205200BE6669 /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5B4361FB0205100BE6669 /* LikesTableViewCell.swift */; };
+		E5D5B4391FB0205200BE6669 /* LikesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D5B4371FB0205200BE6669 /* LikesTableViewCell.xib */; };
 		FE271D9ECA8FE84746507C8F /* Pods_NJIT_SwarmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE4000B129262CC5060DFC9C /* Pods_NJIT_SwarmTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +116,10 @@
 		E5B7364B1FAFDBD9009442AD /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		E5B7364D1FAFDBE2009442AD /* notification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notification.png; sourceTree = "<group>"; };
 		E5B7364F1FAFDBE9009442AD /* plan-trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plan-trip.png"; sourceTree = "<group>"; };
+		E5D5B4321FB01C6700BE6669 /* LikesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
+		E5D5B4331FB01C6700BE6669 /* LikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikesViewController.xib; sourceTree = "<group>"; };
+		E5D5B4361FB0205100BE6669 /* LikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
+		E5D5B4371FB0205200BE6669 /* LikesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikesTableViewCell.xib; sourceTree = "<group>"; };
 		F157F2EB3C1634BEF9C339DA /* Pods-NJIT-SwarmUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJIT-SwarmUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NJIT-SwarmUITests/Pods-NJIT-SwarmUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,6 +251,10 @@
 		6EDD94F91FAAABBB001C15D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E5D5B4361FB0205100BE6669 /* LikesTableViewCell.swift */,
+				E5D5B4371FB0205200BE6669 /* LikesTableViewCell.xib */,
+				E5D5B4321FB01C6700BE6669 /* LikesViewController.swift */,
+				E5D5B4331FB01C6700BE6669 /* LikesViewController.xib */,
 				E5B7363D1FAFD242009442AD /* TimelineTableViewCell.swift */,
 				E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */,
 				6EB6575B1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift */,
@@ -399,6 +411,7 @@
 				E5B7364E1FAFDBE3009442AD /* notification.png in Resources */,
 				E5B736501FAFDBE9009442AD /* plan-trip.png in Resources */,
 				E5B736481FAFD955009442AD /* samplePP.jpg in Resources */,
+				E5D5B4351FB01C6800BE6669 /* LikesViewController.xib in Resources */,
 				E5B7364A1FAFDBD0009442AD /* check-In.png in Resources */,
 				E5B7364C1FAFDBD9009442AD /* home.png in Resources */,
 				E1C042F41FAE6F5E0062D229 /* swarm.png in Resources */,
@@ -406,6 +419,7 @@
 				6E1C38701F9196850077BDE5 /* LaunchScreen.storyboard in Resources */,
 				E5B736441FAFD24C009442AD /* TimelineTableViewCell.xib in Resources */,
 				6E1C386D1F9196850077BDE5 /* Assets.xcassets in Resources */,
+				E5D5B4391FB0205200BE6669 /* LikesTableViewCell.xib in Resources */,
 				6E1C386B1F9196850077BDE5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,12 +606,14 @@
 				E5B7363A1FAFD122009442AD /* HomeViewController.swift in Sources */,
 				6E46A1D81FACE1CF007571A8 /* FriendsViewController.swift in Sources */,
 				E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */,
+				E5D5B4381FB0205200BE6669 /* LikesTableViewCell.swift in Sources */,
 				6E46A1DA1FACE2C5007571A8 /* AddFriendViewController.swift in Sources */,
 				6EB657521FAD747A002E0E28 /* SearchFriendsData.swift in Sources */,
 				6EDD94FB1FAAAC26001C15D9 /* LoginViewController.swift in Sources */,
 				6E1C38661F9196850077BDE5 /* AppDelegate.swift in Sources */,
 				6EB189D81FABBE75002CF9B9 /* DBProvider.swift in Sources */,
 				6EB189D41FABAF3D002CF9B9 /* ProfileViewController.swift in Sources */,
+				E5D5B4341FB01C6800BE6669 /* LikesViewController.swift in Sources */,
 				E5B736401FAFD242009442AD /* TimelineTableViewCell.swift in Sources */,
 				6EDD95001FAAAEEF001C15D9 /* AuthProvider.swift in Sources */,
 				6E4081FB1FAD0D1900D3F365 /* FriendsData.swift in Sources */,
