@@ -35,8 +35,8 @@
 		C2264122B46E81F59614D682 /* Pods_NJIT_SwarmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531E0889624962F42DE52D6A /* Pods_NJIT_SwarmUITests.framework */; };
 		E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */; };
 		E1C042F41FAE6F5E0062D229 /* swarm.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C042F31FAE6F5E0062D229 /* swarm.png */; };
-		E5B7363A1FAFD122009442AD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B736391FAFD122009442AD /* HomeViewController.swift */; };
-		E5B736401FAFD242009442AD /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B7363D1FAFD242009442AD /* TimelineTableViewCell.swift */; };
+		E5B685A71FB0FFD00033A9D9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B685A61FB0FFD00033A9D9 /* HomeViewController.swift */; };
+		E5B685A91FB0FFE00033A9D9 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B685A81FB0FFE00033A9D9 /* TimelineTableViewCell.swift */; };
 		E5B736441FAFD24C009442AD /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */; };
 		E5B736481FAFD955009442AD /* samplePP.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5B736471FAFD955009442AD /* samplePP.jpg */; };
 		E5B7364A1FAFDBD0009442AD /* check-In.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B736491FAFDBD0009442AD /* check-In.png */; };
@@ -113,8 +113,8 @@
 		C3F8C7D397BD6C183E4CBA97 /* Pods-NJIT-Swarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJIT-Swarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NJIT-Swarm/Pods-NJIT-Swarm.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		E1C042F31FAE6F5E0062D229 /* swarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swarm.png; sourceTree = "<group>"; };
-		E5B736391FAFD122009442AD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "../../../../Desktop/foursquare-swarm/foursquare-swarm/HomeViewController.swift"; sourceTree = "<group>"; };
-		E5B7363D1FAFD242009442AD /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineTableViewCell.swift; path = "../../../../Desktop/foursquare-swarm/foursquare-swarm/TimelineTableViewCell.swift"; sourceTree = "<group>"; };
+		E5B685A61FB0FFD00033A9D9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E5B685A81FB0FFE00033A9D9 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		E5B736471FAFD955009442AD /* samplePP.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = samplePP.jpg; sourceTree = "<group>"; };
 		E5B736491FAFDBD0009442AD /* check-In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-In.png"; sourceTree = "<group>"; };
@@ -262,6 +262,8 @@
 		6EDD94F91FAAABBB001C15D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E5B685A61FB0FFD00033A9D9 /* HomeViewController.swift */,
+				E5B685A81FB0FFE00033A9D9 /* TimelineTableViewCell.swift */,
 				6EB6575B1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift */,
 				6E46A1D91FACE2C5007571A8 /* AddFriendViewController.swift */,
 				E5E399B61FB0388100BCB408 /* CommentTableViewCell.swift */,
@@ -270,7 +272,6 @@
 				E5E399B41FB0388100BCB408 /* CommentViewController.xib */,
 				E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */,
 				6E46A1D71FACE1CF007571A8 /* FriendsViewController.swift */,
-				E5B736391FAFD122009442AD /* HomeViewController.swift */,
 				E5D5B4361FB0205100BE6669 /* LikesTableViewCell.swift */,
 				E5D5B4371FB0205200BE6669 /* LikesTableViewCell.xib */,
 				E5D5B4321FB01C6700BE6669 /* LikesViewController.swift */,
@@ -278,7 +279,6 @@
 				6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */,
 				6EB189D31FABAF3D002CF9B9 /* ProfileViewController.swift */,
 				6EB189D51FABB11B002CF9B9 /* SignUpViewController.swift */,
-				E5B7363D1FAFD242009442AD /* TimelineTableViewCell.swift */,
 				E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */,
 			);
 			path = Controller;
@@ -618,9 +618,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B685A71FB0FFD00033A9D9 /* HomeViewController.swift in Sources */,
 				6EB657561FAD7A9C002E0E28 /* UserCheckinsData.swift in Sources */,
 				6EB189D61FABB11B002CF9B9 /* SignUpViewController.swift in Sources */,
-				E5B7363A1FAFD122009442AD /* HomeViewController.swift in Sources */,
 				E5E399BA1FB0388100BCB408 /* CommentTableViewCell.swift in Sources */,
 				6E46A1D81FACE1CF007571A8 /* FriendsViewController.swift in Sources */,
 				E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */,
@@ -633,8 +633,8 @@
 				6EB189D81FABBE75002CF9B9 /* DBProvider.swift in Sources */,
 				E5E399BC1FB04DAF00BCB408 /* CheckIn.swift in Sources */,
 				6EB189D41FABAF3D002CF9B9 /* ProfileViewController.swift in Sources */,
+				E5B685A91FB0FFE00033A9D9 /* TimelineTableViewCell.swift in Sources */,
 				E5D5B4341FB01C6800BE6669 /* LikesViewController.swift in Sources */,
-				E5B736401FAFD242009442AD /* TimelineTableViewCell.swift in Sources */,
 				6EDD95001FAAAEEF001C15D9 /* AuthProvider.swift in Sources */,
 				6E4081FB1FAD0D1900D3F365 /* FriendsData.swift in Sources */,
 				6E7056081FAED1210058833B /* CommentsData.swift in Sources */,

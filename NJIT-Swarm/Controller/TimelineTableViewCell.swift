@@ -17,21 +17,43 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var commentCountButton: UIButton!
     @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var rating: UILabel!
+    @IBOutlet weak var place: UILabel!
+    
+    var checkInKey: String = ""
+    var isLiked: Bool = false
+    
+    @IBAction func nameButtonClicked(_ sender: Any) {
+    }
     
     @IBAction func likeButtonClicked(_ sender: Any) {
-        print("like button clicked at index", (sender as AnyObject).tag);
+        if(self.isLiked){
+            self.isLiked = false
+            self.likeButton.tintColor = UIColor.gray
+        }else{
+            self.isLiked = true
+            self.likeButton.tintColor = UIColor.red
+        }
     }
     
     @IBAction func likeCountButtonClicked(_ sender: Any) {
-        print("like count button clicked at index",(sender as AnyObject).tag)
         let likesViewController = LikesViewController()
-        self.window?.rootViewController?.present(likesViewController, animated: true, completion: nil)
+        likesViewController.checkInKey = self.checkInKey
+        var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+        while ((topController.presentedViewController) != nil) {
+            topController = topController.presentedViewController!;
+        }
+       topController.present(likesViewController, animated: false, completion: nil)
     }
     
     @IBAction func commentCountButtonClicked(_ sender: Any) {
-        print("Comment Button Clicked at index", (sender as AnyObject).tag)
         let commentViewController = CommentViewController()
-        self.window?.rootViewController?.present(commentViewController, animated: true, completion:nil)
+        commentViewController.checkInKey = self.checkInKey
+        var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+        while ((topController.presentedViewController) != nil) {
+            topController = topController.presentedViewController!;
+        }
+        topController.present(commentViewController, animated: false, completion: nil)
     }
     
     override func awakeFromNib() {
