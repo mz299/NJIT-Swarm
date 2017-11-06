@@ -13,6 +13,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var commentsTableView: UITableView!
+    var checkInKey: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

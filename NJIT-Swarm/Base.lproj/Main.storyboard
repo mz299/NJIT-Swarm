@@ -450,9 +450,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snF-Ku-pcX">
-                                        <rect key="frame" x="237" y="10" width="75" height="30"/>
+                                        <rect key="frame" x="249" y="10" width="51" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Add Friend"/>
+                                        <state key="normal" title="Friends"/>
                                         <connections>
                                             <action selector="addFriendButtonClicked:" destination="PEJ-5J-vEZ" eventType="touchUpInside" id="43R-JQ-inZ"/>
                                         </connections>
