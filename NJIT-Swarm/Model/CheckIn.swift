@@ -9,7 +9,7 @@
 import Foundation
 
 class CheckIn{
-    var key: String
+    var checkInkey: String
     var profilePictureName: String
     var name: String
     var dateAndTime: String
@@ -18,8 +18,9 @@ class CheckIn{
     var comments: Int
     var isLiked: Bool
     
+    
     init(key:String, profilePictureName: String, name: String, dateAndTime: String, place: String, likes: Int, comments: Int, isLiked: Bool) {
-        self.key = key
+        self.checkInkey = key
         self.name = name
         self.profilePictureName = profilePictureName
         self.dateAndTime = dateAndTime

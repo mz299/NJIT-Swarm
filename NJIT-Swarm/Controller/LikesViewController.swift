@@ -11,6 +11,7 @@ import UIKit
 class LikesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var likesTableView: UITableView!
+    var checkInKey: String = ""
     
     @IBAction func closeButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -52,7 +53,6 @@ class LikesViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         let nib = UINib(nibName: "LikesTableViewCell", bundle: nil)
         likesTableView.register(nib, forCellReuseIdentifier: "likesCell")
-        
     }
 
     override func didReceiveMemoryWarning() {

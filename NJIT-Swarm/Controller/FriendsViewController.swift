@@ -17,6 +17,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var databaseHandle:DatabaseHandle?
 
     let people = [String]()
+    
     @IBOutlet weak var friendTableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
