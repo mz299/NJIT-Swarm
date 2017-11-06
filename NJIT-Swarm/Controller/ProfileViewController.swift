@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let CAN_NOT_BE_EMPTY = "It Can Not Be Empty"
     private let LOAD_DATA_FAILED = "Load Data Failed"
@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var userNameTextfield: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     private var editMode = false
     
@@ -148,6 +149,24 @@ class ProfileViewController: UIViewController {
             let btn = sender as! UIButton
             btn.setTitle("Done", for: .normal)
         }
+    }
+    
+    @IBAction func editProfileImage(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            profileImageView.image = selectedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func showAlert(message: String) {
