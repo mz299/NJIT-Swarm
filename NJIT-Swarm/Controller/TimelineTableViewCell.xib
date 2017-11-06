@@ -85,7 +85,7 @@
                 <outlet property="name" destination="Kn2-ST-VjX" id="cXH-J0-Tud"/>
                 <outlet property="profilePicture" destination="Tvf-6U-4vE" id="Dgp-qg-338"/>
             </connections>
-            <point key="canvasLocation" x="-505" y="-39"/>
+            <point key="canvasLocation" x="-522" y="-36"/>
         </tableViewCell>
     </objects>
 </document>
