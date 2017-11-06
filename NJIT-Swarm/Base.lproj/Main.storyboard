@@ -162,7 +162,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WzC-gJ-zYr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Check-In" image="check-In" selectedImage="check-In" id="bzw-1W-tJm"/>
+                    <tabBarItem key="tabBarItem" title="Check-In" image="check-In.png" selectedImage="check-In" id="bzw-1W-tJm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WX-P3-xbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -606,6 +606,7 @@
     </scenes>
     <resources>
         <image name="check-In" width="30" height="30"/>
+        <image name="check-In.png" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
         <image name="home.png" width="30" height="30"/>
         <image name="notification" width="30" height="30"/>
