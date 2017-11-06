@@ -61,7 +61,9 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         })*/
         
-        
+        FriendsData.Instance.update { (friends) in
+            self.tableView.reloadData()
+        }
         
     }
 
