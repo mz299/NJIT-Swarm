@@ -21,13 +21,6 @@
                         <rect key="frame" x="16" y="11" width="50" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DUX-oO-McM">
-                        <rect key="frame" x="17" y="63" width="317" height="82"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dnF-zt-ts7">
                         <rect key="frame" x="228" y="154" width="106" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -74,6 +67,27 @@
                             <action selector="nameButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bbD-Li-xlF"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nKo-ye-SZA">
+                        <rect key="frame" x="24" y="69" width="260" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PNq-BQ-xEz">
+                        <rect key="frame" x="292" y="69" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DUX-oO-McM">
+                        <rect key="frame" x="17" y="105" width="317" height="46"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -83,9 +97,11 @@
                 <outlet property="likeButton" destination="DmL-N1-fug" id="ahF-VZ-gi9"/>
                 <outlet property="likeCountButton" destination="gdL-SE-y1h" id="tdU-e0-bc4"/>
                 <outlet property="name" destination="Kn2-ST-VjX" id="cXH-J0-Tud"/>
+                <outlet property="place" destination="nKo-ye-SZA" id="hRh-UR-ujO"/>
                 <outlet property="profilePicture" destination="Tvf-6U-4vE" id="Dgp-qg-338"/>
+                <outlet property="rating" destination="PNq-BQ-xEz" id="jNa-1v-1oT"/>
             </connections>
-            <point key="canvasLocation" x="-522" y="-36"/>
+            <point key="canvasLocation" x="-522" y="-36.5"/>
         </tableViewCell>
     </objects>
 </document>
