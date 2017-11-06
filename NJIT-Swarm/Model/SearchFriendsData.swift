@@ -48,6 +48,9 @@ class SearchFriendsData {
                         if let phone = fData[Constants.PHONE] as? String {
                             newData.phone = phone
                         }
+                        if let url = fData[Constants.PROFILE_IMAGE_URL] as? String {
+                            newData.profile_image_url = url
+                        }
                     }
                     
                     self._data.append(newData)

@@ -32,6 +32,12 @@ class CheckinsData {
                         for fData in FriendsData.Instance.Data {
                             if let cUid = cData[Constants.UID] as? String {
                                 if cUid == fData.uid || cUid == AuthProvider.Instance.getUserID() {
+                                    var uData = FriendData()
+                                    if cUid == fData.uid {
+                                        uData = fData
+                                    } else if cUid == AuthProvider.Instance.getUserID() {
+                                        uData = FriendsData.Instance.UserData
+                                    }
                                     var newData = CheckinData()
                                     newData.checkinid = checkinData.key
                                     if let latitude = cData[Constants.LATITUDE] as? Double {
@@ -64,7 +70,9 @@ class CheckinsData {
                                     if let numofcomment = cData[Constants.COMMENT] as? [String: Any] {
                                         newData.numofcomment = numofcomment.count
                                     }
-                                    newData.username = fData.username
+                                    newData.username = uData.username
+                                    newData.profile_image_url = uData.profile_image_url
+                                    
                                     self._data.append(newData)
                                 }
                             }

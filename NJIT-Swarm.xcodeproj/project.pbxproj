@@ -10,6 +10,7 @@
 		69E64467EDB63FE2FFA8C529 /* Pods_NJIT_Swarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6829700672356052BBB390 /* Pods_NJIT_Swarm.framework */; };
 		6E13F6871FB0FA3D00A16EA9 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13F6861FB0FA3D00A16EA9 /* TimelineTableViewCell.swift */; };
 		6E13F6891FB0FA6C00A16EA9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13F6881FB0FA6C00A16EA9 /* HomeViewController.swift */; };
+		6E13F68B1FB10A6D00A16EA9 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13F68A1FB10A6C00A16EA9 /* StorageProvider.swift */; };
 		6E167EB91FAB056200CB628B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E167EB81FAB056200CB628B /* MapKit.framework */; };
 		6E167EBB1FAB056A00CB628B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E167EBA1FAB056900CB628B /* CoreLocation.framework */; };
 		6E1C38661F9196850077BDE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C38651F9196850077BDE5 /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		531E0889624962F42DE52D6A /* Pods_NJIT_SwarmUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NJIT_SwarmUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E13F6861FB0FA3D00A16EA9 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		6E13F6881FB0FA6C00A16EA9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6E13F68A1FB10A6C00A16EA9 /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		6E167EB81FAB056200CB628B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6E167EBA1FAB056900CB628B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6E1C38621F9196850077BDE5 /* NJIT-Swarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NJIT-Swarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +291,7 @@
 			children = (
 				6EDD94FF1FAAAEEF001C15D9 /* AuthProvider.swift */,
 				6EB189D71FABBE75002CF9B9 /* DBProvider.swift */,
+				6E13F68A1FB10A6C00A16EA9 /* StorageProvider.swift */,
 				6EB189D91FABC0F1002CF9B9 /* Constants.swift */,
 			);
 			path = Plugins;
@@ -627,6 +630,7 @@
 				E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */,
 				E5D5B4381FB0205200BE6669 /* LikesTableViewCell.swift in Sources */,
 				6E46A1DA1FACE2C5007571A8 /* AddFriendViewController.swift in Sources */,
+				6E13F68B1FB10A6D00A16EA9 /* StorageProvider.swift in Sources */,
 				6EB657521FAD747A002E0E28 /* SearchFriendsData.swift in Sources */,
 				6EDD94FB1FAAAC26001C15D9 /* LoginViewController.swift in Sources */,
 				6E1C38661F9196850077BDE5 /* AppDelegate.swift in Sources */,

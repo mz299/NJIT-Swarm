@@ -17,6 +17,7 @@ struct CheckinData {
     var timestamp = Date()
     var message = ""
     var username = ""
+    var profile_image_url = ""
     var numoflike = 0
     var numofcomment = 0
     var youliked = false
@@ -29,6 +30,7 @@ struct CommentData {
     var checkinid = ""
     var uid = ""
     var username = ""
+    var profile_image_url = ""
     var timestamp = Date()
     var comment = ""
 }
@@ -40,6 +42,7 @@ struct FriendData {
     var username = ""
     var phone = ""
     var email = ""
+    var profile_image_url = ""
 }
 
 typealias FriendDataHandler = (_ data: Array<FriendData>) -> Void

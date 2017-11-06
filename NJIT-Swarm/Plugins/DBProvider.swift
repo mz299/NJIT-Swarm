@@ -40,6 +40,12 @@ class DBProvider {
         }
     }
     
+    func setUserData(key: String, value: Any) {
+        if let uid = AuthProvider.Instance.getUserID() {
+            userRef.child(uid).child(key).setValue(value)
+        }
+    }
+    
     /*
      Get user by uid
      

@@ -17,6 +17,7 @@ class Constants {
     static let USERNAME = "username"
     static let PHONE = "phone"
     static let FRIENDS = "friends"
+    static let PROFILE_IMAGE_URL = "profile_image_url"
     // Keys for check in
     static let CHECKIN = "checkin"
     static let LATITUDE = "latitude"
