@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentViewController" customModule="foursquare_swarm" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentViewController" customModule="NJIT_Swarm" customModuleProvider="target">
             <connections>
                 <outlet property="commentButton" destination="lEE-CV-Obv" id="Y1V-p1-uJJ"/>
                 <outlet property="commentTextField" destination="K5i-rd-Abk" id="kWP-74-mfg"/>
@@ -80,7 +80,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="34.5" y="53.5"/>
+            <point key="canvasLocation" x="191" y="-117"/>
         </view>
     </objects>
 </document>
