@@ -32,7 +32,7 @@
                         <rect key="frame" x="228" y="154" width="106" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <state key="normal" title="commentCount">
-                            <color key="titleColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
                             <action selector="commentCountButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gvJ-TG-chr"/>
@@ -42,7 +42,7 @@
                         <rect key="frame" x="52" y="154" width="65" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <state key="normal" title="likeCount">
-                            <color key="titleColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
                             <action selector="likeCountButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W37-4h-n9s"/>
@@ -85,7 +85,7 @@
                 <outlet property="name" destination="Kn2-ST-VjX" id="cXH-J0-Tud"/>
                 <outlet property="profilePicture" destination="Tvf-6U-4vE" id="Dgp-qg-338"/>
             </connections>
-            <point key="canvasLocation" x="-505" y="-39"/>
+            <point key="canvasLocation" x="-522" y="-36"/>
         </tableViewCell>
     </objects>
 </document>
