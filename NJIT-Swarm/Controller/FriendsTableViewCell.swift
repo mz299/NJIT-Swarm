@@ -10,9 +10,11 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var myImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
-    @IBOutlet weak var myLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +26,24 @@ class FriendsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setData(data: FriendData) {
+        nameLabel.text = data.username
+        emailLabel.text = data.email
+        phoneLabel.text = data.phone
+        if data.profile_image_url != "" {
+            let url = URL(string: data.profile_image_url)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    if let image = UIImage(data: data!) {
+                        DispatchQueue.main.async {
+                            self.profileImageView.image = image
+                        }
+                    }
+                }
+            }).resume()
+        }
+    }
 }
