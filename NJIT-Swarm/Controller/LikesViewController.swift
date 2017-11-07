@@ -53,6 +53,11 @@ class LikesViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         let nib = UINib(nibName: "LikesTableViewCell", bundle: nil)
         likesTableView.register(nib, forCellReuseIdentifier: "likesCell")
+        
+        DBProvider.Instance.getLikes(withCheckinID: checkInKey, dataHandler: {(checkins) in
+            print("Home View Controller", checkins)
+            self.likesTableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {

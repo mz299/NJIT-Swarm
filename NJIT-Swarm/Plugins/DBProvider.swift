@@ -170,6 +170,28 @@ public class DBProvider {
         checkinRef.child(withCheckinID).child(Constants.LIKE).child(uid).removeValue()
     }
     
+    func getLikes(withCheckinID: String, dataHandler: DataHandler?) {
+        checkinRef.child(withCheckinID).child(Constants.LIKE).observeSingleEvent(of: .value)
+        { snapshot in
+            for childSnap in  snapshot.children.allObjects {
+                let snap = childSnap as! DataSnapshot
+                print(snap.key)
+        }
+//        checkinRef.child(withCheckinID).child(Constants.LIKE).observeSingleEvent(of: .value) { (snapshot) in
+//            print(snapshot)
+//            if let value = snapshot.value {
+//                if let data = value as? [String: Any] {
+//                    dataHandler?(data)
+//                } else {
+//                    dataHandler?(nil)
+//                }
+//            } else {
+//                dataHandler?(nil)
+//            }
+//        }
+        }
+    }
+    
     func saveComment(withCheckinID: String, uid: String, name: String, comment: String) {
         let data: Dictionary<String, Any> = [Constants.UID: uid, Constants.USERNAME: name, Constants.COMMENT: comment, Constants.TIMESTAMP: ServerValue.timestamp()]
         checkinRef.child(withCheckinID).child(Constants.COMMENT).childByAutoId().setValue(data)
