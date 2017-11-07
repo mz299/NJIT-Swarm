@@ -194,8 +194,8 @@ public class DBProvider {
         }
     }
     
-    func saveComment(withCheckinID: String, uid: String, name: String, comment: String) {
-        let data: Dictionary<String, Any> = [Constants.UID: uid, Constants.USERNAME: name, Constants.COMMENT: comment, Constants.TIMESTAMP: ServerValue.timestamp()]
+    func saveComment(withCheckinID: String, uid: String, comment: String) {
+        let data: Dictionary<String, Any> = [Constants.UID: uid, Constants.COMMENT: comment, Constants.TIMESTAMP: ServerValue.timestamp()]
         checkinRef.child(withCheckinID).child(Constants.COMMENT).childByAutoId().setValue(data)
     }
     
