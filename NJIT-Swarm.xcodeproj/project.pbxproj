@@ -40,6 +40,7 @@
 		E1C042F41FAE6F5E0062D229 /* swarm.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C042F31FAE6F5E0062D229 /* swarm.png */; };
 		E513B2BA1FB14A13004388B0 /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513B2B91FB14A13004388B0 /* Venues.swift */; };
 		E513B2BC1FB14A27004388B0 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513B2BB1FB14A27004388B0 /* CheckinViewController.swift */; };
+		E513B2BE1FB14DB0004388B0 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513B2BD1FB14DB0004388B0 /* LocationSearchTable.swift */; };
 		E5B736441FAFD24C009442AD /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */; };
 		E5B736481FAFD955009442AD /* samplePP.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5B736471FAFD955009442AD /* samplePP.jpg */; };
 		E5B7364A1FAFDBD0009442AD /* check-In.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B736491FAFDBD0009442AD /* check-In.png */; };
@@ -121,6 +122,7 @@
 		E1C042F31FAE6F5E0062D229 /* swarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swarm.png; sourceTree = "<group>"; };
 		E513B2B91FB14A13004388B0 /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
 		E513B2BB1FB14A27004388B0 /* CheckinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
+		E513B2BD1FB14DB0004388B0 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		E5B736471FAFD955009442AD /* samplePP.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = samplePP.jpg; sourceTree = "<group>"; };
 		E5B736491FAFDBD0009442AD /* check-In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-In.png"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */,
 				E513B2B91FB14A13004388B0 /* Venues.swift */,
 				E513B2BB1FB14A27004388B0 /* CheckinViewController.swift */,
+				E513B2BD1FB14DB0004388B0 /* LocationSearchTable.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				E513B2BC1FB14A27004388B0 /* CheckinViewController.swift in Sources */,
 				6E13F6871FB0FA3D00A16EA9 /* TimelineTableViewCell.swift in Sources */,
 				E5E399BA1FB0388100BCB408 /* CommentTableViewCell.swift in Sources */,
+				E513B2BE1FB14DB0004388B0 /* LocationSearchTable.swift in Sources */,
 				6E46A1D81FACE1CF007571A8 /* FriendsViewController.swift in Sources */,
 				E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */,
 				E5D5B4381FB0205200BE6669 /* LikesTableViewCell.swift in Sources */,
