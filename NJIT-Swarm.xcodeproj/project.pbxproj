@@ -38,9 +38,8 @@
 		C2264122B46E81F59614D682 /* Pods_NJIT_SwarmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531E0889624962F42DE52D6A /* Pods_NJIT_SwarmUITests.framework */; };
 		E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */; };
 		E1C042F41FAE6F5E0062D229 /* swarm.png in Resources */ = {isa = PBXBuildFile; fileRef = E1C042F31FAE6F5E0062D229 /* swarm.png */; };
-		E513B2BA1FB14A13004388B0 /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513B2B91FB14A13004388B0 /* Venues.swift */; };
-		E513B2BC1FB14A27004388B0 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513B2BB1FB14A27004388B0 /* CheckinViewController.swift */; };
-		E513B2BE1FB14DB0004388B0 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513B2BD1FB14DB0004388B0 /* LocationSearchTable.swift */; };
+		E5AFD5DD1FB17FCA00A4DC94 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFD5DC1FB17FCA00A4DC94 /* HomeViewController.swift */; };
+		E5AFD5DF1FB17FD200A4DC94 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFD5DE1FB17FD200A4DC94 /* TimelineTableViewCell.swift */; };
 		E5B736441FAFD24C009442AD /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */; };
 		E5B736481FAFD955009442AD /* samplePP.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5B736471FAFD955009442AD /* samplePP.jpg */; };
 		E5B7364A1FAFDBD0009442AD /* check-In.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B736491FAFDBD0009442AD /* check-In.png */; };
@@ -120,9 +119,8 @@
 		C3F8C7D397BD6C183E4CBA97 /* Pods-NJIT-Swarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJIT-Swarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NJIT-Swarm/Pods-NJIT-Swarm.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		E1C042F31FAE6F5E0062D229 /* swarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swarm.png; sourceTree = "<group>"; };
-		E513B2B91FB14A13004388B0 /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
-		E513B2BB1FB14A27004388B0 /* CheckinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
-		E513B2BD1FB14DB0004388B0 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		E5AFD5DC1FB17FCA00A4DC94 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E5AFD5DE1FB17FD200A4DC94 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		E5B736471FAFD955009442AD /* samplePP.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = samplePP.jpg; sourceTree = "<group>"; };
 		E5B736491FAFDBD0009442AD /* check-In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-In.png"; sourceTree = "<group>"; };
@@ -192,6 +190,7 @@
 				6E1C38631F9196850077BDE5 /* Products */,
 				834DB83D0A969CE6DD93154C /* Pods */,
 				5DF869F138DFE2981F7D0D59 /* Frameworks */,
+				E5AFD5DB1FB17FA500A4DC94 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -270,6 +269,8 @@
 		6EDD94F91FAAABBB001C15D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E5AFD5DE1FB17FD200A4DC94 /* TimelineTableViewCell.swift */,
+				E5AFD5DC1FB17FCA00A4DC94 /* HomeViewController.swift */,
 				6EB6575B1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift */,
 				6E46A1D91FACE2C5007571A8 /* AddFriendViewController.swift */,
 				E5E399B61FB0388100BCB408 /* CommentTableViewCell.swift */,
@@ -278,7 +279,6 @@
 				E5E399B41FB0388100BCB408 /* CommentViewController.xib */,
 				E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */,
 				6E46A1D71FACE1CF007571A8 /* FriendsViewController.swift */,
-				6E13F6881FB0FA6C00A16EA9 /* HomeViewController.swift */,
 				E5D5B4361FB0205100BE6669 /* LikesTableViewCell.swift */,
 				E5D5B4371FB0205200BE6669 /* LikesTableViewCell.xib */,
 				E5D5B4321FB01C6700BE6669 /* LikesViewController.swift */,
@@ -286,11 +286,7 @@
 				6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */,
 				6EB189D31FABAF3D002CF9B9 /* ProfileViewController.swift */,
 				6EB189D51FABB11B002CF9B9 /* SignUpViewController.swift */,
-				6E13F6861FB0FA3D00A16EA9 /* TimelineTableViewCell.swift */,
 				E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */,
-				E513B2B91FB14A13004388B0 /* Venues.swift */,
-				E513B2BB1FB14A27004388B0 /* CheckinViewController.swift */,
-				E513B2BD1FB14DB0004388B0 /* LocationSearchTable.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,6 +313,15 @@
 				219A2353152A331821303083 /* Pods-NJIT-SwarmUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E5AFD5DB1FB17FA500A4DC94 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				6E13F6881FB0FA6C00A16EA9 /* HomeViewController.swift */,
+				6E13F6861FB0FA3D00A16EA9 /* TimelineTableViewCell.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,7 +512,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NJIT-Swarm/Pods-NJIT-Swarm-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -515,7 +519,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -633,19 +636,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E13F6891FB0FA6C00A16EA9 /* HomeViewController.swift in Sources */,
-				E513B2BA1FB14A13004388B0 /* Venues.swift in Sources */,
 				6EB657561FAD7A9C002E0E28 /* UserCheckinsData.swift in Sources */,
 				6EB189D61FABB11B002CF9B9 /* SignUpViewController.swift in Sources */,
-				E513B2BC1FB14A27004388B0 /* CheckinViewController.swift in Sources */,
 				6E13F6871FB0FA3D00A16EA9 /* TimelineTableViewCell.swift in Sources */,
 				E5E399BA1FB0388100BCB408 /* CommentTableViewCell.swift in Sources */,
-				E513B2BE1FB14DB0004388B0 /* LocationSearchTable.swift in Sources */,
 				6E46A1D81FACE1CF007571A8 /* FriendsViewController.swift in Sources */,
 				E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */,
 				E5D5B4381FB0205200BE6669 /* LikesTableViewCell.swift in Sources */,
 				6E46A1DA1FACE2C5007571A8 /* AddFriendViewController.swift in Sources */,
 				6E13F68B1FB10A6D00A16EA9 /* StorageProvider.swift in Sources */,
 				6EB657521FAD747A002E0E28 /* SearchFriendsData.swift in Sources */,
+				E5AFD5DD1FB17FCA00A4DC94 /* HomeViewController.swift in Sources */,
 				6EDD94FB1FAAAC26001C15D9 /* LoginViewController.swift in Sources */,
 				6E1C38661F9196850077BDE5 /* AppDelegate.swift in Sources */,
 				E5E399B71FB0388100BCB408 /* CommentViewController.swift in Sources */,
@@ -653,6 +654,7 @@
 				E5E399BC1FB04DAF00BCB408 /* CheckIn.swift in Sources */,
 				6EB189D41FABAF3D002CF9B9 /* ProfileViewController.swift in Sources */,
 				E5D5B4341FB01C6800BE6669 /* LikesViewController.swift in Sources */,
+				E5AFD5DF1FB17FD200A4DC94 /* TimelineTableViewCell.swift in Sources */,
 				6EDD95001FAAAEEF001C15D9 /* AuthProvider.swift in Sources */,
 				6E4081FB1FAD0D1900D3F365 /* FriendsData.swift in Sources */,
 				6E7056081FAED1210058833B /* CommentsData.swift in Sources */,

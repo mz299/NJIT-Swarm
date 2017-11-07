@@ -16,7 +16,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var ref:DatabaseReference?
     var databaseHandle:DatabaseHandle?
 
-    let people = [String]()
+//    let people = [String]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return FriendsData.Instance.Data.count

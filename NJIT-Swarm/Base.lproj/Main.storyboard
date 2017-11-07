@@ -605,6 +605,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hX4-tQ-ZKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="vcc-B2-bQB">
+                    <connections>
+                        <action selector="profilePictureTapped:" destination="PEJ-5J-vEZ" id="OCJ-wb-ntp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2020" y="599.55022488755628"/>
         </scene>
@@ -778,6 +783,6 @@
         <image name="swarm.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="blc-6D-iHg"/>
+        <segue reference="Hzc-Qi-zkz"/>
     </inferredMetricsTieBreakers>
 </document>

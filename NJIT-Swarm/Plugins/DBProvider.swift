@@ -11,9 +11,9 @@ import FirebaseDatabase
 
 typealias DataHandler = (_ data: [String: Any]?) -> Void
 
-class DBProvider {
+public class DBProvider {
     private static let _instance = DBProvider()
-    private init () {}
+    public init () {}
     static var Instance: DBProvider {
         return _instance
     }
