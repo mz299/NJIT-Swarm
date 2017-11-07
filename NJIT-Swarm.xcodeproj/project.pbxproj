@@ -262,8 +262,6 @@
 		6EDD94F91FAAABBB001C15D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E5B685A61FB0FFD00033A9D9 /* HomeViewController.swift */,
-				E5B685A81FB0FFE00033A9D9 /* TimelineTableViewCell.swift */,
 				6EB6575B1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift */,
 				6E46A1D91FACE2C5007571A8 /* AddFriendViewController.swift */,
 				E5E399B61FB0388100BCB408 /* CommentTableViewCell.swift */,
@@ -272,6 +270,7 @@
 				E5E399B41FB0388100BCB408 /* CommentViewController.xib */,
 				E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */,
 				6E46A1D71FACE1CF007571A8 /* FriendsViewController.swift */,
+				E5B685A61FB0FFD00033A9D9 /* HomeViewController.swift */,
 				E5D5B4361FB0205100BE6669 /* LikesTableViewCell.swift */,
 				E5D5B4371FB0205200BE6669 /* LikesTableViewCell.xib */,
 				E5D5B4321FB01C6700BE6669 /* LikesViewController.swift */,
@@ -279,6 +278,7 @@
 				6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */,
 				6EB189D31FABAF3D002CF9B9 /* ProfileViewController.swift */,
 				6EB189D51FABB11B002CF9B9 /* SignUpViewController.swift */,
+				E5B685A81FB0FFE00033A9D9 /* TimelineTableViewCell.swift */,
 				E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */,
 			);
 			path = Controller;
