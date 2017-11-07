@@ -6,7 +6,7 @@ target 'NJIT-Swarm' do
   use_frameworks!
 
   # Pods for NJIT-Swarm
-
+    pod 'Cosmos', '~> 12.0'
 	pod 'Firebase'
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
