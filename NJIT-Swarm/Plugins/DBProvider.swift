@@ -176,19 +176,21 @@ public class DBProvider {
             for childSnap in  snapshot.children.allObjects {
                 let snap = childSnap as! DataSnapshot
                 print(snap.key)
-        }
-//        checkinRef.child(withCheckinID).child(Constants.LIKE).observeSingleEvent(of: .value) { (snapshot) in
-//            print(snapshot)
-//            if let value = snapshot.value {
-//                if let data = value as? [String: Any] {
-//                    dataHandler?(data)
-//                } else {
-//                    dataHandler?(nil)
-//                }
-//            } else {
-//                dataHandler?(nil)
-//            }
-//        }
+                if let value = snap.key as? String
+                {
+                    if let data = value as? String
+                    {
+               //         dataHandler?(userRef.child(data))
+                    } else
+                    {
+                        dataHandler?(nil)
+                        }
+                }
+                else
+                {
+                    dataHandler?(nil)
+                }
+           }
         }
     }
     
