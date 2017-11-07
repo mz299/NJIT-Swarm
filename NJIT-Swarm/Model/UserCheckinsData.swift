@@ -60,8 +60,8 @@ class UserCheckinsData {
                                 if let message = cData[Constants.MESSAGE] as? String {
                                     newData.message = message
                                 }
-                                if let timestamp = cData[Constants.TIMESTAMP] as? Date {
-                                    newData.timestamp = timestamp
+                                if let timestamp = cData[Constants.TIMESTAMP] as? TimeInterval {
+                                    newData.timestamp = Date(timeIntervalSince1970: timestamp/1000)
                                 }
                                 if let username = userData![Constants.USERNAME] as? String {
                                     newData.username = username
