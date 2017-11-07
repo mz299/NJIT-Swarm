@@ -37,11 +37,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         FriendsData.Instance.update{ (friends) in
             CheckinsData.Instance.update(handler: {(checkins) in
-                print("Home View Controller", checkins)
                 self.timelineTableView.reloadData()
             })
         }
-        print(FriendsData.Instance.Data.count)
    }
     
     func setUserDetails(){
@@ -88,23 +86,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
          let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
-        if(indexPath.row % 2 == 0){
-            let red = Double((0xFF0000) >> 16) / 256.0
-            let green = Double((0xCC00) >> 8) / 256.0
-            let blue = Double((0x76)) / 256.0
-            
-            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
-        }
-        else{
-            let red = Double((0xFF0000) >> 16) / 256.0
-            let green = Double((0xAA00) >> 8) / 256.0
-            let blue = Double((0x16)) / 256.0
-            
-            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
-        }
-        
         let checkIn = CheckinsData.Instance.Data[indexPath.row]
-    
+        
         if checkIn.profile_image_url != "" {
             let url = URL(string: checkIn.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -132,8 +115,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
         cell.checkInKey = checkIn.checkinid
         cell.isLiked = checkIn.youliked
-        print(checkIn.youliked)
-        
+       
         if(checkIn.youliked){
             cell.likeButton.tintColor = UIColor.red
         }
@@ -141,11 +123,26 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             cell.likeButton.tintColor = UIColor.gray
         }
         
+        if(indexPath.row % 2 == 0){
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xCC00) >> 8) / 256.0
+            let blue = Double((0x76)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        else{
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xAA00) >> 8) / 256.0
+            let blue = Double((0x16)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        
         return cell;
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+      
     }
     
     func loadNewScreen(controller: UIViewController) {

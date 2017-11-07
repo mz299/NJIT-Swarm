@@ -75,7 +75,7 @@ public class DBProvider {
      */
     func getUsers(withKey: String, value: Any, dataHandler: DataHandler?) {
         userRef.queryOrdered(byChild: withKey).queryEqual(toValue: value).observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot)
+//            print(snapshot)
             if let value = snapshot.value {
                 if let data = value as? [String: Any] {
                     dataHandler?(data)
@@ -96,7 +96,7 @@ public class DBProvider {
     func getFriends(withID: String, dataHandler: DataHandler?) {
         userRef.child(withID).child(Constants.FRIENDS).observeSingleEvent(of: .value) { (snapshot) in
             if let value = snapshot.value {
-                print(snapshot)
+//                print(snapshot)
                 if let data = value as? [String: Any] {
                     dataHandler?(data)
                 } else {
@@ -110,7 +110,7 @@ public class DBProvider {
     
     func getAllUsers(dataHandler: DataHandler?) {
         userRef.observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot)
+//            print(snapshot)
             if let value = snapshot.value {
                 if let data = value as? [String: Any] {
                     dataHandler?(data)
@@ -135,7 +135,7 @@ public class DBProvider {
     
     func getCheckins(dataHandler: DataHandler?) {
         checkinRef.observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot)
+//            print(snapshot)
             if let value = snapshot.value {
                 if let data = value as? [String: Any] {
                     dataHandler?(data)
@@ -150,7 +150,7 @@ public class DBProvider {
     
     func getCheckins(withID: String, dataHandler: DataHandler?) {
         checkinRef.queryOrdered(byChild: Constants.UID).queryEqual(toValue: withID).observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot)
+//            print(snapshot)
             if let value = snapshot.value {
                 if let data = value as? [String: Any] {
                     dataHandler?(data)
@@ -175,7 +175,7 @@ public class DBProvider {
         { snapshot in
             for childSnap in  snapshot.children.allObjects {
                 let snap = childSnap as! DataSnapshot
-                print(snap.key)
+//                print(snap.key)
                 if let value = snap.key as? String
                 {
                     if let data = value as? String
@@ -201,7 +201,7 @@ public class DBProvider {
     
     func getComments(withCheckinID: String, dataHandler: DataHandler?) {
         checkinRef.child(withCheckinID).child(Constants.COMMENT).observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot)
+        //    print(snapshot)
             if let value = snapshot.value {
                 if let data = value as? [String: Any] {
                     dataHandler?(data)
