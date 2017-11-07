@@ -66,6 +66,9 @@ class UserCheckinsData {
                                 if let username = userData![Constants.USERNAME] as? String {
                                     newData.username = username
                                 }
+                                if let url = userData![Constants.PROFILE_IMAGE_URL] as? String {
+                                    newData.profile_image_url = url
+                                }
                                 if let numoflike = cData[Constants.LIKE] as? [String: Any] {
                                     newData.numoflike = numoflike.count
                                     for like in numoflike {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let CAN_NOT_BE_EMPTY = "It Can Not Be Empty"
     private let LOAD_DATA_FAILED = "Load Data Failed"
@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var userNameTextfield: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     private var editMode = false
     
@@ -47,6 +48,20 @@ class ProfileViewController: UIViewController {
                 }
                 if let phone = data![Constants.PHONE] as? String {
                     self.phoneTextField.text = phone
+                }
+                if let imageUrl = data![Constants.PROFILE_IMAGE_URL] as? String {
+                    let url = URL(string: imageUrl)
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil {
+                            print(error!)
+                        } else {
+                            if let image = UIImage(data: data!) {
+                                DispatchQueue.main.async {
+                                    self.profileImageView.image = image
+                                }
+                            }
+                        }
+                    }).resume()
                 }
             } else {
                 self.showAlert(message: self.LOAD_DATA_FAILED)
@@ -148,6 +163,28 @@ class ProfileViewController: UIViewController {
             let btn = sender as! UIButton
             btn.setTitle("Done", for: .normal)
         }
+    }
+    
+    @IBAction func editProfileImage(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            profileImageView.image = selectedImage
+            let imageData = UIImagePNGRepresentation(selectedImage)
+            StorageProvider.Instance.uploadProfilePic(image: imageData, uid: AuthProvider.Instance.getUserID()!, handler: { (url) in
+                DBProvider.Instance.setUserData(key: Constants.PROFILE_IMAGE_URL, value: url!)
+            })
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func showAlert(message: String) {

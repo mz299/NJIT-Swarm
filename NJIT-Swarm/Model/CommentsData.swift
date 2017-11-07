@@ -33,6 +33,9 @@ class CommentsData {
                     if let value = commentData.value as? [String: Any] {
                         if let uid = value[Constants.UID] as? String {
                             newData.uid = uid
+                            if let uData = FriendsData.Instance.getData(uid: uid) {
+                                newData.profile_image_url = uData.profile_image_url
+                            }
                         }
                         if let username = value[Constants.USERNAME] as? String {
                             newData.username = username

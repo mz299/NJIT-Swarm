@@ -18,8 +18,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 //    let people = [String]()
     
-    @IBOutlet weak var friendTableView: UITableView!
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return FriendsData.Instance.Data.count
     }
@@ -28,9 +26,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseFriendsCell", for: indexPath) as! FriendsTableViewCell
         let data = FriendsData.Instance.Data[indexPath.row]
-        cell.myImage.image = UIImage(named:"swarm.png")
-        cell.myLabel.text = data.username
-        
+        cell.setData(data: data)
         
         return cell
     }
