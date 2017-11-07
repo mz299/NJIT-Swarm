@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		69E64467EDB63FE2FFA8C529 /* Pods_NJIT_Swarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6829700672356052BBB390 /* Pods_NJIT_Swarm.framework */; };
-		6E13F6871FB0FA3D00A16EA9 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13F6861FB0FA3D00A16EA9 /* TimelineTableViewCell.swift */; };
-		6E13F6891FB0FA6C00A16EA9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13F6881FB0FA6C00A16EA9 /* HomeViewController.swift */; };
 		6E13F68B1FB10A6D00A16EA9 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13F68A1FB10A6C00A16EA9 /* StorageProvider.swift */; };
 		6E167EB91FAB056200CB628B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E167EB81FAB056200CB628B /* MapKit.framework */; };
 		6E167EBB1FAB056A00CB628B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E167EBA1FAB056900CB628B /* CoreLocation.framework */; };
@@ -78,8 +76,6 @@
 /* Begin PBXFileReference section */
 		219A2353152A331821303083 /* Pods-NJIT-SwarmUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJIT-SwarmUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NJIT-SwarmUITests/Pods-NJIT-SwarmUITests.release.xcconfig"; sourceTree = "<group>"; };
 		531E0889624962F42DE52D6A /* Pods_NJIT_SwarmUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NJIT_SwarmUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E13F6861FB0FA3D00A16EA9 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
-		6E13F6881FB0FA6C00A16EA9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6E13F68A1FB10A6C00A16EA9 /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		6E167EB81FAB056200CB628B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6E167EBA1FAB056900CB628B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -269,8 +265,6 @@
 		6EDD94F91FAAABBB001C15D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E5AFD5DE1FB17FD200A4DC94 /* TimelineTableViewCell.swift */,
-				E5AFD5DC1FB17FCA00A4DC94 /* HomeViewController.swift */,
 				6EB6575B1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift */,
 				6E46A1D91FACE2C5007571A8 /* AddFriendViewController.swift */,
 				E5E399B61FB0388100BCB408 /* CommentTableViewCell.swift */,
@@ -279,6 +273,7 @@
 				E5E399B41FB0388100BCB408 /* CommentViewController.xib */,
 				E1C042F11FAE60C90062D229 /* FriendsTableViewCell.swift */,
 				6E46A1D71FACE1CF007571A8 /* FriendsViewController.swift */,
+				E5AFD5DC1FB17FCA00A4DC94 /* HomeViewController.swift */,
 				E5D5B4361FB0205100BE6669 /* LikesTableViewCell.swift */,
 				E5D5B4371FB0205200BE6669 /* LikesTableViewCell.xib */,
 				E5D5B4321FB01C6700BE6669 /* LikesViewController.swift */,
@@ -286,6 +281,7 @@
 				6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */,
 				6EB189D31FABAF3D002CF9B9 /* ProfileViewController.swift */,
 				6EB189D51FABB11B002CF9B9 /* SignUpViewController.swift */,
+				E5AFD5DE1FB17FD200A4DC94 /* TimelineTableViewCell.swift */,
 				E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */,
 			);
 			path = Controller;
@@ -318,8 +314,6 @@
 		E5AFD5DB1FB17FA500A4DC94 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				6E13F6881FB0FA6C00A16EA9 /* HomeViewController.swift */,
-				6E13F6861FB0FA3D00A16EA9 /* TimelineTableViewCell.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -635,10 +629,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E13F6891FB0FA6C00A16EA9 /* HomeViewController.swift in Sources */,
 				6EB657561FAD7A9C002E0E28 /* UserCheckinsData.swift in Sources */,
 				6EB189D61FABB11B002CF9B9 /* SignUpViewController.swift in Sources */,
-				6E13F6871FB0FA3D00A16EA9 /* TimelineTableViewCell.swift in Sources */,
 				E5E399BA1FB0388100BCB408 /* CommentTableViewCell.swift in Sources */,
 				6E46A1D81FACE1CF007571A8 /* FriendsViewController.swift in Sources */,
 				E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */,
