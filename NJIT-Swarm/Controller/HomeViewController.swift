@@ -37,11 +37,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         FriendsData.Instance.update{ (friends) in
             CheckinsData.Instance.update(handler: {(checkins) in
-                print(checkins)
+                print("Home View Controller", checkins)
                 self.timelineTableView.reloadData()
             })
         }
-        
         print(FriendsData.Instance.Data.count)
    }
     
@@ -87,8 +86,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print(FriendsData.Instance.Data[indexPath.row], indexPath.row)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
+         let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
         if(indexPath.row % 2 == 0){
             let red = Double((0xFF0000) >> 16) / 256.0
@@ -106,20 +104,35 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
         
         let checkIn = CheckinsData.Instance.Data[indexPath.row]
+    
+        if checkIn.profile_image_url != "" {
+            let url = URL(string: checkIn.profile_image_url)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    if let image = UIImage(data: data!) {
+                        DispatchQueue.main.async {
+                            cell.profilePicture.image = image
+                        }
+                    }
+                }
+            }).resume()
+        }
         
-        cell.profilePicture.image = UIImage(named:"samplePP.jpg")
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
         
-        cell.name.setTitle(checkIn.uid, for: UIControlState.normal)
+        cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place
         cell.detail.text = checkIn.message
       //  cell.rating.text = "\(checkIn.rating)"
-        cell.commentCountButton.setTitle("Comments(\(checkIn.numofcomment))", for: UIControlState.normal)
+        cell.commentCountButton.setTitle("\(checkIn.numofcomment)", for: UIControlState.normal)
         cell.dateTimeLabel.text = "\(checkIn.timestamp)"
-       // cell.likeCountButton.setTitle("(\(checkIn.likes))", for: UIControlState.normal)
+        cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
         cell.checkInKey = checkIn.checkinid
         cell.isLiked = checkIn.youliked
+        print(checkIn.youliked)
         
         if(checkIn.youliked){
             cell.likeButton.tintColor = UIColor.red

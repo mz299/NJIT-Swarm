@@ -27,13 +27,23 @@ class TimelineTableViewCell: UITableViewCell {
     }
     
     @IBAction func likeButtonClicked(_ sender: Any) {
+        
         if(self.isLiked){
+            DBProvider.Instance.unlikeCheckin(withCheckinID: self.checkInKey, uid: AuthProvider.Instance.getUserID()!)
             self.isLiked = false
             self.likeButton.tintColor = UIColor.gray
-        }else{
+            let count = Int(self.likeCountButton.currentTitle!)
+            self.likeCountButton.setTitle("\(String(describing: count!-1))", for: .normal)
+        }
+        
+        else{
+            DBProvider.Instance.likeCheckin(withCheckinID: self.checkInKey, uid: AuthProvider.Instance.getUserID()!)
             self.isLiked = true
             self.likeButton.tintColor = UIColor.red
+            let count = Int(self.likeCountButton.currentTitle!)
+            self.likeCountButton.setTitle("\(String(describing: count!+1))", for: .normal)
         }
+
     }
     
     @IBAction func likeCountButtonClicked(_ sender: Any) {
