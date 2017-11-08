@@ -85,6 +85,18 @@ class FriendsData {
         return nil
     }
     
+    func getUsersData(byUids: Array<String>) -> Array<FriendData> {
+        var usersData = Array<FriendData>()
+        for uid in byUids {
+            for uData in _allUserData {
+                if uid == uData.uid {
+                    usersData.append(uData)
+                }
+            }
+        }
+        return usersData
+    }
+    
     func getFriendData(uid: String) -> FriendData? {
         for data in _data {
             if data.uid == uid {
