@@ -74,6 +74,8 @@ class LikesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         likesTableView.register(nib, forCellReuseIdentifier: "likesCell")
         
         likedUsersID = CheckinsData.Instance.getLikedUserIds(byCheckinId: checkInKey)!
+        
+        self.likesTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
