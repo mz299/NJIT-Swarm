@@ -14,6 +14,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var userName: UILabel!
     var uid: String = ""
+    var checkInsData: [CheckinData] = [CheckinData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +32,18 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.profilePicture.layer.cornerRadius =  self.profilePicture.frame.size.height / 2
         self.profilePicture.clipsToBounds = true
         
-        FriendsData.Instance.update{ (friends) in
-            CheckinsData.Instance.update(handler: {(checkins) in
-                self.timelineTableView.reloadData()
-            })
-        }
+        checkInsData = CheckinsData.Instance.getCheckinsData(byUid: uid)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CheckinsData.Instance.Data.count;
+        return checkInsData.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
-        let checkIn = CheckinsData.Instance.Data[indexPath.row]
+        let checkIn = checkInsData[indexPath.row]
         
         if checkIn.profile_image_url != "" {
             let url = URL(string: checkIn.profile_image_url)
