@@ -29,6 +29,7 @@ class addFriendsvwTableViewCell: UITableViewCell {
         addButton.isHidden = true
         addButton.isUserInteractionEnabled = false
         statusLabel.text = "Sent Request"
+        statusLabel.isHidden = false
         
         let data = SearchFriendsData.Instance.Data[index]
 //        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
@@ -65,12 +66,16 @@ class addFriendsvwTableViewCell: UITableViewCell {
             addButton.isHidden = true
             addButton.isUserInteractionEnabled = false
             statusLabel.text = "Added"
+            statusLabel.isHidden = false
         } else if sentRequest {
             addButton.isHidden = true
             addButton.isUserInteractionEnabled = false
             statusLabel.text = "Sent Request"
-        } else {
+            statusLabel.isHidden = false
+        } else if sentRequest == false {
             statusLabel.isHidden = true
+            addButton.isHidden = false
+            addButton.isUserInteractionEnabled = true
         }
     }
     

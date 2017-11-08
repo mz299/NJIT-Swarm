@@ -43,6 +43,9 @@ class FriendsTableViewCell: UITableViewCell {
         if section == 1 {
             addButton.isHidden = true
             addButton.isUserInteractionEnabled = false
+        } else if section == 0 {
+            addButton.isHidden = false
+            addButton.isUserInteractionEnabled = true
         }
         if data.profile_image_url != "" {
             let url = URL(string: data.profile_image_url)
