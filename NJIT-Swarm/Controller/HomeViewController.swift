@@ -178,7 +178,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loadUserData()
+        if AuthProvider.Instance.getUserID() != nil {
+            loadUserData()
+        }
     }
 
 }
