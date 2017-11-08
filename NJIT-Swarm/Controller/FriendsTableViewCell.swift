@@ -15,6 +15,9 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var addButton: UIButton!
+    
+    private var friendData = FriendData()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,11 +29,21 @@ class FriendsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func add(_ sender: Any) {
+        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: friendData.uid)
+        addButton.isHidden = true
+        addButton.isUserInteractionEnabled = false
+    }
     
-    func setData(data: FriendData) {
+    func setData(data: FriendData, section: Int) {
+        friendData = data
         nameLabel.text = data.username
         emailLabel.text = data.email
         phoneLabel.text = data.phone
+        if section == 1 {
+            addButton.isHidden = true
+            addButton.isUserInteractionEnabled = false
+        }
         if data.profile_image_url != "" {
             let url = URL(string: data.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
