@@ -84,4 +84,13 @@ class FriendsData {
         }
         return nil
     }
+    
+    func getFriendData(uid: String) -> FriendData? {
+        for data in _data {
+            if data.uid == uid {
+                return data
+            }
+        }
+        return nil
+    }
 }

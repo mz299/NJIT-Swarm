@@ -21,6 +21,9 @@ struct CheckinData {
     var numoflike = 0
     var numofcomment = 0
     var youliked = false
+    var likedUserIds = Array<String>()
+    var taggedUserIds = Array<String>()
+    var comments = Array<CommentData>()
 }
 
 typealias CheckinDataHandler = (_ data: Array<CheckinData>) -> Void

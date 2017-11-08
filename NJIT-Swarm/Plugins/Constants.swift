@@ -28,5 +28,6 @@ class Constants {
     static let MESSAGE = "message"
     static let COMMENT = "comment"
     static let LIKE = "like"
+    static let TAGGEDUIDS = "taggeduids"
     // Keys for place
 }

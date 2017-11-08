@@ -131,7 +131,7 @@ class CheckinViewController: UIViewController{
                         //                self.mapView.addAnnotation(LocationName)
                         
                         // to put data
-                                       DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!)
+                                       DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil)
                         
                         self.ReviewText.text = ""
                         
