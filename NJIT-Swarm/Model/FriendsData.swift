@@ -58,6 +58,8 @@ class FriendsData {
                             }
                             if let url = data[Constants.PROFILE_IMAGE_URL] as? String {
                                 newData.profile_image_url = url
+                            } else {
+                                newData.profile_image_url = Constants.DEFAULT_PROFILE_IMAGE_URL
                             }
                         }
                         self._allUserData.append(newData)
