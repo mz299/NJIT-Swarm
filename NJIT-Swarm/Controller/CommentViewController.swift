@@ -24,6 +24,11 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         
         let nib = UINib(nibName: "CommentTableViewCell", bundle: nil)
         commentsTableView.register(nib, forCellReuseIdentifier: "commentsCell")
+        
+        DBProvider.Instance.getComments(withCheckinID: checkInKey, dataHandler: { (comments) in
+            print(comments)
+            self.commentsTableView.reloadData()
+        })
     }
 
     // Notification when keyboard show
@@ -33,23 +38,17 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        print("Keyboard appear")
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            print("IF 1", keyboardSize.height)
             if view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
-                print("IF 2",keyboardSize.height)
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        print("Keyboard Disappear")
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            print("IF 1", keyboardSize.height)
             if view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize.height
-                print("IF 2", keyboardSize.height)
             }
         }
     }
@@ -67,6 +66,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         self.commentTextField.endEditing(true)
         self.commentTextField.text = ""
         self.textFieldDidChanged(sender)
+        DBProvider.Instance.saveComment(withCheckinID: checkInKey, uid: AuthProvider.Instance.getUserID()!, comment: self.commentTextField.text!)
     }
     
     @IBAction func textFieldDidChanged(_ sender: Any) {

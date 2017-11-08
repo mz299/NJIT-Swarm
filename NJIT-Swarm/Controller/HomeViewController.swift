@@ -19,13 +19,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     @IBOutlet weak var timelineTableView: UITableView!
     private let PROFILE_PAGE_SEGUE = "profilePage"
     private let FRIEND_PAGE_SEGUE = "friendPage"
-   
+    
     private var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUserDetails()
+        loadUserData()
         
         if (CLLocationManager.locationServicesEnabled())
         {
@@ -37,17 +37,37 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         FriendsData.Instance.update{ (friends) in
             CheckinsData.Instance.update(handler: {(checkins) in
-                print("Home View Controller", checkins)
                 self.timelineTableView.reloadData()
             })
         }
-        print(FriendsData.Instance.Data.count)
    }
     
-    func setUserDetails(){
-        profilePicture.image = UIImage(named:"samplePP.jpg")
-        profilePicture.layer.cornerRadius = self.profilePicture.frame.size.height / 2
-        profilePicture.clipsToBounds = true
+    func loadUserData() {
+        DBProvider.Instance.getUserData(withID: AuthProvider.Instance.getUserID()!) { (data) in
+            if data != nil {
+                if let imageUrl = data![Constants.PROFILE_IMAGE_URL] as? String {
+                    let url = URL(string: imageUrl)
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil {
+                            print(error!)
+                        } else {
+                            if let image = UIImage(data: data!) {
+                                DispatchQueue.main.async {
+                                    self.profilePicture.image = image
+                                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.height / 2
+                                    self.profilePicture.clipsToBounds = true
+                                }
+                            }
+                        }
+                    }).resume()
+                }
+            } else {
+                let alert = UIAlertController(title: "Alert", message: "Unable to Load User Details", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     func getCurrentLocation(){
@@ -64,15 +84,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         
         mapView.setRegion(region, animated: true)
-        
-       /* Pin Annotation
-         
-         let myAnnotation: MKPointAnnotation = MKPointAnnotation()
-         myAnnotation.coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude);
-         myAnnotation.title = "Current location"
-        
-         mapView.addAnnotation(myAnnotation)
-        */
     }
     
     private func locationManager(manager: CLLocationManager, didFailWithError error: Error)
@@ -81,30 +92,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FriendsData.Instance.Data.count;
+        return CheckinsData.Instance.Data.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
          let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
-        if(indexPath.row % 2 == 0){
-            let red = Double((0xFF0000) >> 16) / 256.0
-            let green = Double((0xCC00) >> 8) / 256.0
-            let blue = Double((0x76)) / 256.0
-            
-            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
-        }
-        else{
-            let red = Double((0xFF0000) >> 16) / 256.0
-            let green = Double((0xAA00) >> 8) / 256.0
-            let blue = Double((0x16)) / 256.0
-            
-            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
-        }
-        
         let checkIn = CheckinsData.Instance.Data[indexPath.row]
-    
+        print(checkIn)
+        
         if checkIn.profile_image_url != "" {
             let url = URL(string: checkIn.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -132,8 +129,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
         cell.checkInKey = checkIn.checkinid
         cell.isLiked = checkIn.youliked
-        print(checkIn.youliked)
-        
+       
         if(checkIn.youliked){
             cell.likeButton.tintColor = UIColor.red
         }
@@ -141,11 +137,26 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             cell.likeButton.tintColor = UIColor.gray
         }
         
+        if(indexPath.row % 2 == 0){
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xCC00) >> 8) / 256.0
+            let blue = Double((0x76)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        else{
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xAA00) >> 8) / 256.0
+            let blue = Double((0x16)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        
         return cell;
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+      
     }
     
     func loadNewScreen(controller: UIViewController) {
