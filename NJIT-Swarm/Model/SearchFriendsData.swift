@@ -50,6 +50,8 @@ class SearchFriendsData {
                         }
                         if let url = fData[Constants.PROFILE_IMAGE_URL] as? String {
                             newData.profile_image_url = url
+                        } else {
+                            newData.profile_image_url = Constants.DEFAULT_PROFILE_IMAGE_URL
                         }
                     }
                     
