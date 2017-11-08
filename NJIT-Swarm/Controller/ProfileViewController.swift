@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func historyButtonClicked(_ sender: Any) {
         let historyViewController: HistoryViewController = HistoryViewController()
+        historyViewController.uid = AuthProvider.Instance.getUserID()!
         var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
         while ((topController.presentedViewController) != nil) {
             topController = topController.presentedViewController!;

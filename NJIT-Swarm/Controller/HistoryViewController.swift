@@ -13,7 +13,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var timelineTableView: UITableView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var userName: UILabel!
-    let uid: String = ""
+    var uid: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
