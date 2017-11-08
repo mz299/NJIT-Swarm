@@ -135,8 +135,8 @@ public class DBProvider {
         userRef.child(friendID).child(Constants.FRIENDS).child(withID).removeValue()
     }
     
-    func saveCheckin(withID: String, place: String, message: String, latitude: Double, longitude: Double, taggedUids: Array<String>?) {
-        var data: Dictionary<String, Any> = [Constants.UID: withID, Constants.PLACE: place, Constants.MESSAGE: message, Constants.LATITUDE: latitude, Constants.LONGITUDE: longitude, Constants.TIMESTAMP: ServerValue.timestamp()]
+    func saveCheckin(withID: String, place: String, message: String, latitude: Double, longitude: Double, taggedUids: Array<String>?, rating: Float) {
+        var data: Dictionary<String, Any> = [Constants.UID: withID, Constants.PLACE: place, Constants.MESSAGE: message, Constants.LATITUDE: latitude, Constants.LONGITUDE: longitude, Constants.TIMESTAMP: ServerValue.timestamp(), Constants.RATING: rating]
         if taggedUids != nil {
             var uidDic = Dictionary<String, Any>()
             for uid in taggedUids! {

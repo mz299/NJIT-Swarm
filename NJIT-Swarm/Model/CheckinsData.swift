@@ -78,6 +78,9 @@ class CheckinsData {
                             newData.username = uData.username
                             newData.profile_image_url = uData.profile_image_url
                         }
+                        if let rating = cData[Constants.RATING] as? Float {
+                            newData.rating = rating
+                        }
                         
                         self._allData.append(newData)
                         
