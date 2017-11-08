@@ -100,7 +100,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
          let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
         let checkIn = CheckinsData.Instance.Data[indexPath.row]
-        print(checkIn)
         
         if checkIn.profile_image_url != "" {
             let url = URL(string: checkIn.profile_image_url)
@@ -125,7 +124,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.detail.text = checkIn.message
       //  cell.rating.text = "\(checkIn.rating)"
         cell.commentCountButton.setTitle("\(checkIn.numofcomment)", for: UIControlState.normal)
-        cell.dateTimeLabel.text = "\(checkIn.timestamp)"
+        cell.dateTimeLabel.text = Global.Instance.convertTimestampToDateTime(timeInterval: checkIn.timestamp)
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
         cell.checkInKey = checkIn.checkinid
         cell.isLiked = checkIn.youliked

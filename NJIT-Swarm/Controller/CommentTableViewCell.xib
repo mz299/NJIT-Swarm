@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOZ-fH-Ggc">
-                        <rect key="frame" x="71" y="21" width="233" height="29"/>
+                        <rect key="frame" x="71" y="11" width="233" height="29"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <state key="normal" title="Name">
@@ -37,15 +37,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epk-pq-EfI">
+                        <rect key="frame" x="71" y="40" width="233" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentLabel" destination="jC6-P6-wxl" id="6a3-3M-yDg"/>
+                <outlet property="dateTimeLabel" destination="Epk-pq-EfI" id="BMn-OF-yZP"/>
                 <outlet property="name" destination="LOZ-fH-Ggc" id="AJa-6v-gqD"/>
                 <outlet property="profilePicture" destination="5Ys-LE-HYK" id="UNY-Ih-KPJ"/>
             </connections>
-            <point key="canvasLocation" x="34" y="94.5"/>
+            <point key="canvasLocation" x="-239" y="11.5"/>
         </tableViewCell>
     </objects>
 </document>

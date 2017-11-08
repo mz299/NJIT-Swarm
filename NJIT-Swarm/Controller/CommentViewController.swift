@@ -29,6 +29,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
             print(comments)
             self.commentsTableView.reloadData()
         })
+        
     }
 
     // Notification when keyboard show
@@ -63,10 +64,10 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
     }
     
     @IBAction func commentButtonClicked(_ sender: Any) {
+        DBProvider.Instance.saveComment(withCheckinID: checkInKey, uid: AuthProvider.Instance.getUserID()!, comment: self.commentTextField.text!)
         self.commentTextField.endEditing(true)
         self.commentTextField.text = ""
         self.textFieldDidChanged(sender)
-        DBProvider.Instance.saveComment(withCheckinID: checkInKey, uid: AuthProvider.Instance.getUserID()!, comment: self.commentTextField.text!)
     }
     
     @IBAction func textFieldDidChanged(_ sender: Any) {
