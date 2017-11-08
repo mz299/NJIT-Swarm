@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     private let CAN_NOT_BE_EMPTY = "It Can Not Be Empty"
     private let LOAD_DATA_FAILED = "Load Data Failed"
     private let LOGOUT_FAILED = "Logout Failed"
-
+    
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var userNameTextfield: UITextField!
@@ -32,6 +32,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func historyButtonClicked(_ sender: Any) {
+        let historyViewController: HistoryViewController = HistoryViewController()
+        historyViewController.uid = AuthProvider.Instance.getUserID()!
+        var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+        while ((topController.presentedViewController) != nil) {
+            topController = topController.presentedViewController!;
+        }
+        topController.present(historyViewController, animated: false, completion: nil)
     }
     
     func loadUserData() {

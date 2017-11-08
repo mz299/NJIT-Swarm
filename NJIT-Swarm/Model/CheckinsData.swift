@@ -95,11 +95,35 @@ class CheckinsData {
         }
     }
     
-    func getCheckinData(uid: String) -> CheckinData? {
-        for data in _data {
-            if data.uid == uid {
+    func getCheckinsData(byUid: String) -> Array<CheckinData> {
+        var checkinsData = Array<CheckinData>()
+        for data in _allData {
+            if data.uid == byUid {
+                checkinsData.append(data)
+            }
+        }
+        return checkinsData
+    }
+    
+    func getCheckinData(byCheckinId: String) -> CheckinData? {
+        for data in _allData {
+            if data.checkinid == byCheckinId {
                 return data
             }
+        }
+        return nil
+    }
+    
+    func getComments(byCheckinId: String) -> Array<CommentData>? {
+        if let checkinData = getCheckinData(byCheckinId: byCheckinId) {
+            return checkinData.comments
+        }
+        return nil
+    }
+    
+    func getLikedUserIds(byCheckinId: String) -> Array<String>? {
+        if let checkinData = getCheckinData(byCheckinId: byCheckinId) {
+            return checkinData.likedUserIds
         }
         return nil
     }

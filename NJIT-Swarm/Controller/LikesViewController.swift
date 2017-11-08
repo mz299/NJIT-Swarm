@@ -12,17 +12,42 @@ class LikesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var likesTableView: UITableView!
     var checkInKey: String = ""
+    var likedUsersID: [String] = []
     
     @IBAction func closeButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return likedUsersID.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "likesCell", for: indexPath) as! LikesTableViewCell
+        
+        let friendData = FriendsData.Instance.getData(uid: likedUsersID[indexPath.row])
+        let name = friendData?.username
+        let profilePicURL = friendData?.profile_image_url
+        
+        if profilePicURL != "" {
+            let url = URL(string: profilePicURL!)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    if let image = UIImage(data: data!) {
+                        DispatchQueue.main.async {
+                            cell.profilePicture.image = image
+                        }
+                    }
+                }
+            }).resume()
+        }
+        
+        cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
+        cell.profilePicture.clipsToBounds = true
+        
+        cell.name.setTitle(name, for: UIControlState.normal)
         
         if(indexPath.row % 2 == 0){
             let red = Double((0xFF0000) >> 16) / 256.0
@@ -39,12 +64,6 @@ class LikesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
         }
         
-        cell.profilePicture.image = UIImage(named:"samplePP.jpg")
-        cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
-        cell.profilePicture.clipsToBounds = true
-        
-        cell.name.setTitle("Name", for: UIControlState.normal)
-        
         return cell;
     }
 
@@ -54,10 +73,7 @@ class LikesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let nib = UINib(nibName: "LikesTableViewCell", bundle: nil)
         likesTableView.register(nib, forCellReuseIdentifier: "likesCell")
         
-        DBProvider.Instance.getLikes(withCheckinID: checkInKey, dataHandler: {(checkins) in
-            print("Home View Controller", checkins)
-            self.likesTableView.reloadData()
-        })
+        likedUsersID = CheckinsData.Instance.getLikedUserIds(byCheckinId: checkInKey)!
     }
 
     override func didReceiveMemoryWarning() {

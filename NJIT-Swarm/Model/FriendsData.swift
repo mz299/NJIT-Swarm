@@ -58,6 +58,8 @@ class FriendsData {
                             }
                             if let url = data[Constants.PROFILE_IMAGE_URL] as? String {
                                 newData.profile_image_url = url
+                            } else {
+                                newData.profile_image_url = Constants.DEFAULT_PROFILE_IMAGE_URL
                             }
                         }
                         self._allUserData.append(newData)
@@ -83,6 +85,18 @@ class FriendsData {
             }
         }
         return nil
+    }
+    
+    func getUsersData(byUids: Array<String>) -> Array<FriendData> {
+        var usersData = Array<FriendData>()
+        for uid in byUids {
+            for uData in _allUserData {
+                if uid == uData.uid {
+                    usersData.append(uData)
+                }
+            }
+        }
+        return usersData
     }
     
     func getFriendData(uid: String) -> FriendData? {
