@@ -34,12 +34,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: nil)
         timelineTableView.register(nib, forCellReuseIdentifier: "timelineCell")
-        
-        FriendsData.Instance.update{ (friends) in
-            CheckinsData.Instance.update(handler: {(checkins) in
-                self.timelineTableView.reloadData()
-            })
-        }
    }
     
     func loadUserData() {
@@ -67,6 +61,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
             }
+        }
+        
+        FriendsData.Instance.update{ (friends) in
+            CheckinsData.Instance.update(handler: {(checkins) in
+                self.timelineTableView.reloadData()
+            })
         }
     }
     
@@ -181,6 +181,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         let blue = Double((rgbHexValue & 0xFF)) / 256.0
         
         return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadUserData()
     }
 
 }

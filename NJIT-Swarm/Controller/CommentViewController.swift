@@ -14,10 +14,10 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var commentsTableView: UITableView!
     var checkInKey: String = ""
+    var commentsData: [CommentData] = [CommentData()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  self.commentTextField.becomeFirstResponder()
         self.commentButton.isEnabled = false
         self.commentButton.setTitleColor(UIColor.gray, for: .normal)
         self.setNotificationKeyboard()
@@ -25,8 +25,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         let nib = UINib(nibName: "CommentTableViewCell", bundle: nil)
         commentsTableView.register(nib, forCellReuseIdentifier: "commentsCell")
         
-        
-        
+        commentsData = CheckinsData.Instance.getComments(byCheckinId: checkInKey)!
     }
 
     // Notification when keyboard show
@@ -61,10 +60,27 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
     }
     
     @IBAction func commentButtonClicked(_ sender: Any) {
-        DBProvider.Instance.saveComment(withCheckinID: checkInKey, uid: AuthProvider.Instance.getUserID()!, comment: self.commentTextField.text!)
+        
+        var commentData: CommentData = CommentData()
+        commentData.uid = AuthProvider.Instance.getUserID()!
+        commentData.timestamp = Date()
+        commentData.comment = self.commentTextField.text!
+        
+        let friendData = FriendsData.Instance.getData(uid: commentData.uid)
+        let name = friendData?.username
+        let profilePicURL = friendData?.profile_image_url
+        
+        commentData.profile_image_url = profilePicURL!
+        commentData.username = name!
+        
+        commentsData.append(commentData)
+        
+        DBProvider.Instance.saveComment(withCheckinID: checkInKey, uid: commentData.uid, comment: commentData.comment)
         self.commentTextField.endEditing(true)
         self.commentTextField.text = ""
         self.textFieldDidChanged(sender)
+        
+        self.commentsTableView.reloadData()
     }
     
     @IBAction func textFieldDidChanged(_ sender: Any) {
@@ -90,11 +106,42 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return commentsData.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentsCell", for: indexPath) as! CommentTableViewCell
+        
+        let commentData: CommentData = commentsData[indexPath.row]
+        let uid = commentData.uid
+        let dateTime = commentData.timestamp
+        let comment = commentData.comment
+        
+        let friendData = FriendsData.Instance.getData(uid: uid)
+        let name = friendData?.username
+        let profilePicURL = friendData?.profile_image_url
+        
+        if profilePicURL != "" {
+            let url = URL(string: profilePicURL!)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    if let image = UIImage(data: data!) {
+                        DispatchQueue.main.async {
+                            cell.profilePicture.image = image
+                        }
+                    }
+                }
+            }).resume()
+        }
+        
+        cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
+        cell.profilePicture.clipsToBounds = true
+        
+        cell.name.setTitle(name, for: UIControlState.normal)
+        cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: dateTime)
+        cell.commentLabel.text = comment
         
         if(indexPath.row % 2 == 0){
             let red = Double((0xFF0000) >> 16) / 256.0
@@ -110,13 +157,6 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
             
             cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
         }
-        
-        cell.profilePicture.image = UIImage(named:"samplePP.jpg")
-        cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
-        cell.profilePicture.clipsToBounds = true
-        
-        cell.name.setTitle("Name", for: UIControlState.normal)
-        cell.commentLabel.text = "Comment Value"
         
         return cell;
     }
