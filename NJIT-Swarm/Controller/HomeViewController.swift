@@ -32,14 +32,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: nil)
         timelineTableView.register(nib, forCellReuseIdentifier: "timelineCell")
-        
-        FriendsData.Instance.update{ (friends) in
-            CheckinsData.Instance.update(handler: {(checkins) in
-                self.loadUserData()
-                self.timelineTableView.reloadData()
-            })
-        }
-    
+            
    }
     
     func loadUserData() {
@@ -94,7 +87,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
          let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
         let checkIn = CheckinsData.Instance.Data[indexPath.row]
-        
+//        checkIn.taggedUserIds
         if checkIn.profile_image_url != "" {
             let url = URL(string: checkIn.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -113,10 +106,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
         
+        cell.userKey = checkIn.uid
         cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place
         cell.detail.text = checkIn.message
-      //  cell.rating.text = "\(checkIn.rating)"
+        cell.rating.text = "\(checkIn.rating)"
         cell.commentCountButton.setTitle("\(checkIn.numofcomment)", for: UIControlState.normal)
         cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: checkIn.timestamp)
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
@@ -179,8 +173,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     override func viewDidAppear(_ animated: Bool) {
         if AuthProvider.Instance.getUserID() != nil {
-            loadUserData()
+        FriendsData.Instance.update{ (friends) in
+            CheckinsData.Instance.update(handler: {(checkins) in
+                self.loadUserData()
+                self.timelineTableView.reloadData()
+            })
         }
+      }
     }
-
 }

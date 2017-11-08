@@ -219,6 +219,7 @@
                     <connections>
                         <outlet property="ReviewText" destination="SNH-3n-LZX" id="c5Q-pR-pHR"/>
                         <outlet property="mapView" destination="cTw-XI-FXG" id="Yo4-S3-tqJ"/>
+                        <outlet property="ratingView" destination="sij-do-Xl6" id="c8H-yT-eqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WX-P3-xbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
