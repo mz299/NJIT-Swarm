@@ -43,8 +43,8 @@ class CommentsData {
                         if let comment = value[Constants.COMMENT] as? String {
                             newData.comment = comment
                         }
-                        if let timestamp = value[Constants.TIMESTAMP] as? Date {
-                            newData.timestamp = timestamp
+                        if let timestamp = value[Constants.TIMESTAMP] as? TimeInterval {
+                            newData.timestamp = Date(timeIntervalSince1970: timestamp/1000)
                         }
                     }
                     self._data.append(newData)
