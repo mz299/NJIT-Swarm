@@ -197,4 +197,8 @@ public class DBProvider {
         }
     }
     
+    func removeComment(withCheckinId: String, commentId: String) {
+        checkinRef.child(withCheckinId).child(Constants.COMMENT).child(commentId).removeValue()
+    }
+    
 } // class
