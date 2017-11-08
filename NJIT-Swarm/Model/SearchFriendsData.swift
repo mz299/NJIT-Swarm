@@ -53,6 +53,9 @@ class SearchFriendsData {
                         } else {
                             newData.profile_image_url = Constants.DEFAULT_PROFILE_IMAGE_URL
                         }
+                        if let receives = fData[Constants.RECEIVE_REQUEST] as? [String: Any] {
+                            newData.receive_request_uid = self.getKeys(data: receives)
+                        }
                     }
                     
                     self._data.append(newData)
@@ -60,5 +63,13 @@ class SearchFriendsData {
             }
             handler?(self._data)
         }
+    }
+    
+    private func getKeys(data: [String: Any]) -> Array<String> {
+        var keys = Array<String>()
+        for d in data {
+            keys.append(d.key)
+        }
+        return keys
     }
 }

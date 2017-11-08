@@ -61,6 +61,9 @@ class FriendsData {
                             } else {
                                 newData.profile_image_url = Constants.DEFAULT_PROFILE_IMAGE_URL
                             }
+                            if let receives = data[Constants.RECEIVE_REQUEST] as? [String: Any] {
+                                newData.receive_request_uid = self.getKeys(data: receives)
+                            }
                         }
                         self._allUserData.append(newData)
                         for fData in friendsData! {
@@ -106,5 +109,13 @@ class FriendsData {
             }
         }
         return nil
+    }
+    
+    private func getKeys(data: [String: Any]) -> Array<String> {
+        var keys = Array<String>()
+        for d in data {
+            keys.append(d.key)
+        }
+        return keys
     }
 }

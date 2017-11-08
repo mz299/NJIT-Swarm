@@ -88,7 +88,14 @@ public class DBProvider {
         }
     }
     
+    func sendRequest(senderId: String, receiverId: String) {
+        userRef.child(receiverId).child(Constants.RECEIVE_REQUEST).child(senderId).setValue(true)
+    }
+    
     func saveFriend(withID: String, friendID: String) {
+        userRef.child(withID).child(Constants.RECEIVE_REQUEST).child(friendID).removeValue()
+        userRef.child(friendID).child(Constants.RECEIVE_REQUEST).child(withID).removeValue()
+        
         userRef.child(withID).child(Constants.FRIENDS).child(friendID).setValue(true)
         userRef.child(friendID).child(Constants.FRIENDS).child(withID).setValue(true)
     }
