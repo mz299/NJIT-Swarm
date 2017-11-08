@@ -35,7 +35,6 @@ class TimelineTableViewCell: UITableViewCell {
             let count = Int(self.likeCountButton.currentTitle!)
             self.likeCountButton.setTitle("\(String(describing: count!-1))", for: .normal)
         }
-        
         else{
             DBProvider.Instance.likeCheckin(withCheckinID: self.checkInKey, uid: AuthProvider.Instance.getUserID()!)
             self.isLiked = true
