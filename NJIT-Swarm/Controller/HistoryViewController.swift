@@ -77,7 +77,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place
         cell.detail.text = checkIn.message
-        //  cell.rating.text = "\(checkIn.rating)"
+        //cell.rating.text = "\(checkIn.rating)"
         cell.commentCountButton.setTitle("\(checkIn.numofcomment)", for: UIControlState.normal)
         cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: checkIn.timestamp)
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
