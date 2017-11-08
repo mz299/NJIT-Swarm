@@ -28,7 +28,20 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func loadUserData(){
         let userData = FriendsData.Instance.getData(uid: uid)
         self.userName.text = userData?.username
-        self.profilePicture.image = UIImage.init(named: (userData?.profile_image_url)!)
+        
+        let url = URL(string: (userData?.profile_image_url)!)
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                if let image = UIImage(data: data!) {
+                    DispatchQueue.main.async {
+                        self.profilePicture.image = image
+                    }
+                }
+            }
+        }).resume()
+        
         self.profilePicture.layer.cornerRadius =  self.profilePicture.frame.size.height / 2
         self.profilePicture.clipsToBounds = true
         
@@ -45,8 +58,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let checkIn = checkInsData[indexPath.row]
         
-        if checkIn.profile_image_url != "" {
-            let url = URL(string: checkIn.profile_image_url)
+        let url = URL(string: checkIn.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 if error != nil {
                     print(error!)
@@ -58,7 +70,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
             }).resume()
-        }
         
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
