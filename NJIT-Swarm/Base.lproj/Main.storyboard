@@ -221,6 +221,7 @@
                     <connections>
                         <outlet property="ReviewText" destination="SNH-3n-LZX" id="c5Q-pR-pHR"/>
                         <outlet property="mapView" destination="cTw-XI-FXG" id="Yo4-S3-tqJ"/>
+                        <outlet property="ratingView" destination="sij-do-Xl6" id="c8H-yT-eqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WX-P3-xbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -334,9 +335,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wm0-xM-JCl">
+                                                    <rect key="frame" x="330" y="25" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Add"/>
+                                                    <connections>
+                                                        <action selector="add:" destination="dq8-7E-h7Z" eventType="touchUpInside" id="86W-Dq-N2L"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="Wm0-xM-JCl" id="zok-Dr-UxO"/>
                                             <outlet property="emailLabel" destination="R6c-OR-r2T" id="SDQ-K3-DzA"/>
                                             <outlet property="nameLabel" destination="87O-xx-z61" id="R7b-9c-Bga"/>
                                             <outlet property="phoneLabel" destination="k8e-Xb-jg5" id="Bz9-dQ-2AQ"/>
@@ -541,7 +551,7 @@
                         <outlet property="phoneTextField" destination="qKK-z8-xJK" id="mML-Mq-bLI"/>
                         <outlet property="profileImageView" destination="NB2-Di-8Qt" id="4hM-oU-JIR"/>
                         <outlet property="userNameTextfield" destination="YhE-YQ-B9l" id="m8k-qv-0c9"/>
-                        <segue destination="28R-p5-mcW" kind="unwind" identifier="unwindToViewController" unwindAction="prepareForUnwindWithSegue:" id="lQH-BK-BaU"/>
+                        <segue destination="28R-p5-mcW" kind="unwind" identifier="unwindToViewController" unwindAction="prepareForUnwindWithSegue:" id="rmd-so-OZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgD-tn-FuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -728,13 +738,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request Sent" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPa-Fh-Fyk">
+                                                    <rect key="frame" x="275" y="33" width="63" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="GZD-2p-DoA" id="bY5-4I-hes"/>
                                             <outlet property="emailLabel" destination="xKS-2g-75G" id="bjZ-EP-ytQ"/>
                                             <outlet property="nameLabel" destination="oXX-y2-fW7" id="3Ip-7K-3TB"/>
                                             <outlet property="phoneLabel" destination="1lW-9n-1Gx" id="PgD-7N-S43"/>
                                             <outlet property="profileImageView" destination="wBM-xS-vHo" id="FJR-Zb-QV6"/>
+                                            <outlet property="statusLabel" destination="fPa-Fh-Fyk" id="VFd-l4-3aT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -796,6 +815,6 @@
         <image name="swarm.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hzc-Qi-zkz"/>
+        <segue reference="blc-6D-iHg"/>
     </inferredMetricsTieBreakers>
 </document>

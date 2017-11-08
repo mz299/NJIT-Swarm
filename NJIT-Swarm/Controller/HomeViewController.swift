@@ -25,8 +25,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadUserData()
-        
         if (CLLocationManager.locationServicesEnabled())
         {
             getCurrentLocation()
@@ -34,40 +32,29 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: nil)
         timelineTableView.register(nib, forCellReuseIdentifier: "timelineCell")
+            
    }
     
     func loadUserData() {
-        DBProvider.Instance.getUserData(withID: AuthProvider.Instance.getUserID()!) { (data) in
-            if data != nil {
-                if let imageUrl = data![Constants.PROFILE_IMAGE_URL] as? String {
-                    let url = URL(string: imageUrl)
-                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                        if error != nil {
-                            print(error!)
-                        } else {
-                            if let image = UIImage(data: data!) {
-                                DispatchQueue.main.async {
-                                    self.profilePicture.image = image
-                                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.height / 2
-                                    self.profilePicture.clipsToBounds = true
-                                }
-                            }
-                        }
-                    }).resume()
-                }
-            } else {
-                let alert = UIAlertController(title: "Alert", message: "Unable to Load User Details", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
         
-        FriendsData.Instance.update{ (friends) in
-            CheckinsData.Instance.update(handler: {(checkins) in
-                self.timelineTableView.reloadData()
-            })
-        }
+        let userData = FriendsData.Instance.getData(uid:AuthProvider.Instance.getUserID()!)
+        
+        let url = URL(string: (userData?.profile_image_url)!)
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                if let image = UIImage(data: data!) {
+                    DispatchQueue.main.async {
+                        self.profilePicture.image = image
+                    }
+                }
+            }
+        }).resume()
+        
+        self.profilePicture.layer.cornerRadius =  self.profilePicture.frame.size.height / 2
+        self.profilePicture.clipsToBounds = true
+        
     }
     
     func getCurrentLocation(){
@@ -100,7 +87,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
          let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
         let checkIn = CheckinsData.Instance.Data[indexPath.row]
-        
+//        checkIn.taggedUserIds
         if checkIn.profile_image_url != "" {
             let url = URL(string: checkIn.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -119,10 +106,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
         
+        cell.userKey = checkIn.uid
         cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place
         cell.detail.text = checkIn.message
-      //  cell.rating.text = "\(checkIn.rating)"
+        cell.rating.text = "\(checkIn.rating)"
         cell.commentCountButton.setTitle("\(checkIn.numofcomment)", for: UIControlState.normal)
         cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: checkIn.timestamp)
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
@@ -184,7 +172,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loadUserData()
+        if AuthProvider.Instance.getUserID() != nil {
+        FriendsData.Instance.update{ (friends) in
+            CheckinsData.Instance.update(handler: {(checkins) in
+                self.loadUserData()
+                self.timelineTableView.reloadData()
+            })
+        }
+      }
     }
-
 }

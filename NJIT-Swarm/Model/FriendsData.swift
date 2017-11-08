@@ -42,7 +42,7 @@ class FriendsData {
         _userdata = FriendData()
         DBProvider.Instance.getAllUsers { (usersData) in
             DBProvider.Instance.getFriends(withID: AuthProvider.Instance.getUserID()!, dataHandler: { (friendsData) in
-                if usersData != nil && friendsData != nil {
+                if usersData != nil {
                     for uData in usersData! {
                         var newData = FriendData()
                         newData.uid = uData.key
@@ -66,9 +66,11 @@ class FriendsData {
                             }
                         }
                         self._allUserData.append(newData)
-                        for fData in friendsData! {
-                            if uData.key == fData.key {
-                                self._data.append(newData)
+                        if friendsData != nil {
+                            for fData in friendsData! {
+                                if uData.key == fData.key {
+                                    self._data.append(newData)
+                                }
                             }
                         }
                         if uData.key == AuthProvider.Instance.getUserID()! {
