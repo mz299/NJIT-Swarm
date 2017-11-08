@@ -124,7 +124,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.detail.text = checkIn.message
       //  cell.rating.text = "\(checkIn.rating)"
         cell.commentCountButton.setTitle("\(checkIn.numofcomment)", for: UIControlState.normal)
-        cell.dateTimeLabel.text = Global.Instance.convertTimestampToDateTime(timeInterval: checkIn.timestamp)
+        cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: checkIn.timestamp)
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
         cell.checkInKey = checkIn.checkinid
         cell.isLiked = checkIn.youliked

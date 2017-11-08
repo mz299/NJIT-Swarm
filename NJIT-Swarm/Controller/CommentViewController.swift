@@ -25,10 +25,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         let nib = UINib(nibName: "CommentTableViewCell", bundle: nil)
         commentsTableView.register(nib, forCellReuseIdentifier: "commentsCell")
         
-        DBProvider.Instance.getComments(withCheckinID: checkInKey, dataHandler: { (comments) in
-            print(comments)
-            self.commentsTableView.reloadData()
-        })
+        
         
     }
 
