@@ -22,6 +22,7 @@ struct CheckinData {
     var numofcomment = 0
     var youliked = false
     var likedUserIds = Array<String>()
+    var taggedUserIds = Array<String>()
     var comments = Array<CommentData>()
 }
 

@@ -58,13 +58,16 @@ class CheckinsData {
                         }
                         if let likes = cData[Constants.LIKE] as? [String: Any] {
                             newData.numoflike = likes.count
-                            newData.likedUserIds = self.getLikedIds(data: likes)
+                            newData.likedUserIds = self.getKeys(data: likes)
                             for like in likes {
                                 if like.key == AuthProvider.Instance.getUserID() {
                                     newData.youliked = true
                                     break
                                 }
                             }
+                        }
+                        if let taggedUids = cData[Constants.TAGGEDUIDS] as? [String: Any] {
+                            newData.taggedUserIds = self.getKeys(data: taggedUids)
                         }
                         if let comments = cData[Constants.COMMENT] as? [String: Any] {
                             newData.numofcomment = comments.count
@@ -128,11 +131,12 @@ class CheckinsData {
         }
         return commentsData
     }
-    private func getLikedIds(data: [String: Any]) -> Array<String> {
-        var likedIds = Array<String>()
-        for lData in data {
-            likedIds.append(lData.key)
+    
+    private func getKeys(data: [String: Any]) -> Array<String> {
+        var keys = Array<String>()
+        for d in data {
+            keys.append(d.key)
         }
-        return likedIds
+        return keys
     }
 }
