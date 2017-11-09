@@ -113,9 +113,19 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentsCell", for: indexPath) as! CommentTableViewCell
         
         let commentData: CommentData = commentsData[indexPath.row]
+        
         let uid = commentData.uid
         let dateTime = commentData.timestamp
         let comment = commentData.comment
+        
+        if(uid == AuthProvider.Instance.getUserID())
+        {
+            cell.deleteButton.setTitle("Delete", for: UIControlState.normal)
+        }
+        else
+        {
+            cell.deleteButton.setTitle("", for: UIControlState.normal)
+        }
         
         let friendData = FriendsData.Instance.getData(uid: uid)
         let name = friendData?.username
@@ -139,6 +149,11 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
         
+        cell.row = indexPath.row
+        cell.commentsData = self.commentsData
+        
+        cell.commentKey = commentData.commentid
+        cell.checkInKey = self.checkInKey
         cell.name.setTitle(name, for: UIControlState.normal)
         cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: dateTime)
         cell.commentLabel.text = comment

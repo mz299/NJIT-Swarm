@@ -69,6 +69,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
         
+        cell.userKey = checkIn.uid
         cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place
         cell.detail.text = checkIn.message

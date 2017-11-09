@@ -52,7 +52,6 @@ class TimelineTableViewCell: UITableViewCell {
             let count = Int(self.likeCountButton.currentTitle!)
             self.likeCountButton.setTitle("\(String(describing: count!+1))", for: .normal)
         }
-
     }
     
     @IBAction func likeCountButtonClicked(_ sender: Any) {

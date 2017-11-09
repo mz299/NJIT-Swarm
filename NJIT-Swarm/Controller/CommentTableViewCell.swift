@@ -14,14 +14,21 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+   
     var checkInKey: String = ""
     var commentKey: String = ""
+    var row: Int = 0
     var commentsTableView: UITableView? = nil
+    var commentsData: [CommentData] = [CommentData()]
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
+        if(checkInKey != "" && commentKey != "")
+        {
         DBProvider.Instance.removeComment(withCheckinId: checkInKey, commentId: commentKey)
         CheckinsData.Instance.update(handler: nil)
+        commentsData.remove(at: row)
         self.commentsTableView?.reloadData()
+        }
     }
     
     override func awakeFromNib() {
