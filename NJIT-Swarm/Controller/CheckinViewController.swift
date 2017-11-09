@@ -8,7 +8,8 @@
 
 import UIKit
 import MapKit
-import Cosmos
+import Foundation
+//import Cosmos
 
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark)
@@ -21,25 +22,31 @@ class CheckinViewController: UIViewController{
     var longitude: Double? = nil
     var titleName: String? = nil
     var locality: String? = nil
+    var taggedfriends: String = ""
+    var taggedfrienddata :String = ""
     
     var currentlocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
     var resultSearchController:UISearchController? = nil
     
     
+   
+    //@IBOutlet weak var RatingInput: CosmosView!
+    
+    
+    
     @IBAction func CheckInButton(_ sender: UIButton) {
-        Checkin()
+        print(taggedfrienddata)
+        Checkin(taggedfrienddataone: taggedfrienddata)
     }
     @IBOutlet var ReviewText: UITextView!
     @IBOutlet var mapView: MKMapView!
-    @IBAction func buttonCheckin(_ sender: UIBarButtonItem) {
-        //Checkin()
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        taggedfrienddata = taggedfriends
         
-        
-        
+        print(taggedfrienddata)
         let initialLocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
         
         
@@ -74,7 +81,7 @@ class CheckinViewController: UIViewController{
     
     
     
-    func Checkin(){
+    func Checkin(taggedfrienddataone: String){
         
         
         CLGeocoder().reverseGeocodeLocation(currentlocation, completionHandler: {(placemarks, error) -> Void in
@@ -129,9 +136,16 @@ class CheckinViewController: UIViewController{
                         LocationName = Venue(title: self.titleName!, locationName: self.locality!, coordinate: CLLocationCoordinate2D(latitude: self.lattitude!, longitude: self.longitude!))
                         
                         //                self.mapView.addAnnotation(LocationName)
+                        print(taggedfrienddataone)
+                        if taggedfrienddataone != ""{
+                            let taguids = self.taggedfrienddata.split(separator: "_")
+//                             DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: taguids)
+                        }else{
+                             DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil)
+                        }
                         
                         // to put data
-                                       DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil)
+                        
                         
                         self.ReviewText.text = ""
                         

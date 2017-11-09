@@ -46,12 +46,14 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
   - GTMSessionFetcher/Core (1.1.12)
+  - HCSStarRatingView (1.5)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - STRatingControl (1.1.0)
 
 DEPENDENCIES:
   - Cosmos (~> 12.0)
@@ -59,6 +61,8 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Storage
+  - HCSStarRatingView (~> 1.5)
+  - STRatingControl
 
 SPEC CHECKSUMS:
   Cosmos: 4a9f57998a08788a1062c7b8eefbc62d2b590f39
@@ -71,9 +75,11 @@ SPEC CHECKSUMS:
   FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
+  HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   leveldb-library: 9e29a1d913f922444127a7d0f28b025a0e2ba053
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  STRatingControl: 92346816fb485c8a547c9687a19f94c81d7929ba
 
-PODFILE CHECKSUM: 500f67423fccaccf7ca1c1dcbdc578c8dea61c3a
+PODFILE CHECKSUM: f9e78b4efd1f586fdc644e2eeff9f72a5d170025
 
 COCOAPODS: 1.3.1
