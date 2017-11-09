@@ -185,7 +185,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let selectedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             profileImageView.image = selectedImage
-            let imageData = UIImagePNGRepresentation(selectedImage)
+            let newSize = CGSize(width: 160, height: 160)
+            let sizedImage = selectedImage.resizeImageWith(newSize: newSize)
+            let imageData = UIImageJPEGRepresentation(sizedImage, 0.0)
             StorageProvider.Instance.uploadProfilePic(image: imageData, uid: AuthProvider.Instance.getUserID()!, handler: { (url) in
                 DBProvider.Instance.setUserData(key: Constants.PROFILE_IMAGE_URL, value: url!)
             })

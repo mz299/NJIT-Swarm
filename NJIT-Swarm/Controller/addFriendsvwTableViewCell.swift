@@ -18,18 +18,41 @@ class addFriendsvwTableViewCell: UITableViewCell {
             _index = newValue
         }
     }
+    
+    @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    var uid: String = ""
     
     @IBAction func add(_ sender: Any) {
+        addButton.isHidden = true
+        addButton.isUserInteractionEnabled = false
+        statusLabel.text = "Sent Request"
+        statusLabel.isHidden = false
+        
         let data = SearchFriendsData.Instance.Data[index]
-        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
+//        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
+        DBProvider.Instance.sendRequest(senderId: AuthProvider.Instance.getUserID()!, receiverId: data.uid)
+    }
+    
+    @IBAction func nameButtonClicked(_ sender: Any) {
+        if(self.uid != ""){
+            let historyViewController: HistoryViewController = HistoryViewController()
+            historyViewController.uid = self.uid
+            var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+            while ((topController.presentedViewController) != nil) {
+                topController = topController.presentedViewController!;
+            }
+            topController.present(historyViewController, animated: false, completion: nil)
+        }
     }
     
     func setData(data: FriendData) {
-        nameLabel.text = data.username
+        self.uid = data.uid
+        self.nameButton.setTitle(data.username, for: .normal)
         emailLabel.text = data.email
         phoneLabel.text = data.phone
         if data.profile_image_url != "" {
@@ -45,6 +68,29 @@ class addFriendsvwTableViewCell: UITableViewCell {
                     }
                 }
             }).resume()
+        }
+        
+        var sentRequest = false
+        for uid in data.receive_request_uid {
+            if uid == AuthProvider.Instance.getUserID() {
+                sentRequest = true
+            }
+        }
+        
+        if FriendsData.Instance.getFriendData(uid: data.uid) != nil {
+            addButton.isHidden = true
+            addButton.isUserInteractionEnabled = false
+            statusLabel.text = "Added"
+            statusLabel.isHidden = false
+        } else if sentRequest {
+            addButton.isHidden = true
+            addButton.isUserInteractionEnabled = false
+            statusLabel.text = "Sent Request"
+            statusLabel.isHidden = false
+        } else if sentRequest == false {
+            statusLabel.isHidden = true
+            addButton.isHidden = false
+            addButton.isUserInteractionEnabled = true
         }
     }
     

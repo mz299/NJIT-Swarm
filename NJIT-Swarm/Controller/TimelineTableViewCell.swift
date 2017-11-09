@@ -21,13 +21,23 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var place: UILabel!
     
     var checkInKey: String = ""
+    var userKey: String = ""
     var isLiked: Bool = false
     
     @IBAction func nameButtonClicked(_ sender: Any) {
+        if(self.userKey != ""){
+            let historyViewController: HistoryViewController = HistoryViewController()
+            historyViewController.uid = self.userKey
+            var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+            while ((topController.presentedViewController) != nil) {
+                topController = topController.presentedViewController!;
+            }
+            topController.present(historyViewController, animated: false, completion: nil)
+        }
     }
     
     @IBAction func likeButtonClicked(_ sender: Any) {
-        
+        CheckinsData.Instance.update(handler: nil)
         if(self.isLiked){
             DBProvider.Instance.unlikeCheckin(withCheckinID: self.checkInKey, uid: AuthProvider.Instance.getUserID()!)
             self.isLiked = false

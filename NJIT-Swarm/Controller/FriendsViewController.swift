@@ -12,22 +12,47 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private let ADD_FRIEND_SEGUE = "addFriend"
     
+    private var requestData = Array<FriendData>()
+    
     @IBOutlet weak var tableView: UITableView!
     var ref:DatabaseReference?
     var databaseHandle:DatabaseHandle?
 
 //    let people = [String]()
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Friend Requests"
+        }
+        return "Friends"
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            if let data = FriendsData.Instance.getData(uid: AuthProvider.Instance.getUserID()!) {
+                requestData = FriendsData.Instance.getUsersData(byUids: data.receive_request_uid)
+                return requestData.count
+            } else {
+                return 0
+            }
+        }
         return FriendsData.Instance.Data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseFriendsCell", for: indexPath) as! FriendsTableViewCell
-        let data = FriendsData.Instance.Data[indexPath.row]
-        cell.setData(data: data)
-        
+        if indexPath.section == 0 {
+            let data = requestData[indexPath.row]
+            cell.setData(data: data, section: indexPath.section)
+        }
+        else if indexPath.section == 1 {
+            let data = FriendsData.Instance.Data[indexPath.row]
+            cell.setData(data: data, section: indexPath.section)
+        }
         return cell
     }
     

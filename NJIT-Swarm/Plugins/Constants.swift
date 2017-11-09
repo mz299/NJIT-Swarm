@@ -10,7 +10,7 @@ import Foundation
 
 class Constants {
     // DBProvider
-    static let DEFAULT_PROFILE_IMAGE_URL = "https://firebasestorage.googleapis.com/v0/b/njit-swarm.appspot.com/o/user%2Fdefault.png?alt=media&token=5d5e6938-3e9d-4a66-b275-dbe5d28a47d5"
+    static let DEFAULT_PROFILE_IMAGE_URL = "https://firebasestorage.googleapis.com/v0/b/njit-swarm-2.appspot.com/o/user%2Fdefault.png?alt=media&token=7d5d60f3-2bee-48a9-ad19-1552dfd01cf0"
     // Keys for user
     static let USER = "user"
     static let EMAIL = "email"
@@ -31,5 +31,6 @@ class Constants {
     static let COMMENT = "comment"
     static let LIKE = "like"
     static let TAGGEDUIDS = "taggeduids"
+    static let RATING = "rating"
     // Keys for place
 }
