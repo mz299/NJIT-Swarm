@@ -19,6 +19,7 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var place: UILabel!
+    @IBOutlet weak var taggedFriendLabel: UILabel!
     
     var checkInKey: String = ""
     var userKey: String = ""
@@ -52,7 +53,6 @@ class TimelineTableViewCell: UITableViewCell {
             let count = Int(self.likeCountButton.currentTitle!)
             self.likeCountButton.setTitle("\(String(describing: count!+1))", for: .normal)
         }
-
     }
     
     @IBAction func likeCountButtonClicked(_ sender: Any) {
