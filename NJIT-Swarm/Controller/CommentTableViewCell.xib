@@ -44,16 +44,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j60-Rn-dxy">
+                        <rect key="frame" x="264" y="10" width="46" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <state key="normal" title="Delete"/>
+                        <connections>
+                            <action selector="deleteButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nHR-cw-kEF"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentLabel" destination="jC6-P6-wxl" id="6a3-3M-yDg"/>
                 <outlet property="dateTimeLabel" destination="Epk-pq-EfI" id="BMn-OF-yZP"/>
+                <outlet property="deleteButton" destination="j60-Rn-dxy" id="InH-Ij-ZZe"/>
                 <outlet property="name" destination="LOZ-fH-Ggc" id="AJa-6v-gqD"/>
                 <outlet property="profilePicture" destination="5Ys-LE-HYK" id="UNY-Ih-KPJ"/>
             </connections>
-            <point key="canvasLocation" x="-239" y="11.5"/>
+            <point key="canvasLocation" x="-315" y="10"/>
         </tableViewCell>
     </objects>
 </document>

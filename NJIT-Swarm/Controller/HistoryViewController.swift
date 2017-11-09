@@ -21,18 +21,26 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: nil)
         timelineTableView.register(nib, forCellReuseIdentifier: "timelineCell")
-        
-        loadUserData()
     }
 
     func loadUserData(){
         let userData = FriendsData.Instance.getData(uid: uid)
         self.userName.text = userData?.username
-        self.profilePicture.image = UIImage.init(named: (userData?.profile_image_url)!)
+        let url = URL(string: (userData?.profile_image_url)!)
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                if let image = UIImage(data: data!) {
+                    DispatchQueue.main.async {
+                        self.profilePicture.image = image
+                    }
+                }
+            }
+        }).resume()
+        
         self.profilePicture.layer.cornerRadius =  self.profilePicture.frame.size.height / 2
         self.profilePicture.clipsToBounds = true
-        
-        checkInsData = CheckinsData.Instance.getCheckinsData(byUid: uid)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,8 +53,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let checkIn = checkInsData[indexPath.row]
         
-        if checkIn.profile_image_url != "" {
-            let url = URL(string: checkIn.profile_image_url)
+        let url = URL(string: checkIn.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 if error != nil {
                     print(error!)
@@ -58,7 +65,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
             }).resume()
-        }
         
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
@@ -66,7 +72,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place
         cell.detail.text = checkIn.message
-        //  cell.rating.text = "\(checkIn.rating)"
+        cell.rating.text = "\(checkIn.rating)"
         cell.commentCountButton.setTitle("\(checkIn.numofcomment)", for: UIControlState.normal)
         cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: checkIn.timestamp)
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
@@ -111,6 +117,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        loadUserData()
+        checkInsData = CheckinsData.Instance.getCheckinsData(byUid: uid)
+        CheckinsData.Instance.update(handler: nil)
+        self.timelineTableView.reloadData()
+    }
     /*
     // MARK: - Navigation
 

@@ -317,13 +317,6 @@
                                                     <rect key="frame" x="15" y="-1" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87O-xx-z61">
-                                                    <rect key="frame" x="103" y="0.0" width="180" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6c-OR-r2T">
                                                     <rect key="frame" x="103" y="25" width="180" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -338,11 +331,31 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wm0-xM-JCl">
+                                                    <rect key="frame" x="330" y="25" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Add"/>
+                                                    <connections>
+                                                        <action selector="add:" destination="dq8-7E-h7Z" eventType="touchUpInside" id="86W-Dq-N2L"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jz-IZ-lft">
+                                                    <rect key="frame" x="103" y="-5" width="180" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="nameButtonClicked:" destination="dq8-7E-h7Z" eventType="touchUpInside" id="yOc-Os-bcy"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="Wm0-xM-JCl" id="zok-Dr-UxO"/>
                                             <outlet property="emailLabel" destination="R6c-OR-r2T" id="SDQ-K3-DzA"/>
-                                            <outlet property="nameLabel" destination="87O-xx-z61" id="R7b-9c-Bga"/>
+                                            <outlet property="nameButton" destination="4jz-IZ-lft" id="QMp-S5-0rk"/>
                                             <outlet property="phoneLabel" destination="k8e-Xb-jg5" id="Bz9-dQ-2AQ"/>
                                             <outlet property="profileImageView" destination="xO0-Fi-ISc" id="UqO-g5-5er"/>
                                         </connections>
@@ -545,7 +558,7 @@
                         <outlet property="phoneTextField" destination="qKK-z8-xJK" id="mML-Mq-bLI"/>
                         <outlet property="profileImageView" destination="NB2-Di-8Qt" id="4hM-oU-JIR"/>
                         <outlet property="userNameTextfield" destination="YhE-YQ-B9l" id="m8k-qv-0c9"/>
-                        <segue destination="28R-p5-mcW" kind="unwind" identifier="unwindToViewController" unwindAction="prepareForUnwindWithSegue:" id="lQH-BK-BaU"/>
+                        <segue destination="28R-p5-mcW" kind="unwind" identifier="unwindToViewController" unwindAction="prepareForUnwindWithSegue:" id="rmd-so-OZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgD-tn-FuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -711,13 +724,6 @@
                                                     <rect key="frame" x="15" y="-1" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXX-y2-fW7">
-                                                    <rect key="frame" x="103" y="0.0" width="180" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKS-2g-75G">
                                                     <rect key="frame" x="103" y="25" width="180" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -732,13 +738,33 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request Sent" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPa-Fh-Fyk">
+                                                    <rect key="frame" x="275" y="33" width="63" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwV-Ay-6N8">
+                                                    <rect key="frame" x="103" y="-5" width="164" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="nameButtonClicked:" destination="TD1-9O-R9Y" eventType="touchUpInside" id="pIK-F5-5Nb"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="GZD-2p-DoA" id="bY5-4I-hes"/>
                                             <outlet property="emailLabel" destination="xKS-2g-75G" id="bjZ-EP-ytQ"/>
-                                            <outlet property="nameLabel" destination="oXX-y2-fW7" id="3Ip-7K-3TB"/>
+                                            <outlet property="nameButton" destination="cwV-Ay-6N8" id="7qz-PV-wcY"/>
                                             <outlet property="phoneLabel" destination="1lW-9n-1Gx" id="PgD-7N-S43"/>
                                             <outlet property="profileImageView" destination="wBM-xS-vHo" id="FJR-Zb-QV6"/>
+                                            <outlet property="statusLabel" destination="fPa-Fh-Fyk" id="VFd-l4-3aT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -904,7 +930,6 @@
         <image name="swarm.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="izB-Mm-FiZ"/>
         <segue reference="Hzc-Qi-zkz"/>
         <segue reference="hk7-a1-b50"/>
     </inferredMetricsTieBreakers>
