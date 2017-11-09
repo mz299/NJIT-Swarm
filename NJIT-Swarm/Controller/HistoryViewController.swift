@@ -41,6 +41,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.profilePicture.layer.cornerRadius =  self.profilePicture.frame.size.height / 2
         self.profilePicture.clipsToBounds = true
+        
+        checkInsData = CheckinsData.Instance.getCheckinsData(byUid: uid)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,6 +71,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
         
+        cell.userKey = checkIn.uid
         cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place
         cell.detail.text = checkIn.message
@@ -118,11 +121,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loadUserData()
-        checkInsData = CheckinsData.Instance.getCheckinsData(byUid: uid)
-        CheckinsData.Instance.update(handler: nil)
-        self.timelineTableView.reloadData()
+        CheckinsData.Instance.update(handler: {(checkins) in
+            self.loadUserData()
+            self.timelineTableView.reloadData()
+        })
     }
+    
     /*
     // MARK: - Navigation
 
