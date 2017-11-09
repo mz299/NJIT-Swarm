@@ -25,9 +25,9 @@ class CommentTableViewCell: UITableViewCell {
         if(checkInKey != "" && commentKey != "")
         {
         DBProvider.Instance.removeComment(withCheckinId: checkInKey, commentId: commentKey)
-        CheckinsData.Instance.update(handler: nil)
-        commentsData.remove(at: row)
-        self.commentsTableView?.reloadData()
+//        CheckinsData.Instance.update(handler: nil)
+//        commentsData.remove(at: row)
+//        self.commentsTableView?.reloadData()
         }
     }
     

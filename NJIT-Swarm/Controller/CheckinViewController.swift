@@ -132,8 +132,7 @@ class CheckinViewController: UIViewController{
                         //longitude = self.currentlocation.coordinate.longitude
                         let Review = self.ReviewText.text
                         // print(self.currentlocation.coordinate.latitude)
-                        var LocationName :Venue
-                        LocationName = Venue(title: self.titleName!, locationName: self.locality!, coordinate: CLLocationCoordinate2D(latitude: self.lattitude!, longitude: self.longitude!))
+                        var LocationName = Venue(title: self.titleName!, locationName: self.locality!, coordinate: CLLocationCoordinate2D(latitude: self.lattitude!, longitude: self.longitude!))
                         
                         //                self.mapView.addAnnotation(LocationName)
                         print(taggedfrienddataone)
