@@ -122,7 +122,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadUserData()
         checkInsData = CheckinsData.Instance.getCheckinsData(byUid: uid)
         CheckinsData.Instance.update(handler: nil)
-        self.timelineTableView.reloadData()
+         self.timelineTableView.reloadData()
     }
     /*
     // MARK: - Navigation
