@@ -7,6 +7,8 @@ target 'NJIT-Swarm' do
 
   # Pods for NJIT-Swarm
     pod 'Cosmos', '~> 12.0'
+    pod 'HCSStarRatingView', '~> 1.5'
+    pod 'STRatingControl'
 	pod 'Firebase'
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
