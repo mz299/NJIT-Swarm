@@ -94,7 +94,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             var labelText = "With"
             for friendUID in taggedFriends {
                 let friendData = FriendsData.Instance.getData(uid: friendUID)
-                labelText += " \(friendData?.username)"
+                let uName = friendData?.username
+                labelText += " \(uName!)"
             }
             cell.taggedFriendLabel.text = labelText
         }
