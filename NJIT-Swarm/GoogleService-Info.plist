@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>374173126991-rqu95c4ukrnlp3aeu42utmqsfv50qr98.apps.googleusercontent.com</string>
+	<string>20168204804-lldu8002m1sqhf2bidinfnfceaapo7mc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.374173126991-rqu95c4ukrnlp3aeu42utmqsfv50qr98</string>
+	<string>com.googleusercontent.apps.20168204804-lldu8002m1sqhf2bidinfnfceaapo7mc</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDEIlzz-OOiti4BeIvkjTEzjj-Brp8TZg8</string>
+	<string>AIzaSyB5SBEUkmQ1FxZlf86a2OwOmui_QWD-Rz8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>374173126991</string>
+	<string>20168204804</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>team4.NJIT-Swarm</string>
 	<key>PROJECT_ID</key>
-	<string>njit-swarm</string>
+	<string>njit-swarm-2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>njit-swarm.appspot.com</string>
+	<string>njit-swarm-2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:374173126991:ios:3ee4450e17e325f8</string>
+	<string>1:20168204804:ios:3ee4450e17e325f8</string>
 	<key>DATABASE_URL</key>
-	<string>https://njit-swarm.firebaseio.com</string>
+	<string>https://njit-swarm-2.firebaseio.com</string>
 </dict>
 </plist>
