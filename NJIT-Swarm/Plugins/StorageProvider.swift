@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseStorage
+import UIKit
 
 typealias UploadHandler = (_ url: String?) -> Void
 typealias DownloadHandler = (_ data: Data?) -> Void
@@ -30,17 +31,13 @@ class StorageProvider {
     }
     
     func uploadProfilePic(image: Data?, uid: String, handler: UploadHandler?) {
-        userRef.child("\(uid).png").putData(image!, metadata: nil) { (metadata, error) in
+        userRef.child("\(uid).jpg").putData(image!, metadata: nil) { (metadata, error) in
             if error != nil {
                 handler?(nil)
             } else {
                 handler?(metadata?.downloadURL()?.absoluteString)
             }
         }
-    }
-    
-    func getProfilePicUrl(uid: String) -> String {
-        return userRef.child("\(uid).png").fullPath
     }
     
     func downloadProfilePicUrl(uid: String) {
