@@ -22,10 +22,18 @@ class addFriendsvwTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     
     @IBAction func add(_ sender: Any) {
+        addButton.isHidden = true
+        addButton.isUserInteractionEnabled = false
+        statusLabel.text = "Sent Request"
+        statusLabel.isHidden = false
+        
         let data = SearchFriendsData.Instance.Data[index]
-        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
+//        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
+        DBProvider.Instance.sendRequest(senderId: AuthProvider.Instance.getUserID()!, receiverId: data.uid)
     }
     
     func setData(data: FriendData) {
@@ -45,6 +53,29 @@ class addFriendsvwTableViewCell: UITableViewCell {
                     }
                 }
             }).resume()
+        }
+        
+        var sentRequest = false
+        for uid in data.receive_request_uid {
+            if uid == AuthProvider.Instance.getUserID() {
+                sentRequest = true
+            }
+        }
+        
+        if FriendsData.Instance.getFriendData(uid: data.uid) != nil {
+            addButton.isHidden = true
+            addButton.isUserInteractionEnabled = false
+            statusLabel.text = "Added"
+            statusLabel.isHidden = false
+        } else if sentRequest {
+            addButton.isHidden = true
+            addButton.isUserInteractionEnabled = false
+            statusLabel.text = "Sent Request"
+            statusLabel.isHidden = false
+        } else if sentRequest == false {
+            statusLabel.isHidden = true
+            addButton.isHidden = false
+            addButton.isUserInteractionEnabled = true
         }
     }
     
