@@ -78,7 +78,7 @@
                     <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.59607843137254901" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="0.73333333333333328" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="191" y="-117"/>
         </view>
