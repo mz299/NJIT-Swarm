@@ -49,28 +49,19 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("continue")
                 
                 
-                //lattitude = self.currentlocation.coordinate.latitude
-                //longitude = self.currentlocation.coordinate.longitude
-                let Review = self.ReviewText.text
-                // print(self.currentlocation.coordinate.latitude)
-                var LocationName :Venue
-                LocationName = Venue(title: self.titleName!, locationName: self.locality!, coordinate: CLLocationCoordinate2D(latitude: self.lattitude!, longitude: self.longitude!))
-                
-                //                self.mapView.addAnnotation(LocationName)
-                print(taggedfrienddataone)
+              
                 //                        if taggedfrienddataone != ""{
                 //                            let taguids = self.taggedfrienddata.split(separator: "_")
                 //                             DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: taguids)
                 //                        }else{
                 //
 //                DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
-                DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: taggedFreindsUID, rating: self.Rating)
+                DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: self.Review, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: self.taggedFreindsUID, rating: self.Rating)
                 //                        }
                 
                 // to put data
                 
-                
-                self.ReviewText.text = ""
+             
                 
             case .cancel:
                 print("byebye")
