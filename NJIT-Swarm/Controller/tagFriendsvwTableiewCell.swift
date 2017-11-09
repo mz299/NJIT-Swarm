@@ -10,6 +10,7 @@
 import UIKit
 
 class tagFriendsvwTableViewCell: UITableViewCell {
+    var uid: String = ""
     private var _index = 0
     private var controller: TagFriendViewController?
     var index: Int {
@@ -25,13 +26,11 @@ class tagFriendsvwTableViewCell: UITableViewCell {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     var taggedFriends = ""
+    
     @IBAction func tag(_ sender: Any) {
-        let data = FriendsData.Instance.Data[index]
-        if taggedFriends != ""{
-        taggedFriends = "\(taggedFriends)_\(data.uid)"
-        }else{
-            taggedFriends = data.uid
-        }
+        
+        taggedFriends = self.uid
+        
         print(taggedFriends)
         controller!.setTagFriendId(uid: taggedFriends)
 //        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
@@ -40,6 +39,7 @@ class tagFriendsvwTableViewCell: UITableViewCell {
     
     func setData(data: FriendData, controller: TagFriendViewController) {
         self.controller = controller
+        self.uid = data.uid
         nameLabel.text = data.username
         emailLabel.text = data.email
         phoneLabel.text = data.phone
