@@ -19,6 +19,7 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var place: UILabel!
+    @IBOutlet weak var taggedFriendLabel: UILabel!
     
     var checkInKey: String = ""
     var userKey: String = ""

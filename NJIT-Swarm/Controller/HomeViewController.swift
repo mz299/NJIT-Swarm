@@ -87,7 +87,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
          let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCell", for: indexPath) as! TimelineTableViewCell
         
         let checkIn = CheckinsData.Instance.Data[indexPath.row]
-//        checkIn.taggedUserIds
+
+        let taggedFriends = checkIn.taggedUserIds
+        if(taggedFriends.count != 0)
+        {
+            var labelText = "With"
+            for friendUID in taggedFriends {
+                let friendData = FriendsData.Instance.getData(uid: friendUID)
+                labelText += " \(friendData?.username)"
+            }
+            cell.taggedFriendLabel.text = labelText
+        }
+        else
+        {
+            cell.taggedFriendLabel.text = ""
+        }
+        
         if checkIn.profile_image_url != "" {
             let url = URL(string: checkIn.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
