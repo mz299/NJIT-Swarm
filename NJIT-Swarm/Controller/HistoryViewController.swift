@@ -71,6 +71,22 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.height / 2
         cell.profilePicture.clipsToBounds = true
         
+        let taggedFriends = checkIn.taggedUserIds
+        if(taggedFriends.count != 0)
+        {
+            var labelText = "With"
+            for friendUID in taggedFriends {
+                let friendData = FriendsData.Instance.getData(uid: friendUID)
+                let uName = friendData?.username
+                labelText += " \(uName!)"
+            }
+            cell.taggedFriendLabel.text = labelText
+        }
+        else
+        {
+            cell.taggedFriendLabel.text = ""
+        }
+        
         cell.userKey = checkIn.uid
         cell.name.setTitle(checkIn.username, for: UIControlState.normal)
         cell.place.text = checkIn.place

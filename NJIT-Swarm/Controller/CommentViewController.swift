@@ -31,6 +31,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         
     }
 
+    
     @objc func loadList(){
         CheckinsData.Instance.update(handler: {(checkins) in
             self.commentsData = CheckinsData.Instance.getComments(byCheckinId: self.checkInKey)!

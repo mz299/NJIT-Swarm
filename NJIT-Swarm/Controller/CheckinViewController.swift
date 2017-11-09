@@ -34,6 +34,9 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     //@IBOutlet weak var RatingInput: CosmosView!
     
     
+    @IBAction func ratingChanged(_ sender: Any) {
+        print("Raitng Changed")
+    }
     
     @IBAction func CheckInButton(_ sender: UIButton) {
         print(taggedfrienddata)
