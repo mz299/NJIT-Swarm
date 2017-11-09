@@ -21,7 +21,7 @@ class StorageProvider {
     }
     
     var storageRef: StorageReference {
-        return Storage.storage().reference(forURL: "gs://njit-swarm.appspot.com/")
+        return Storage.storage().reference(forURL: "gs://njit-swarm-2.appspot.com/")
     }
     var userRef: StorageReference {
         return storageRef.child(Constants.USER)
