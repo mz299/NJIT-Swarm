@@ -18,12 +18,14 @@ class addFriendsvwTableViewCell: UITableViewCell {
             _index = newValue
         }
     }
+    
+    @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    var uid: String = ""
     
     @IBAction func add(_ sender: Any) {
         addButton.isHidden = true
@@ -36,8 +38,21 @@ class addFriendsvwTableViewCell: UITableViewCell {
         DBProvider.Instance.sendRequest(senderId: AuthProvider.Instance.getUserID()!, receiverId: data.uid)
     }
     
+    @IBAction func nameButtonClicked(_ sender: Any) {
+        if(self.uid != ""){
+            let historyViewController: HistoryViewController = HistoryViewController()
+            historyViewController.uid = self.uid
+            var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+            while ((topController.presentedViewController) != nil) {
+                topController = topController.presentedViewController!;
+            }
+            topController.present(historyViewController, animated: false, completion: nil)
+        }
+    }
+    
     func setData(data: FriendData) {
-        nameLabel.text = data.username
+        self.uid = data.uid
+        self.nameButton.setTitle(data.username, for: .normal)
         emailLabel.text = data.email
         phoneLabel.text = data.phone
         if data.profile_image_url != "" {
