@@ -49,15 +49,8 @@
                             <action selector="likeButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rgZ-GK-WIN"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Dec 12, 2009 12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DBd-9V-L1u">
-                        <rect key="frame" x="82" y="40" width="252" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.56361040609137059" green="0.56361040609137059" blue="0.56361040609137059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kn2-ST-VjX">
-                        <rect key="frame" x="82" y="11" width="252" height="30"/>
+                        <rect key="frame" x="82" y="11" width="136" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <state key="normal" title="Button">
@@ -98,6 +91,20 @@
                             <action selector="commentCountButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kKt-iY-4Lf"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uMR-IM-JrC">
+                        <rect key="frame" x="82" y="40" width="252" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Dec 12, 2009 12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DBd-9V-L1u">
+                        <rect key="frame" x="235" y="16" width="108" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.56361040609137059" green="0.56361040609137059" blue="0.56361040609137059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -110,6 +117,7 @@
                 <outlet property="place" destination="nKo-ye-SZA" id="hRh-UR-ujO"/>
                 <outlet property="profilePicture" destination="Tvf-6U-4vE" id="Dgp-qg-338"/>
                 <outlet property="rating" destination="PNq-BQ-xEz" id="jNa-1v-1oT"/>
+                <outlet property="taggedFriendLabel" destination="uMR-IM-JrC" id="YCV-HF-2lv"/>
             </connections>
             <point key="canvasLocation" x="-522" y="-36.5"/>
         </tableViewCell>

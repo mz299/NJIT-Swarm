@@ -10,12 +10,12 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    
     @IBOutlet weak var addButton: UIButton!
+    var uid: String = ""
     
     private var friendData = FriendData()
     
@@ -29,6 +29,19 @@ class FriendsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func nameButtonClicked(_ sender: Any) {
+        if(self.uid != ""){
+            let historyViewController: HistoryViewController = HistoryViewController()
+            historyViewController.uid = self.uid
+            var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+            while ((topController.presentedViewController) != nil) {
+                topController = topController.presentedViewController!;
+            }
+            topController.present(historyViewController, animated: false, completion: nil)
+        }
+    }
+    
     @IBAction func add(_ sender: Any) {
         DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: friendData.uid)
         addButton.isHidden = true
@@ -37,7 +50,8 @@ class FriendsTableViewCell: UITableViewCell {
     
     func setData(data: FriendData, section: Int) {
         friendData = data
-        nameLabel.text = data.username
+        self.uid = data.uid
+        self.nameButton.setTitle(data.username, for: .normal)
         emailLabel.text = data.email
         phoneLabel.text = data.phone
         if section == 1 {
