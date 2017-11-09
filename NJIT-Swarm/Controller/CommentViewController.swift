@@ -26,8 +26,18 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         commentsTableView.register(nib, forCellReuseIdentifier: "commentsCell")
         
         commentsData = CheckinsData.Instance.getComments(byCheckinId: checkInKey)!
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
     }
 
+    @objc func loadList(){
+        CheckinsData.Instance.update(handler: {(checkins) in
+            self.commentsData = CheckinsData.Instance.getComments(byCheckinId: self.checkInKey)!
+            self.commentsTableView.reloadData()
+        })
+    }
+    
     // Notification when keyboard show
     func setNotificationKeyboard ()  {
         NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -80,7 +90,11 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         self.commentTextField.text = ""
         self.textFieldDidChanged(sender)
         
-        self.commentsTableView.reloadData()
+        CheckinsData.Instance.update(handler: {(checkins) in
+            self.commentsData = CheckinsData.Instance.getComments(byCheckinId: self.checkInKey)!
+            self.commentsTableView.reloadData()
+        })
+        
     }
     
     @IBAction func textFieldDidChanged(_ sender: Any) {
@@ -179,10 +193,6 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     override func didReceiveMemoryWarning() {
