@@ -16,7 +16,7 @@ protocol HandleMapSearch {
 }
 
 
-class CheckinViewController: UIViewController{
+class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     var selectedPin:MKPlacemark? = nil
     var lattitude: Double? = nil
     var longitude: Double? = nil
@@ -24,6 +24,7 @@ class CheckinViewController: UIViewController{
     var locality: String? = nil
     var taggedfriends: String = ""
     var taggedfrienddata :String = ""
+    var Rating:Float = 3.0
     
     var currentlocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
     var resultSearchController:UISearchController? = nil
@@ -41,10 +42,11 @@ class CheckinViewController: UIViewController{
     @IBOutlet var ReviewText: UITextView!
     @IBOutlet var mapView: MKMapView!
     
+    @IBOutlet weak var ratingValue: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        taggedfrienddata = taggedfriends
+       // taggedfrienddata = taggedfriends
         
         print(taggedfrienddata)
         let initialLocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
@@ -79,10 +81,55 @@ class CheckinViewController: UIViewController{
         
     }
     
+    @IBAction func TagFriends(_ sender: UIButton) {
+        performSegue(withIdentifier: "gotToTagFriends", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destvc = segue.destination as! TagFriendViewController
+        destvc.lattitude = lattitude
+        destvc.longitude = longitude
+        destvc.Rating = Rating
+        destvc.Review = ReviewText.text
+        destvc.titleName = titleName
+    }
+    
+    
+    @IBAction func addPhoto(_ sender: UIButton) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+        
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            //profileImageView.image = selectedImage
+            let newSize = CGSize(width: 160, height: 160)
+            let sizedImage = selectedImage.resizeImageWith(newSize: newSize)
+            let imageData = UIImageJPEGRepresentation(sizedImage, 0.0)
+//            StorageProvider.Instance.uploadProfilePic(image: imageData, uid: AuthProvider.Instance.getUserID()!, handler: { (url) in
+//                DBProvider.Instance.setUserData(key: Constants.PROFILE_IMAGE_URL, value: url!)
+//            })
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
     
     
     func Checkin(taggedfrienddataone: String){
         
+        
+        
+        Rating = Float(ratingValue.text!)!
         
         CLGeocoder().reverseGeocodeLocation(currentlocation, completionHandler: {(placemarks, error) -> Void in
             //            print(self.currentlocation)
@@ -118,7 +165,7 @@ class CheckinViewController: UIViewController{
 //                    }
 //                }))
                 
-                let alert = UIAlertController(title: "UIAlertController", message: "Would you like to Checkin?", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Confirm Checkin", message: "Would you like to Checkin?", preferredStyle: UIAlertControllerStyle.alert)
                 
                 // add the actions (buttons)
                 alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.default, handler: { action in
@@ -132,16 +179,18 @@ class CheckinViewController: UIViewController{
                         //longitude = self.currentlocation.coordinate.longitude
                         let Review = self.ReviewText.text
                         // print(self.currentlocation.coordinate.latitude)
-                        var LocationName = Venue(title: self.titleName!, locationName: self.locality!, coordinate: CLLocationCoordinate2D(latitude: self.lattitude!, longitude: self.longitude!))
+                        var LocationName :Venue
+                        LocationName = Venue(title: self.titleName!, locationName: self.locality!, coordinate: CLLocationCoordinate2D(latitude: self.lattitude!, longitude: self.longitude!))
                         
                         //                self.mapView.addAnnotation(LocationName)
                         print(taggedfrienddataone)
-                        if taggedfrienddataone != ""{
-                            let taguids = self.taggedfrienddata.split(separator: "_")
+//                        if taggedfrienddataone != ""{
+//                            let taguids = self.taggedfrienddata.split(separator: "_")
 //                             DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: taguids)
-                        }else{
-                            DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: 5)
-                        }
+//                        }else{
+//                            
+                        DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
+//                        }
                         
                         // to put data
                         
