@@ -355,7 +355,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wm0-xM-JCl">
-                                                    <rect key="frame" x="330" y="25" width="30" height="30"/>
+                                                    <rect key="frame" x="261" y="25" width="99" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Add"/>
                                                     <connections>
@@ -400,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0y-QL-35q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2410" y="1370"/>
+            <point key="canvasLocation" x="2408.8000000000002" y="1369.5652173913045"/>
         </scene>
         <!--Notification-->
         <scene sceneID="A8T-sD-K3y">
