@@ -44,14 +44,20 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
     @IBAction func add(_ sender: Any) {
-        if addedFriend {
-            DBProvider.Instance.removeFriend(withID: AuthProvider.Instance.getUserID()!, friendID: friendData.uid)
-        } else {
-            DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: friendData.uid)
+        let alert = UIAlertController(title: "Alert", message: "Press OK to Confirm", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+            if self.addedFriend {
+                DBProvider.Instance.removeFriend(withID: AuthProvider.Instance.getUserID()!, friendID: self.friendData.uid)
+            } else {
+                DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: self.friendData.uid)
+            }
+            self.addButton.setTitleColor(UIColor.darkGray, for: .normal)
+            self.addButton.isUserInteractionEnabled = false
         }
-//        addButton.isHidden = true
-        addButton.setTitleColor(UIColor.darkGray, for: .normal)
-        addButton.isUserInteractionEnabled = false
+        alert.addAction(ok)
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancel)
+        parentViewController?.present(alert, animated: true, completion: nil)
     }
     
     func setData(data: FriendData, section: Int) {
