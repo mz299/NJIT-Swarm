@@ -64,6 +64,18 @@ class FriendsData {
                             if let receives = data[Constants.RECEIVE_REQUEST] as? [String: Any] {
                                 newData.receive_request_uid = self.getKeys(data: receives)
                             }
+                            if let allow_tag = data[Constants.ALLOW_TAG] as? Bool {
+                                newData.allow_tag = allow_tag
+                            }
+                            if let allow_track = data[Constants.ALLOW_TRACK] as? Bool {
+                                newData.allow_track = allow_track
+                            }
+                            if let show_phone = data[Constants.SHOW_PHONE] as? Bool {
+                                newData.show_phone = show_phone
+                            }
+                            if let show_email = data[Constants.SHOW_EMAIL] as? Bool {
+                                newData.show_email = show_email
+                            }
                         }
                         self._allUserData.append(newData)
                         if friendsData != nil {
