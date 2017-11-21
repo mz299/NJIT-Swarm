@@ -13,9 +13,11 @@ class LoginViewController: UIViewController {
     private let HOME_PAGE_SEGUE = "homePage"
     private let SIGN_UP_SEGUE = "signUpPage"
 
-    let path = NSHomeDirectory()+"/documents/user-info.plist";
-    var dictionary: NSMutableDictionary!
     let fileManager = FileManager.default
+    var documentDirectory = ""
+    var path = ""
+//    let path = NSHomeDirectory()+"/documents/user-info.plist";
+    var dictionary: NSMutableDictionary!
     var username = ""
     var password = ""
     
@@ -26,7 +28,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
  
         checkFile()
-        dictionary = NSMutableDictionary(contentsOfFile: path)
         login()
     }
 
@@ -50,7 +51,7 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: self.HOME_PAGE_SEGUE, sender: nil)
             }
         })
-    }
+    }
     
     @IBAction func login(_ sender: Any) {
         if emailTextField.text != "" && passwordTextField.text != "" {
@@ -83,15 +84,27 @@ class LoginViewController: UIViewController {
     }
     
     func checkFile() {
-        if !fileManager.fileExists(atPath: path) {
-            let srcPath = Bundle.main.path(forResource: "user-info", ofType: "plist")
-            do {
-                //Copy the project plist file to the documents directory.
-                try fileManager.copyItem(atPath: srcPath!, toPath: path)
-            } catch {
-                print("File copy error!")
+        print("In file Check")
+        self.documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        self.path = documentDirectory.appending("/user-info.plist")
+        
+        if (!fileManager.fileExists(atPath: self.path)) {
+            let dicContent:[String: String] = ["username": "", "password":""]
+            self.dictionary = NSMutableDictionary(dictionary: dicContent)
+            let success:Bool = self.dictionary.write(toFile: self.path, atomically: true)
+            if success {
+                print("file has been created!")
+            }else{
+                print("unable to create the file")
             }
+            
+        }else{
+            print("file already exist")
+            self.dictionary = NSMutableDictionary(contentsOfFile: self.path)
+            print(self.path)
+            print(self.dictionary)
         }
+        
     }
 
 }
