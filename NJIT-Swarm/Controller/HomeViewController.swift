@@ -159,7 +159,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
+        let cell = self.timelineTableView.cellForRow(at: indexPath) as! TimelineTableViewCell
+        
+        if(cell.checkInKey != ""){
+            let checkInDetail: CheckInDetailViewController = CheckInDetailViewController()
+            checkInDetail.checkInKey = cell.checkInKey
+            var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+            while ((topController.presentedViewController) != nil) {
+                topController = topController.presentedViewController!;
+            }
+            topController.present(checkInDetail, animated: false, completion: nil)
+        }
     }
     
     func loadNewScreen(controller: UIViewController) {
