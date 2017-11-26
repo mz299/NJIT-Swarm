@@ -20,6 +20,10 @@ class Constants {
     static let FRIENDS = "friends"
     static let PROFILE_IMAGE_URL = "profile_image_url"
     static let RECEIVE_REQUEST = "receive_request"
+    static let ALLOW_TAG = "allow_tag"
+    static let ALLOW_TRACK = "allow_track"
+    static let SHOW_PHONE = "show_phone"
+    static let SHOW_EMAIL = "show_email"
     // Keys for check in
     static let CHECKIN = "checkin"
     static let LATITUDE = "latitude"

@@ -18,6 +18,7 @@ class FriendsTableViewCell: UITableViewCell {
     var uid: String = ""
     
     private var friendData = FriendData()
+    private var addedFriend = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,9 +44,20 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
     @IBAction func add(_ sender: Any) {
-        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: friendData.uid)
-        addButton.isHidden = true
-        addButton.isUserInteractionEnabled = false
+        let alert = UIAlertController(title: "Alert", message: "Press OK to Confirm", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+            if self.addedFriend {
+                DBProvider.Instance.removeFriend(withID: AuthProvider.Instance.getUserID()!, friendID: self.friendData.uid)
+            } else {
+                DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: self.friendData.uid)
+            }
+            self.addButton.setTitleColor(UIColor.darkGray, for: .normal)
+            self.addButton.isUserInteractionEnabled = false
+        }
+        alert.addAction(ok)
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancel)
+        parentViewController?.present(alert, animated: true, completion: nil)
     }
     
     func setData(data: FriendData, section: Int) {
@@ -55,11 +67,14 @@ class FriendsTableViewCell: UITableViewCell {
         emailLabel.text = data.email
         phoneLabel.text = data.phone
         if section == 1 {
-            addButton.isHidden = true
-            addButton.isUserInteractionEnabled = false
+//            addButton.isHidden = false
+//            addButton.isUserInteractionEnabled = true
+            addButton.setTitle("Remove", for: .normal)
+            addedFriend = true
         } else if section == 0 {
-            addButton.isHidden = false
-            addButton.isUserInteractionEnabled = true
+//            addButton.isHidden = false
+//            addButton.isUserInteractionEnabled = true
+            addedFriend = false
         }
         if data.profile_image_url != "" {
             let url = URL(string: data.profile_image_url)

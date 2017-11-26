@@ -29,7 +29,13 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     var currentlocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
     var resultSearchController:UISearchController? = nil
     
-    
+    @objc func getDirections(){
+        if let selectedPin = selectedPin {
+            let mapItem = MKMapItem(placemark: selectedPin)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }
+    }
    
     //@IBOutlet weak var RatingInput: CosmosView!
     
@@ -192,7 +198,7 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
 //                             DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: taguids)
 //                        }else{
 //                            
-                        DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
+                        let checkinId = DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
 //                        }
                         
                         // to put data
@@ -283,31 +289,51 @@ extension CheckinViewController: CLLocationManagerDelegate{
     }
 }
 
-extension CheckinViewController: MKMapViewDelegate{
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
-    {
-        if let annotation = annotation as? Venue{
-            let identifier = "pin"
-            var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as?MKPinAnnotationView{
-                dequeuedView.annotation = annotation
-                view = dequeuedView
-            }
-            else{
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
-                
-            }
-            return view
-            
-        }
-        return nil
-    }
-    
-}
+//extension CheckinViewController: MKMapViewDelegate{
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+//    {
+//        if let annotation = annotation as? Venue{
+//            let identifier = "pin"
+//            var view: MKPinAnnotationView
+//            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as?MKPinAnnotationView{
+//                dequeuedView.annotation = annotation
+//                view = dequeuedView
+//            }
+//            else{
+//                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                view.canShowCallout = true
+//                view.calloutOffset = CGPoint(x: -5, y: 5)
+//                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+//
+//            }
+//            return view
+//
+//        }
+//        return nil
+//    }
+//
+//}
 
+
+extension CheckinViewController : MKMapViewDelegate {
+    func mapView(_: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        if annotation is MKUserLocation {
+            //return nil so map view draws "blue dot" for standard user location
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView?.pinTintColor = UIColor.orange
+        pinView?.canShowCallout = true
+        let smallSquare = CGSize(width: 30, height: 30)
+        let button = UIButton(frame: CGRect(origin: CGPoint(x: 0,y :0), size: smallSquare))
+        button.setBackgroundImage(UIImage(named: "car"), for: .normal)
+        button.addTarget(self, action: #selector(CheckinViewController.getDirections), for: .touchUpInside)
+        pinView?.leftCalloutAccessoryView = button
+        return pinView
+    }
+}
 
 extension CheckinViewController: HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark){
