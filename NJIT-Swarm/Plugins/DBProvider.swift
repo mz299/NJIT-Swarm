@@ -13,7 +13,7 @@ typealias DataHandler = (_ data: [String: Any]?) -> Void
 
 public class DBProvider {
     private static let _instance = DBProvider()
-    public init () {}
+    private init () {}
     static var Instance: DBProvider {
         return _instance
     }

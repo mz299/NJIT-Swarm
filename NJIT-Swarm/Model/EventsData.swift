@@ -48,10 +48,10 @@ class EventsData {
                             newData.description = description
                         }
                         if let start = data[Constants.EVENT_START] as? TimeInterval {
-                            newData.startDate = Date(timeIntervalSince1970: start/1000)
+                            newData.startDate = Date(timeIntervalSince1970: start)
                         }
                         if let end = data[Constants.EVENT_END] as? TimeInterval {
-                            newData.endDate = Date(timeIntervalSince1970: end/1000)
+                            newData.endDate = Date(timeIntervalSince1970: end)
                         }
                         if let uid = data[Constants.UID] as? String {
                             newData.uid = uid
