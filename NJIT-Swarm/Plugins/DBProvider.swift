@@ -226,4 +226,18 @@ public class DBProvider {
         eventRef.childByAutoId().setValue(data)
     }
     
+    func getEvent(dataHandler: DataHandler?) {
+        eventRef.observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value {
+                if let data = value as? [String: Any] {
+                    dataHandler?(data)
+                } else {
+                    dataHandler?(nil)
+                }
+            } else {
+                dataHandler?(nil)
+            }
+        }
+    }
+    
 } // class

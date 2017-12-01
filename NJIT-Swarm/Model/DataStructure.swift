@@ -55,3 +55,16 @@ struct FriendData {
 }
 
 typealias FriendDataHandler = (_ data: Array<FriendData>) -> Void
+
+struct EventData {
+    var eventId = ""
+    var eventname = ""
+    var location = ""
+    var description = ""
+    var startDate = Date()
+    var endDate = Date()
+    var uid = ""
+    var username = ""
+}
+
+typealias EventDateHandler = (_ date: Array<EventData>) -> Void
