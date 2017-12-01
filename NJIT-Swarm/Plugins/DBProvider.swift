@@ -216,7 +216,7 @@ public class DBProvider {
         checkinRef.child(withCheckinId).child(Constants.COMMENT).child(commentId).removeValue()
     }
     
-    func saveEvent(withId: String, name: String, location: String, description: String, startDate: Date, endDate: Date) {
+    func saveEvent(withId: String, name: String, location: String, description: String, startDate: TimeInterval, endDate: TimeInterval) {
         let data: Dictionary<String, Any> = [Constants.UID: withId,
                                              Constants.EVENT_NAME: name,
                                              Constants.EVENT_LOCATION: location,

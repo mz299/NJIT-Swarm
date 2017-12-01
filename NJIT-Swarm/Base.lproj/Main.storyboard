@@ -432,7 +432,7 @@
             </objects>
             <point key="canvasLocation" x="2020" y="-737.18140929535241"/>
         </scene>
-        <!--Plan Trip-->
+        <!--Event Details-->
         <scene sceneID="cDi-3T-MAW">
             <objects>
                 <viewController id="FQE-di-bwd" sceneMemberID="viewController">
@@ -442,11 +442,153 @@
                         <color key="backgroundColor" red="1" green="0.73333333333333328" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Lr4-nu-hBj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Plan Trip" image="plan-trip" selectedImage="plan-trip" id="Mxz-uC-IZH"/>
+                    <navigationItem key="navigationItem" title="Event Details" id="vIP-dJ-veG">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="IkD-ny-7qN">
+                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Isa-PE-jda" kind="show" id="Hgm-bV-DE3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJS-2N-WuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="-1411"/>
+            <point key="canvasLocation" x="2359.1999999999998" y="-1411.8440779610196"/>
+        </scene>
+        <!--Event Creation View Controller-->
+        <scene sceneID="gst-av-QP7">
+            <objects>
+                <viewController id="Isa-PE-jda" customClass="EventCreationViewController" customModule="NJIT_Swarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ked-kG-XTY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqM-Gx-Tdl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="887"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0q-uy-h7I">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M48-8O-AhZ">
+                                                <rect key="frame" x="8" y="38" width="359" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vP-6x-lYu">
+                                                <rect key="frame" x="8" y="75" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLT-gB-ZQG">
+                                                <rect key="frame" x="8" y="123" width="359" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XJi-yF-Y8O">
+                                                <rect key="frame" x="8" y="160" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPf-OJ-ZZd">
+                                                <rect key="frame" x="8" y="215" width="359" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fgr-rN-xzG">
+                                                <rect key="frame" x="8" y="252" width="359" height="150"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7XW-3I-SFA">
+                                                <rect key="frame" x="8" y="506" width="359" height="126"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="533854504.52377498">
+                                                    <!--2017-12-01 20:55:04 +0000-->
+                                                </date>
+                                                <connections>
+                                                    <action selector="startDateChanged:" destination="Isa-PE-jda" eventType="valueChanged" id="uWl-lV-MWz"/>
+                                                </connections>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ly9-PW-EI3">
+                                                <rect key="frame" x="8" y="673" width="359" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LzQ-Iq-U6Y">
+                                                <rect key="frame" x="8" y="710" width="359" height="122"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="533854555.45514703">
+                                                    <!--2017-12-01 20:55:55 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppn-ed-EAt">
+                                                <rect key="frame" x="110" y="849" width="154" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <state key="normal" title="Create Event"/>
+                                                <connections>
+                                                    <action selector="createEventBtn:" destination="Isa-PE-jda" eventType="touchUpInside" id="iuW-xg-ysX"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIq-Zd-jHT">
+                                                <rect key="frame" x="8" y="452" width="359" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.73333333329999995" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="nmt-0i-DYd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.73333333329999995" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="e0q-uy-h7I" firstAttribute="leading" secondItem="YqM-Gx-Tdl" secondAttribute="leading" id="QMZ-yH-ATJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="e0q-uy-h7I" secondAttribute="bottom" id="ayv-Ut-eJe"/>
+                                    <constraint firstItem="e0q-uy-h7I" firstAttribute="top" secondItem="YqM-Gx-Tdl" secondAttribute="top" id="dLH-Iv-v29"/>
+                                    <constraint firstAttribute="trailing" secondItem="e0q-uy-h7I" secondAttribute="trailing" id="qNn-yg-gdP"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YqM-Gx-Tdl" firstAttribute="top" secondItem="JCK-Iv-C0S" secondAttribute="top" id="8hM-QX-P7Q"/>
+                            <constraint firstItem="YqM-Gx-Tdl" firstAttribute="trailing" secondItem="JCK-Iv-C0S" secondAttribute="trailing" id="Hxs-H9-yKz"/>
+                            <constraint firstItem="e0q-uy-h7I" firstAttribute="width" secondItem="ked-kG-XTY" secondAttribute="width" id="VcE-WG-aZR"/>
+                            <constraint firstItem="YqM-Gx-Tdl" firstAttribute="leading" secondItem="JCK-Iv-C0S" secondAttribute="leading" id="rzl-Sm-jlY"/>
+                            <constraint firstItem="YqM-Gx-Tdl" firstAttribute="bottom" secondItem="JCK-Iv-C0S" secondAttribute="bottom" id="xX1-fK-L6Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JCK-Iv-C0S"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="eventDescription" destination="fgr-rN-xzG" id="u34-lt-UWx"/>
+                        <outlet property="eventEndDate" destination="LzQ-Iq-U6Y" id="2Gf-im-PZe"/>
+                        <outlet property="eventLocation" destination="XJi-yF-Y8O" id="dJt-d6-Amb"/>
+                        <outlet property="eventName" destination="9vP-6x-lYu" id="HTp-c0-sL8"/>
+                        <outlet property="eventStartDate" destination="7XW-3I-SFA" id="h3e-S1-Jb1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e7E-JM-aMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3044" y="-1413.1934032983509"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="dn4-Ob-azY">
@@ -793,7 +935,7 @@
                         <segue destination="PEJ-5J-vEZ" kind="relationship" relationship="viewControllers" id="bzG-Q7-D0G"/>
                         <segue destination="bdj-UM-7jJ" kind="relationship" relationship="viewControllers" id="Gjn-5x-XI6"/>
                         <segue destination="YTe-Zz-Zb1" kind="relationship" relationship="viewControllers" id="vty-yI-9p5"/>
-                        <segue destination="FQE-di-bwd" kind="relationship" relationship="viewControllers" id="aFp-jm-vIE"/>
+                        <segue destination="fyb-KI-Sm0" kind="relationship" relationship="viewControllers" id="aFp-jm-vIE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dj-25-jx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1056,7 +1198,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAL-bw-Vkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3488.8000000000002" y="-938.68065967016503"/>
+            <point key="canvasLocation" x="3828" y="-938.68065967016503"/>
+        </scene>
+        <!--Plan Trip-->
+        <scene sceneID="GSa-ag-VFj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fyb-KI-Sm0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Plan Trip" image="plan-trip" selectedImage="plan-trip" id="Mxz-uC-IZH"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AsA-bG-3R9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FQE-di-bwd" kind="relationship" relationship="rootViewController" id="Z1o-hZ-083"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b2z-DK-KPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="-1412"/>
         </scene>
     </scenes>
     <resources>
