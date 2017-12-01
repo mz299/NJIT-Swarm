@@ -29,6 +29,10 @@ public class DBProvider {
         return dbRef.child(Constants.CHECKIN)
     }
     
+    var eventRef: DatabaseReference {
+        return dbRef.child(Constants.EVENT)
+    }
+    
     func saveUser(withID: String, email: String, password: String, username: String, phone: String) {
         let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password, Constants.USERNAME: username, Constants.PHONE: phone]
         userRef.child(withID).setValue(data)
@@ -135,7 +139,7 @@ public class DBProvider {
         userRef.child(friendID).child(Constants.FRIENDS).child(withID).removeValue()
     }
     
-    func saveCheckin(withID: String, place: String, message: String, latitude: Double, longitude: Double, taggedUids: Array<String>?, rating: Float) {
+    func saveCheckin(withID: String, place: String, message: String, latitude: Double, longitude: Double, taggedUids: Array<String>?, rating: Float) -> String {
         var data: Dictionary<String, Any> = [Constants.UID: withID, Constants.PLACE: place, Constants.MESSAGE: message, Constants.LATITUDE: latitude, Constants.LONGITUDE: longitude, Constants.TIMESTAMP: ServerValue.timestamp(), Constants.RATING: rating]
         if taggedUids != nil {
             var uidDic = Dictionary<String, Any>()
@@ -144,7 +148,9 @@ public class DBProvider {
             }
             data[Constants.TAGGEDUIDS] = uidDic
         }
-        checkinRef.childByAutoId().setValue(data)
+        let checkinId = checkinRef.childByAutoId()
+        checkinId.setValue(data)
+        return checkinId.key
     }
     
     func getCheckins(dataHandler: DataHandler?) {
@@ -184,9 +190,11 @@ public class DBProvider {
         checkinRef.child(withCheckinID).child(Constants.LIKE).child(uid).removeValue()
     }
     
-    func saveComment(withCheckinID: String, uid: String, comment: String) {
+    func saveComment(withCheckinID: String, uid: String, comment: String) -> String {
         let data: Dictionary<String, Any> = [Constants.UID: uid, Constants.COMMENT: comment, Constants.TIMESTAMP: ServerValue.timestamp()]
-        checkinRef.child(withCheckinID).child(Constants.COMMENT).childByAutoId().setValue(data)
+        let commentId = checkinRef.child(withCheckinID).child(Constants.COMMENT).childByAutoId()
+        commentId.setValue(data)
+        return commentId.key
     }
     
     func getComments(withCheckinID: String, dataHandler: DataHandler?) {
@@ -206,6 +214,16 @@ public class DBProvider {
     
     func removeComment(withCheckinId: String, commentId: String) {
         checkinRef.child(withCheckinId).child(Constants.COMMENT).child(commentId).removeValue()
+    }
+    
+    func saveEvent(withId: String, name: String, location: String, description: String, startDate: Date, endDate: Date) {
+        let data: Dictionary<String, Any> = [Constants.UID: withId,
+                                             Constants.EVENT_NAME: name,
+                                             Constants.EVENT_LOCATION: location,
+                                             Constants.EVENT_DESCRIPTION: description,
+                                             Constants.EVENT_START: startDate,
+                                             Constants.EVENT_END: endDate]
+        eventRef.childByAutoId().setValue(data)
     }
     
 } // class

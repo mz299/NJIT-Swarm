@@ -23,11 +23,12 @@ class StorageProvider {
     var storageRef: StorageReference {
         return Storage.storage().reference(forURL: "gs://njit-swarm-2.appspot.com/")
     }
+   
     var userRef: StorageReference {
         return storageRef.child(Constants.USER)
     }
-    var placeRef: StorageReference {
-        return storageRef.child(Constants.PLACE)
+    var checkInRef: StorageReference {
+        return storageRef.child(Constants.CHECKIN)
     }
     
     func uploadProfilePic(image: Data?, uid: String, handler: UploadHandler?) {
@@ -39,6 +40,7 @@ class StorageProvider {
             }
         }
     }
+    
     
     func downloadProfilePicUrl(uid: String) {
         

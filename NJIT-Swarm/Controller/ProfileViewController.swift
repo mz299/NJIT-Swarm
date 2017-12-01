@@ -19,6 +19,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var userNameTextfield: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
+   
+    let path = NSHomeDirectory()+"/documents/user-info.plist";
+    var dictionary: NSMutableDictionary!
+    let fileManager = FileManager.default
     
     private var editMode = false
     
@@ -81,6 +85,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func logout(_ sender: Any) {
         if AuthProvider.Instance.logout() {
+            checkFile()
+            dictionary = NSMutableDictionary(contentsOfFile: path)
+            self.dictionary.setValue("", forKey: "username")
+            self.dictionary.setValue("", forKey: "password")
             self.performSegue(withIdentifier: "unwindToViewController", sender: self)
         } else {
             showAlert(message: LOGOUT_FAILED)
@@ -204,6 +212,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func checkFile() {
+        if !fileManager.fileExists(atPath: path) {
+            let srcPath = Bundle.main.path(forResource: "user-info", ofType: "plist")
+            do {
+                //Copy the project plist file to the documents directory.
+                try fileManager.copyItem(atPath: srcPath!, toPath: path)
+            } catch {
+                print("File copy error!")
+            }
+        }
     }
     
 }

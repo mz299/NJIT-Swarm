@@ -48,6 +48,10 @@ struct FriendData {
     var email = ""
     var profile_image_url = ""
     var receive_request_uid = Array<String>()
+    var allow_tag = true
+    var allow_track = true
+    var show_phone = true
+    var show_email = true
 }
 
 typealias FriendDataHandler = (_ data: Array<FriendData>) -> Void
