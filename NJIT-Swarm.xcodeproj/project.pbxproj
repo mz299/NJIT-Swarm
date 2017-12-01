@@ -34,6 +34,7 @@
 		6EDD94FB1FAAAC26001C15D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */; };
 		6EDD95001FAAAEEF001C15D9 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD94FF1FAAAEEF001C15D9 /* AuthProvider.swift */; };
 		6EE44AE81FD1F29400E55740 /* EventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE44AE71FD1F29400E55740 /* EventsData.swift */; };
+		6EE44AEA1FD2195D00E55740 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE44AE91FD2195D00E55740 /* EventTableViewCell.swift */; };
 		6EFDB8F81FB41E7C00946364 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EFDB8F71FB41E7C00946364 /* GoogleService-Info.plist */; };
 		C19B25EA1FD1FCA400121AE3 /* EventCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B25E91FD1FCA400121AE3 /* EventCreationViewController.swift */; };
 		C1A2DEF51FD2103C003563AB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2DEF41FD2103C003563AB /* EventViewController.swift */; };
@@ -125,6 +126,7 @@
 		6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6EDD94FF1FAAAEEF001C15D9 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		6EE44AE71FD1F29400E55740 /* EventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsData.swift; sourceTree = "<group>"; };
+		6EE44AE91FD2195D00E55740 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		6EFDB8F71FB41E7C00946364 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A01A015FF888920F822C203 /* Pods-NJIT-SwarmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJIT-SwarmTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NJIT-SwarmTests/Pods-NJIT-SwarmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8837E84C42508D006410D414 /* Pods-NJIT-Swarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJIT-Swarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-NJIT-Swarm/Pods-NJIT-Swarm.release.xcconfig"; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				E51007C81FCB8C2E00415C79 /* NotificationViewController.swift */,
 				C19B25E91FD1FCA400121AE3 /* EventCreationViewController.swift */,
 				C1A2DEF41FD2103C003563AB /* EventViewController.swift */,
+				6EE44AE91FD2195D00E55740 /* EventTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				6E46A1D81FACE1CF007571A8 /* FriendsViewController.swift in Sources */,
 				C19B25EA1FD1FCA400121AE3 /* EventCreationViewController.swift in Sources */,
 				6E3694DD1FB417D6001EB06B /* ImageExt.swift in Sources */,
+				6EE44AEA1FD2195D00E55740 /* EventTableViewCell.swift in Sources */,
 				E1C042F21FAE60C90062D229 /* FriendsTableViewCell.swift in Sources */,
 				E5D5B4381FB0205200BE6669 /* LikesTableViewCell.swift in Sources */,
 				6E46A1DA1FACE2C5007571A8 /* AddFriendViewController.swift in Sources */,
