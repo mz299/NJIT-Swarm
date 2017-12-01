@@ -37,4 +37,12 @@ class Constants {
     static let TAGGEDUIDS = "taggeduids"
     static let RATING = "rating"
     // Keys for place
+    
+    // Keys for event
+    static let EVENT = "event"
+    static let EVENT_NAME = "eventname"
+    static let EVENT_LOCATION = "location"
+    static let EVENT_DESCRIPTION = "description"
+    static let EVENT_START = "start"
+    static let EVENT_END = "end"
 }

@@ -29,6 +29,10 @@ public class DBProvider {
         return dbRef.child(Constants.CHECKIN)
     }
     
+    var eventRef: DatabaseReference {
+        return dbRef.child(Constants.EVENT)
+    }
+    
     func saveUser(withID: String, email: String, password: String, username: String, phone: String) {
         let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password, Constants.USERNAME: username, Constants.PHONE: phone]
         userRef.child(withID).setValue(data)
@@ -210,6 +214,16 @@ public class DBProvider {
     
     func removeComment(withCheckinId: String, commentId: String) {
         checkinRef.child(withCheckinId).child(Constants.COMMENT).child(commentId).removeValue()
+    }
+    
+    func saveEvent(withId: String, name: String, location: String, description: String, startDate: Date, endDate: Date) {
+        let data: Dictionary<String, Any> = [Constants.UID: withId,
+                                             Constants.EVENT_NAME: name,
+                                             Constants.EVENT_LOCATION: location,
+                                             Constants.EVENT_DESCRIPTION: description,
+                                             Constants.EVENT_START: startDate,
+                                             Constants.EVENT_END: endDate]
+        eventRef.childByAutoId().setValue(data)
     }
     
 } // class
