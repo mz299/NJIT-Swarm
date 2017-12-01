@@ -455,10 +455,10 @@
             </objects>
             <point key="canvasLocation" x="2359.1999999999998" y="-1411.8440779610196"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Creation View Controller-->
         <scene sceneID="gst-av-QP7">
             <objects>
-                <viewController id="Isa-PE-jda" sceneMemberID="viewController">
+                <viewController id="Isa-PE-jda" customClass="EventCreationViewController" customModule="NJIT_Swarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ked-kG-XTY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -517,6 +517,9 @@
                                                 <date key="date" timeIntervalSinceReferenceDate="533854504.52377498">
                                                     <!--2017-12-01 20:55:04 +0000-->
                                                 </date>
+                                                <connections>
+                                                    <action selector="startDateChanged:" destination="Isa-PE-jda" eventType="valueChanged" id="uWl-lV-MWz"/>
+                                                </connections>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ly9-PW-EI3">
                                                 <rect key="frame" x="8" y="673" width="359" height="29"/>
@@ -537,6 +540,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <state key="normal" title="Create Event"/>
+                                                <connections>
+                                                    <action selector="createEventBtn:" destination="Isa-PE-jda" eventType="touchUpInside" id="iuW-xg-ysX"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIq-Zd-jHT">
                                                 <rect key="frame" x="8" y="452" width="359" height="29"/>
@@ -572,6 +578,13 @@
                         <viewLayoutGuide key="safeArea" id="JCK-Iv-C0S"/>
                     </view>
                     <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="eventDescription" destination="fgr-rN-xzG" id="u34-lt-UWx"/>
+                        <outlet property="eventEndDate" destination="LzQ-Iq-U6Y" id="2Gf-im-PZe"/>
+                        <outlet property="eventLocation" destination="XJi-yF-Y8O" id="dJt-d6-Amb"/>
+                        <outlet property="eventName" destination="9vP-6x-lYu" id="HTp-c0-sL8"/>
+                        <outlet property="eventStartDate" destination="7XW-3I-SFA" id="h3e-S1-Jb1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7E-JM-aMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
