@@ -41,6 +41,16 @@ class StorageProvider {
         }
     }
     
+    func uploadCheckinPic(image: Data?, checkinId: String, handler: UploadHandler?) {
+        checkInRef.child("\(checkinId).jpg").putData(image!, metadata: nil) { (metadata, error) in
+            if error != nil {
+                handler?(nil)
+            } else {
+                handler?(metadata?.downloadURL()?.absoluteString)
+            }
+        }
+    }
+    
     
     func downloadProfilePicUrl(uid: String) {
         

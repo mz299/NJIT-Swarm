@@ -136,9 +136,12 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func Checkin(taggedfrienddataone: String){
         
+        if ratingValue.text != ""{
+            Rating = Float(ratingValue.text!)!
+        } else {
+            Rating = 5.0
+        }
         
-        
-        Rating = Float(ratingValue.text!)!
         
         CLGeocoder().reverseGeocodeLocation(currentlocation, completionHandler: {(placemarks, error) -> Void in
             //            print(self.currentlocation)

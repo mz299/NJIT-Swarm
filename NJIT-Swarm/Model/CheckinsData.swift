@@ -81,6 +81,9 @@ class CheckinsData {
                         if let rating = cData[Constants.RATING] as? Float {
                             newData.rating = rating
                         }
+                        if let url = cData[Constants.CHECKIN_IMAGE_URL] as? String {
+                            newData.checkin_image_url = url
+                        }
                         
                         self._allData.append(newData)
                         

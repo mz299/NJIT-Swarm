@@ -240,4 +240,21 @@ public class DBProvider {
         }
     }
     
+    func saveNotification(withId: String, msg: String) -> String {
+        let data = [Constants.NOTIFICATION_MSG: msg,
+                    Constants.NOTIFICATION_DATE: ServerValue.timestamp(),
+                    Constants.NOTIFICATION_ISREAD: false] as [String : Any]
+        let id = userRef.child(withId).child(Constants.NOTIFICATION).childByAutoId()
+        id.setValue(data)
+        return id.key
+    }
+    
+    func removeNotification(withUid: String, noticationId: String) {
+        userRef.child(withUid).child(Constants.NOTIFICATION).child(noticationId).removeValue()
+    }
+    
+    func setNotification(isRead: Bool, uid: String, notificationId: String) {
+        userRef.child(uid).child(Constants.NOTIFICATION).child(notificationId).child(Constants.NOTIFICATION_ISREAD).setValue(isRead)
+    }
+    
 } // class
