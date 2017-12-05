@@ -128,6 +128,14 @@ class FriendsData {
         return nil
     }
     
+    func getCurrentUserData() -> FriendData? {
+        if let uid = AuthProvider.Instance.getUserID() {
+            return getData(uid: uid)
+        } else {
+            return nil
+        }
+    }
+    
     private func getKeys(data: [String: Any]) -> Array<String> {
         var keys = Array<String>()
         for d in data {
