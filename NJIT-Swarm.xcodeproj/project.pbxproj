@@ -31,6 +31,7 @@
 		6EB657521FAD747A002E0E28 /* SearchFriendsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB657511FAD747A002E0E28 /* SearchFriendsData.swift */; };
 		6EB657581FAD8095002E0E28 /* DataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB657571FAD8095002E0E28 /* DataStructure.swift */; };
 		6EB6575C1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB6575B1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift */; };
+		6EC35B531FD62C4900894B6D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC35B521FD62C4900894B6D /* SettingViewController.swift */; };
 		6EDD94FB1FAAAC26001C15D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */; };
 		6EDD95001FAAAEEF001C15D9 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD94FF1FAAAEEF001C15D9 /* AuthProvider.swift */; };
 		6EE44AE81FD1F29400E55740 /* EventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE44AE71FD1F29400E55740 /* EventsData.swift */; };
@@ -123,6 +124,7 @@
 		6EB657511FAD747A002E0E28 /* SearchFriendsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsData.swift; sourceTree = "<group>"; };
 		6EB657571FAD8095002E0E28 /* DataStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructure.swift; sourceTree = "<group>"; };
 		6EB6575B1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addFriendsvwTableViewCell.swift; sourceTree = "<group>"; };
+		6EC35B521FD62C4900894B6D /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		6EDD94FA1FAAAC26001C15D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6EDD94FF1FAAAEEF001C15D9 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		6EE44AE71FD1F29400E55740 /* EventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsData.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				C19B25E91FD1FCA400121AE3 /* EventCreationViewController.swift */,
 				C1A2DEF41FD2103C003563AB /* EventViewController.swift */,
 				6EE44AE91FD2195D00E55740 /* EventTableViewCell.swift */,
+				6EC35B521FD62C4900894B6D /* SettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				6EB657581FAD8095002E0E28 /* DataStructure.swift in Sources */,
 				6EB189DA1FABC0F1002CF9B9 /* Constants.swift in Sources */,
 				6EB6575C1FAEC13D002E0E28 /* addFriendsvwTableViewCell.swift in Sources */,
+				6EC35B531FD62C4900894B6D /* SettingViewController.swift in Sources */,
 				6E4081FD1FAD125800D3F365 /* CheckinsData.swift in Sources */,
 				6EB3523A1FC4DEDD00FEE163 /* TaggedFriendsData.swift in Sources */,
 			);
