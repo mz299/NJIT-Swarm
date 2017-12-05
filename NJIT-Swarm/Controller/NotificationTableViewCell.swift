@@ -11,10 +11,17 @@ import UIKit
 class NotificationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var messageLabel: UILabel!
+
     var notificationKey = "";
     
-    @IBAction func deleteButtonClicked(_ sender: Any) {
+    @IBOutlet weak var dateTimeLabel: UILabel!
     
+    @IBAction func deleteButtonClicked(_ sender: Any) {
+        if(notificationKey != "")
+        {
+            DBProvider.Instance.removeNotification(withUid: AuthProvider.Instance.getUserID()!, noticationId: self.notificationKey)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationDeleted"), object: nil)
+        }
     }
     
     override func awakeFromNib() {

@@ -18,18 +18,66 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         let nib = UINib(nibName: "NotificationTableViewCell", bundle: nil)
         notificationTable.register(nib, forCellReuseIdentifier: "notificationCell")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "notificationDeleted"), object: nil)
+    }
+    
+    @objc func loadList(){
+        FriendsData.Instance.update{ (friends) in
+            self.notificationTable.reloadData()
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        var rowCount: Int =  0
+        if(FriendsData.Instance.getCurrentUserData() != nil)
+        {
+            rowCount = FriendsData.Instance.getCurrentUserData()!.notifications.count
+        }
+        return rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
         
-        cell.messageLabel.text = "\(indexPath.row)"
+        let notificationData: NotificationData = FriendsData.Instance.getCurrentUserData()!.notifications[indexPath.row]
+        
+        if (!notificationData.isRead){
+            let red = Double((0x040000) >> 16) / 256.0
+            let green = Double((0x3300) >> 8) / 256.0
+            let blue = Double((0xFF)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.05)
+        }
+        else if(indexPath.row % 2 == 0){
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xCC00) >> 8) / 256.0
+            let blue = Double((0x76)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        else{
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xAA00) >> 8) / 256.0
+            let blue = Double((0x16)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        
+        cell.notificationKey = notificationData.id
+        cell.messageLabel.text = "\(notificationData.msg)"
+        cell.dateTimeLabel.text = Global.convertTimestampToDateTime(timeInterval: notificationData.date)
+        
+        DBProvider.Instance.setNotification(isRead: true, uid: AuthProvider.Instance.getUserID()!, notificationId: notificationData.id)
         
         return cell
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if AuthProvider.Instance.getUserID() != nil {
+            FriendsData.Instance.update{ (friends) in
+                self.notificationTable.reloadData()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
