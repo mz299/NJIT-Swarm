@@ -240,6 +240,14 @@ public class DBProvider {
         }
     }
     
+    func joinEvent(withId: String, eventId: String) {
+        eventRef.child(eventId).child(Constants.EVENT_JOIN).child(withId).setValue(true)
+    }
+    
+    func unjoinEvent(withId: String, eventId: String) {
+        eventRef.child(eventId).child(Constants.EVENT_JOIN).child(withId).removeValue()
+    }
+    
     func saveNotification(withId: String, msg: String) -> String {
         let data = [Constants.NOTIFICATION_MSG: msg,
                     Constants.NOTIFICATION_DATE: ServerValue.timestamp(),
@@ -249,12 +257,31 @@ public class DBProvider {
         return id.key
     }
     
+    func saveNotification(withIds: Array<String>, msg: String) {
+        let data = [Constants.NOTIFICATION_MSG: msg,
+                    Constants.NOTIFICATION_DATE: ServerValue.timestamp(),
+                    Constants.NOTIFICATION_ISREAD: false] as [String : Any]
+        for uid in withIds {
+            userRef.child(uid).child(Constants.NOTIFICATION).childByAutoId().setValue(data)
+        }
+    }
+    
     func removeNotification(withUid: String, noticationId: String) {
         userRef.child(withUid).child(Constants.NOTIFICATION).child(noticationId).removeValue()
     }
     
     func setNotification(isRead: Bool, uid: String, notificationId: String) {
         userRef.child(uid).child(Constants.NOTIFICATION).child(notificationId).child(Constants.NOTIFICATION_ISREAD).setValue(isRead)
+    }
+    
+    func saveUserLocation(withId: String, latitude: Double, longitude: Double) {
+        let data = [Constants.LATITUDE: latitude,
+                    Constants.LONGITUDE: longitude]
+        userRef.child(withId).setValue(data)
+    }
+    
+    func saveCheckinImageUrl(checkinId: String, url: String) {
+        checkinRef.child(checkinId).child(Constants.CHECKIN_IMAGE_URL).setValue(url)
     }
     
 } // class

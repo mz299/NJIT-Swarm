@@ -59,6 +59,10 @@ class EventsData {
                         if let uData = FriendsData.Instance.getData(uid: newData.uid) {
                             newData.username = uData.username
                         }
+                        if let joinIds = data[Constants.EVENT_JOIN] as? [String: Any] {
+                            newData.joinIds = self.getKeys(data: joinIds)
+                        }
+                        
                         self._allData.append(newData)
                         if FriendsData.Instance.getFriendData(uid: newData.uid) != nil {
                             self._data.append(newData)
@@ -69,7 +73,29 @@ class EventsData {
                     }
                 }
             }
+            self._allData.sort(by: { (data1, data2) -> Bool in
+                if data1.startDate.timeIntervalSince1970 > data2.startDate.timeIntervalSince1970 {
+                    return true
+                } else {
+                    return false
+                }
+            })
+            self._data.sort(by: { (data1, data2) -> Bool in
+                if data1.startDate.timeIntervalSince1970 > data2.startDate.timeIntervalSince1970 {
+                    return true
+                } else {
+                    return false
+                }
+            })
             handler?(self._data)
         }
+    }
+    
+    private func getKeys(data: [String: Any]) -> Array<String> {
+        var keys = Array<String>()
+        for d in data {
+            keys.append(d.key)
+        }
+        return keys
     }
 }

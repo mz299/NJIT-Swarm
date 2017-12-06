@@ -11,6 +11,7 @@ import UIKit
 class EventTableViewCell: UITableViewCell {
     
     private var eventData = EventData()
+    private var joined = false
     
     @IBOutlet weak var labelEvent: UILabel!
     @IBOutlet weak var labelLocation: UILabel!
@@ -35,10 +36,25 @@ class EventTableViewCell: UITableViewCell {
         labelLocation.text = "Location: \(data.location)"
         labelTime.text = "Time: \(Global.convertTimestampToDateTime(timeInterval: data.startDate))"
         textViewDescription.text = data.description
+        
+        for uids in eventData.joinIds {
+            if AuthProvider.Instance.getUserID() == uids {
+                joined = true
+                buttonJoin.setTitle("Unjoin", for: .normal)
+            }
+        }
     }
     
     @IBAction func join(_ sender: Any) {
-        
+        if joined {
+            DBProvider.Instance.unjoinEvent(withId: AuthProvider.Instance.getUserID()!, eventId: eventData.eventId)
+            joined = false
+            buttonJoin.setTitle("Join", for: .normal)
+        } else {
+            DBProvider.Instance.joinEvent(withId: AuthProvider.Instance.getUserID()!, eventId: eventData.eventId)
+            joined = true
+            buttonJoin.setTitle("Unjoin", for: .normal)
+        }
     }
     
     

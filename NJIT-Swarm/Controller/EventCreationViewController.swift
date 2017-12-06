@@ -51,6 +51,11 @@ class EventCreationViewController: UIViewController {
             
             DBProvider.Instance.saveEvent(withId: AuthProvider.Instance.getUserID()!, name: name!, location: location!, description: description!, startDate: startdate, endDate: enddate)
             
+            let friendIds = FriendsData.Instance.getFriendIds()
+            let username = FriendsData.Instance.getCurrentUserData()!.username
+            let message = "\(username) created an event: \(name!)."
+            DBProvider.Instance.saveNotification(withIds: friendIds, msg: message)
+            
         
             let alert = UIAlertController(title: "Success", message: "Event created", preferredStyle: .alert)
             let ok = UIAlertAction(title: "ok", style: .default, handler: { (action) in

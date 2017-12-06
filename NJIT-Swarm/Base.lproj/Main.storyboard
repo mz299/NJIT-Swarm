@@ -473,7 +473,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UW3-F0-SyE">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UW3-F0-SyE">
                                                     <rect key="frame" x="15" y="50" width="293" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -486,13 +486,13 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Join"/>
                                                     <connections>
-                                                        <action selector="join:" destination="yL4-VY-dVk" eventType="touchUpInside" id="beE-iD-lLS"/>
+                                                        <action selector="join:" destination="yL4-VY-dVk" eventType="touchUpInside" id="Iti-le-O4m"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="buttonJoin" destination="dTQ-WM-iGU" id="NmX-z0-4lb"/>
+                                            <outlet property="buttonJoin" destination="dTQ-WM-iGU" id="Hc3-24-tjn"/>
                                             <outlet property="labelEvent" destination="tXQ-gf-O13" id="uy2-85-DJa"/>
                                             <outlet property="labelLocation" destination="KWO-gr-8sa" id="CEQ-a8-nid"/>
                                             <outlet property="labelTime" destination="STC-uW-V3K" id="1Bz-hc-wkk"/>
@@ -601,6 +601,13 @@
                                                     <!--2017-12-01 20:55:55 +0000-->
                                                 </date>
                                             </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIq-Zd-jHT">
+                                                <rect key="frame" x="8" y="452" width="359" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppn-ed-EAt">
                                                 <rect key="frame" x="110" y="849" width="154" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
