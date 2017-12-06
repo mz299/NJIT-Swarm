@@ -11,6 +11,7 @@ import UIKit
 class EventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var buttonJoin: UIButton!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EventsData.Instance.Data.count
@@ -44,7 +45,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-
     /*
     // MARK: - Navigation
 

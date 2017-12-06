@@ -53,4 +53,5 @@ class Constants {
     static let EVENT_DESCRIPTION = "description"
     static let EVENT_START = "start"
     static let EVENT_END = "end"
+    static let EVENT_JOIN = "join"
 }

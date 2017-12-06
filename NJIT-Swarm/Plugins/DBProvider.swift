@@ -240,6 +240,14 @@ public class DBProvider {
         }
     }
     
+    func joinEvent(withId: String, eventId: String) {
+        eventRef.child(eventId).child(Constants.EVENT_JOIN).child(withId).setValue(true)
+    }
+    
+    func unjoinEvent(withId: String, eventId: String) {
+        eventRef.child(eventId).child(Constants.EVENT_JOIN).child(withId).removeValue()
+    }
+    
     func saveNotification(withId: String, msg: String) -> String {
         let data = [Constants.NOTIFICATION_MSG: msg,
                     Constants.NOTIFICATION_DATE: ServerValue.timestamp(),

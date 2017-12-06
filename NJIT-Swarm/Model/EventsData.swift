@@ -59,6 +59,10 @@ class EventsData {
                         if let uData = FriendsData.Instance.getData(uid: newData.uid) {
                             newData.username = uData.username
                         }
+                        if let joinIds = data[Constants.EVENT_JOIN] as? [String: Any] {
+                            newData.joinIds = self.getKeys(data: joinIds)
+                        }
+                        
                         self._allData.append(newData)
                         if FriendsData.Instance.getFriendData(uid: newData.uid) != nil {
                             self._data.append(newData)
@@ -71,5 +75,13 @@ class EventsData {
             }
             handler?(self._data)
         }
+    }
+    
+    private func getKeys(data: [String: Any]) -> Array<String> {
+        var keys = Array<String>()
+        for d in data {
+            keys.append(d.key)
+        }
+        return keys
     }
 }

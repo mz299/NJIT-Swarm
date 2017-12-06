@@ -67,6 +67,7 @@ struct EventData {
     var endDate = Date()
     var uid = ""
     var username = ""
+    var joinIds = Array<String>()
 }
 
 typealias EventDateHandler = (_ date: Array<EventData>) -> Void
