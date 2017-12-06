@@ -116,6 +116,22 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         let data = FriendsData.Instance.Data[indexPath.row]
         
         cell.setData(data: data, controller: self)
+        
+        if(indexPath.row % 2 == 0){
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xCC00) >> 8) / 256.0
+            let blue = Double((0x76)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        else{
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xAA00) >> 8) / 256.0
+            let blue = Double((0x16)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        
         return cell
     }
     
