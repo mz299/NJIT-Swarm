@@ -64,8 +64,13 @@ class FriendsTableViewCell: UITableViewCell {
         friendData = data
         self.uid = data.uid
         self.nameButton.setTitle(data.username, for: .normal)
+        
         emailLabel.text = data.email
         phoneLabel.text = data.phone
+        
+        emailLabel.isHidden = !data.show_email
+        phoneLabel.isHidden = !data.show_phone
+        
         if section == 1 {
 //            addButton.isHidden = false
 //            addButton.isUserInteractionEnabled = true

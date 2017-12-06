@@ -54,8 +54,13 @@ class addFriendsvwTableViewCell: UITableViewCell {
     func setData(data: FriendData) {
         self.uid = data.uid
         self.nameButton.setTitle(data.username, for: .normal)
+        
         emailLabel.text = data.email
         phoneLabel.text = data.phone
+        
+        emailLabel.isHidden = !data.show_email
+        phoneLabel.isHidden = !data.show_phone
+        
         if data.profile_image_url != "" {
             let url = URL(string: data.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
