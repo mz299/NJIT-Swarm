@@ -54,6 +54,8 @@ struct FriendData {
     var show_phone = true
     var show_email = true
     var notifications = Array<NotificationData>()
+    var latitude = 0.0 as Double
+    var longitude = 0.0 as Double
 }
 
 typealias FriendDataHandler = (_ data: Array<FriendData>) -> Void

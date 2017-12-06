@@ -73,6 +73,20 @@ class EventsData {
                     }
                 }
             }
+            self._allData.sort(by: { (data1, data2) -> Bool in
+                if data1.startDate.timeIntervalSince1970 > data2.startDate.timeIntervalSince1970 {
+                    return true
+                } else {
+                    return false
+                }
+            })
+            self._data.sort(by: { (data1, data2) -> Bool in
+                if data1.startDate.timeIntervalSince1970 > data2.startDate.timeIntervalSince1970 {
+                    return true
+                } else {
+                    return false
+                }
+            })
             handler?(self._data)
         }
     }

@@ -486,14 +486,13 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Join"/>
                                                     <connections>
-                                                        <action selector="join:" destination="yL4-VY-dVk" eventType="touchUpInside" id="h7c-gF-RpH"/>
-                                                        <action selector="join:" destination="FQE-di-bwd" eventType="touchUpInside" id="qjY-AD-oT2"/>
+                                                        <action selector="join:" destination="yL4-VY-dVk" eventType="touchUpInside" id="Iti-le-O4m"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="buttonJoin" destination="dTQ-WM-iGU" id="X38-ds-Olk"/>
+                                            <outlet property="buttonJoin" destination="dTQ-WM-iGU" id="Hc3-24-tjn"/>
                                             <outlet property="labelEvent" destination="tXQ-gf-O13" id="uy2-85-DJa"/>
                                             <outlet property="labelLocation" destination="KWO-gr-8sa" id="CEQ-a8-nid"/>
                                             <outlet property="labelTime" destination="STC-uW-V3K" id="1Bz-hc-wkk"/>

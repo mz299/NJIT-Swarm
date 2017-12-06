@@ -79,6 +79,12 @@ class FriendsData {
                             if let notifications = data[Constants.NOTIFICATION] as? [String: Any] {
                                 newData.notifications = self.getNotification(data: notifications)
                             }
+                            if let latitude = data[Constants.LATITUDE] as? Double {
+                                newData.latitude = latitude
+                            }
+                            if let longitude = data[Constants.LONGITUDE] as? Double {
+                                newData.longitude = longitude
+                            }
                         }
                         self._allUserData.append(newData)
                         if friendsData != nil {
@@ -136,6 +142,14 @@ class FriendsData {
         }
     }
     
+    func getFriendIds() -> Array<String> {
+        var uids = Array<String>()
+        for data in _data {
+            uids.append(data.uid)
+        }
+        return uids
+    }
+    
     private func getKeys(data: [String: Any]) -> Array<String> {
         var keys = Array<String>()
         for d in data {
@@ -161,6 +175,13 @@ class FriendsData {
                 }
             }
             notifications.append(nData)
+        }
+        notifications.sort { (data1, data2) -> Bool in
+            if data1.date.timeIntervalSince1970 > data2.date.timeIntervalSince1970 {
+                return true
+            } else {
+                return false
+            }
         }
         return notifications
     }
