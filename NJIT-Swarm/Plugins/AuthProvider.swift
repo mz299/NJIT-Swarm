@@ -74,6 +74,7 @@ class AuthProvider {
         }
     }
     
+    
     func updatePassword(password: String, authHandler: AuthHandler?) {
         if let user = Auth.auth().currentUser {
             user.updatePassword(to: password, completion: { (error) in

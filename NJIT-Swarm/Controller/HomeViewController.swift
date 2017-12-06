@@ -61,9 +61,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             locationManager = CLLocationManager()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
+            locationManager.allowsBackgroundLocationUpdates = true
+            locationManager.startMonitoringSignificantLocationChanges()
     }
+    
+  
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0] as CLLocation
