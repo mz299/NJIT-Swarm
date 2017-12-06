@@ -44,7 +44,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-
     /*
     // MARK: - Navigation
 

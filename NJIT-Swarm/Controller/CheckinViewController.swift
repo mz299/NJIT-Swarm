@@ -25,6 +25,7 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     var taggedfriends: String = ""
     var taggedfrienddata :String = ""
     var Rating:Float = 3.0
+    var checkinImage: Data? = nil
     
     var currentlocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
     var resultSearchController:UISearchController? = nil
@@ -116,6 +117,7 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
             let newSize = CGSize(width: 160, height: 160)
             let sizedImage = selectedImage.resizeImageWith(newSize: newSize)
             let imageData = UIImageJPEGRepresentation(sizedImage, 0.0)
+            checkinImage = imageData
 //            StorageProvider.Instance.uploadProfilePic(image: imageData, uid: AuthProvider.Instance.getUserID()!, handler: { (url) in
 //                DBProvider.Instance.setUserData(key: Constants.PROFILE_IMAGE_URL, value: url!)
 //            })
@@ -202,6 +204,12 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
 //                        }else{
 //                            
                         let checkinId = DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
+                        
+                        if let image = self.checkinImage {
+                            StorageProvider.Instance.uploadCheckinPic(image: image, checkinId: checkinId, handler: { (url) in
+                                DBProvider.Instance.saveCheckinImageUrl(checkinId: checkinId, url: url!)
+                            })
+                        }
 //                        }
                         
                         // to put data
