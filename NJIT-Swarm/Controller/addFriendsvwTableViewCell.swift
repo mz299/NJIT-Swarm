@@ -36,6 +36,7 @@ class addFriendsvwTableViewCell: UITableViewCell {
         let data = SearchFriendsData.Instance.Data[index]
 //        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
         DBProvider.Instance.sendRequest(senderId: AuthProvider.Instance.getUserID()!, receiverId: data.uid)
+        DBProvider.Instance.saveNotification(withId: data.uid, msg: "You have pending friend request")
     }
     
     @IBAction func nameButtonClicked(_ sender: Any) {
