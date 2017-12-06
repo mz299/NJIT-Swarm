@@ -33,6 +33,38 @@
             endingLineNumber = "148"
             landmarkName = "Checkin(taggedfrienddataone:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NJIT_Swarm.CheckinViewController.Checkin(taggedfrienddataone: Swift.String) -&gt; ()"
+                  moduleName = "NJIT-Swarm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apoorvareed/Desktop/CollegeProject/NJIT-Swarm/NJIT-Swarm/Controller/CheckinViewController.swift"
+                  timestampString = "534290139.737079"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "1347">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__ObjC.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NJIT_Swarm.CheckinViewController.Checkin(taggedfrienddataone: Swift.String) -&gt; ()"
+                  moduleName = "NJIT-Swarm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apoorvareed/Desktop/CollegeProject/NJIT-Swarm/NJIT-Swarm/Controller/CheckinViewController.swift"
+                  timestampString = "534290139.739589"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
