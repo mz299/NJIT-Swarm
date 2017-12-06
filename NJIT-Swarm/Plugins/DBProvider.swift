@@ -13,7 +13,7 @@ typealias DataHandler = (_ data: [String: Any]?) -> Void
 
 public class DBProvider {
     private static let _instance = DBProvider()
-    public init () {}
+    private init () {}
     static var Instance: DBProvider {
         return _instance
     }
@@ -27,6 +27,10 @@ public class DBProvider {
     
     var checkinRef: DatabaseReference {
         return dbRef.child(Constants.CHECKIN)
+    }
+    
+    var eventRef: DatabaseReference {
+        return dbRef.child(Constants.EVENT)
     }
     
     func saveUser(withID: String, email: String, password: String, username: String, phone: String) {
@@ -210,6 +214,47 @@ public class DBProvider {
     
     func removeComment(withCheckinId: String, commentId: String) {
         checkinRef.child(withCheckinId).child(Constants.COMMENT).child(commentId).removeValue()
+    }
+    
+    func saveEvent(withId: String, name: String, location: String, description: String, startDate: TimeInterval, endDate: TimeInterval) {
+        let data: Dictionary<String, Any> = [Constants.UID: withId,
+                                             Constants.EVENT_NAME: name,
+                                             Constants.EVENT_LOCATION: location,
+                                             Constants.EVENT_DESCRIPTION: description,
+                                             Constants.EVENT_START: startDate,
+                                             Constants.EVENT_END: endDate]
+        eventRef.childByAutoId().setValue(data)
+    }
+    
+    func getEvent(dataHandler: DataHandler?) {
+        eventRef.observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value {
+                if let data = value as? [String: Any] {
+                    dataHandler?(data)
+                } else {
+                    dataHandler?(nil)
+                }
+            } else {
+                dataHandler?(nil)
+            }
+        }
+    }
+    
+    func saveNotification(withId: String, msg: String) -> String {
+        let data = [Constants.NOTIFICATION_MSG: msg,
+                    Constants.NOTIFICATION_DATE: ServerValue.timestamp(),
+                    Constants.NOTIFICATION_ISREAD: false] as [String : Any]
+        let id = userRef.child(withId).child(Constants.NOTIFICATION).childByAutoId()
+        id.setValue(data)
+        return id.key
+    }
+    
+    func removeNotification(withUid: String, noticationId: String) {
+        userRef.child(withUid).child(Constants.NOTIFICATION).child(noticationId).removeValue()
+    }
+    
+    func setNotification(isRead: Bool, uid: String, notificationId: String) {
+        userRef.child(uid).child(Constants.NOTIFICATION).child(notificationId).child(Constants.NOTIFICATION_ISREAD).setValue(isRead)
     }
     
 } // class

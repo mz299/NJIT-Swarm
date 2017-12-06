@@ -24,6 +24,8 @@ class SettingViewController: UIViewController {
             switchPhone.isOn = userdata.show_phone
             switchEmail.isOn = userdata.show_email
         }
+        
+//        startActivityIndicator()
     }
 
     override func didReceiveMemoryWarning() {

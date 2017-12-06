@@ -25,6 +25,7 @@ struct CheckinData {
     var taggedUserIds = Array<String>()
     var comments = Array<CommentData>()
     var rating = Float()
+    var checkin_image_url = ""
 }
 
 typealias CheckinDataHandler = (_ data: Array<CheckinData>) -> Void
@@ -52,6 +53,27 @@ struct FriendData {
     var allow_track = true
     var show_phone = true
     var show_email = true
+    var notifications = Array<NotificationData>()
 }
 
 typealias FriendDataHandler = (_ data: Array<FriendData>) -> Void
+
+struct EventData {
+    var eventId = ""
+    var eventname = ""
+    var location = ""
+    var description = ""
+    var startDate = Date()
+    var endDate = Date()
+    var uid = ""
+    var username = ""
+}
+
+typealias EventDateHandler = (_ date: Array<EventData>) -> Void
+
+struct NotificationData {
+    var id = ""
+    var msg = ""
+    var date = Date()
+    var isRead = false
+}

@@ -76,6 +76,9 @@ class FriendsData {
                             if let show_email = data[Constants.SHOW_EMAIL] as? Bool {
                                 newData.show_email = show_email
                             }
+                            if let notifications = data[Constants.NOTIFICATION] as? [String: Any] {
+                                newData.notifications = self.getNotification(data: notifications)
+                            }
                         }
                         self._allUserData.append(newData)
                         if friendsData != nil {
@@ -125,11 +128,40 @@ class FriendsData {
         return nil
     }
     
+    func getCurrentUserData() -> FriendData? {
+        if let uid = AuthProvider.Instance.getUserID() {
+            return getData(uid: uid)
+        } else {
+            return nil
+        }
+    }
+    
     private func getKeys(data: [String: Any]) -> Array<String> {
         var keys = Array<String>()
         for d in data {
             keys.append(d.key)
         }
         return keys
+    }
+    
+    private func getNotification(data: [String: Any]) -> Array<NotificationData> {
+        var notifications = Array<NotificationData>()
+        for d in data {
+            var nData = NotificationData()
+            nData.id = d.key
+            if let nd = d.value as? [String: Any] {
+                if let msg = nd[Constants.NOTIFICATION_MSG] as? String {
+                    nData.msg = msg
+                }
+                if let date = nd[Constants.NOTIFICATION_DATE] as? TimeInterval {
+                    nData.date = Date(timeIntervalSince1970: date/1000)
+                }
+                if let isRead = nd[Constants.NOTIFICATION_ISREAD] as? Bool {
+                    nData.isRead = isRead
+                }
+            }
+            notifications.append(nData)
+        }
+        return notifications
     }
 }

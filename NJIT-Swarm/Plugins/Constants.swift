@@ -24,6 +24,13 @@ class Constants {
     static let ALLOW_TRACK = "allow_track"
     static let SHOW_PHONE = "show_phone"
     static let SHOW_EMAIL = "show_email"
+    
+    // Keys for notification
+    static let NOTIFICATION = "notification"
+    static let NOTIFICATION_MSG = "msg"
+    static let NOTIFICATION_DATE = "date"
+    static let NOTIFICATION_ISREAD = "isread"
+    
     // Keys for check in
     static let CHECKIN = "checkin"
     static let LATITUDE = "latitude"
@@ -36,5 +43,14 @@ class Constants {
     static let LIKE = "like"
     static let TAGGEDUIDS = "taggeduids"
     static let RATING = "rating"
+    static let CHECKIN_IMAGE_URL = "checkin_image_url"
     // Keys for place
+    
+    // Keys for event
+    static let EVENT = "event"
+    static let EVENT_NAME = "eventname"
+    static let EVENT_LOCATION = "location"
+    static let EVENT_DESCRIPTION = "description"
+    static let EVENT_START = "start"
+    static let EVENT_END = "end"
 }

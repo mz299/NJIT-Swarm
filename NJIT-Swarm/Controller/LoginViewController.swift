@@ -104,7 +104,5 @@ class LoginViewController: UIViewController {
             print(self.path)
             print(self.dictionary)
         }
-        
     }
-
 }
