@@ -138,7 +138,7 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func removeTagFriendId(uid: String) {
         taggedFreindsUID = taggedFreindsUID.filter({ (id) -> Bool in
-            id != uid
+            return id != uid
         })
     }
     
