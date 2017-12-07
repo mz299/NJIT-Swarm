@@ -20,10 +20,23 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var place: UILabel!
     @IBOutlet weak var taggedFriendLabel: UILabel!
+    @IBOutlet weak var checkInPhoto: UIButton!
     
     var checkInKey: String = ""
     var userKey: String = ""
     var isLiked: Bool = false
+    
+    @IBAction func photoButtonClicked(_ sender: Any) {
+        if(self.checkInKey != ""){
+            let checkInDetail: CheckInDetailViewController = CheckInDetailViewController()
+            checkInDetail.checkInKey = self.checkInKey
+            var topController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!;
+            while ((topController.presentedViewController) != nil) {
+                topController = topController.presentedViewController!;
+            }
+            topController.present(checkInDetail, animated: false, completion: nil)
+        }
+    }
     
     @IBAction func nameButtonClicked(_ sender: Any) {
         if(self.userKey != ""){

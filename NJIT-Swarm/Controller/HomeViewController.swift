@@ -157,6 +157,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.likeCountButton.setTitle("\(checkIn.numoflike)", for: UIControlState.normal)
         cell.checkInKey = checkIn.checkinid
         cell.isLiked = checkIn.youliked
+        
+        if(checkIn.checkin_image_url == "")
+        {
+            cell.checkInPhoto.setImage(nil, for: .normal)
+            cell.checkInPhoto.setTitle("", for: .normal)
+        }
+        else
+        {
+            cell.checkInPhoto.setImage(UIImage(named: "photo.png"), for: .normal)
+        }
        
         if(checkIn.youliked){
             cell.likeButton.tintColor = UIColor.red

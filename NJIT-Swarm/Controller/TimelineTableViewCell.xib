@@ -105,9 +105,18 @@
                         <color key="textColor" red="0.56361040609137059" green="0.56361040609137059" blue="0.56361040609137059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qdz-wt-9N1">
+                        <rect key="frame" x="157" y="156" width="35" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <state key="normal" title="Button" image="photo.png"/>
+                        <connections>
+                            <action selector="photoButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="150-Y5-57U"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="checkInPhoto" destination="qdz-wt-9N1" id="2G5-2a-Fkk"/>
                 <outlet property="commentCountButton" destination="dnF-zt-ts7" id="tMI-jz-x51"/>
                 <outlet property="dateTimeLabel" destination="DBd-9V-L1u" id="wmy-xV-di3"/>
                 <outlet property="detail" destination="DUX-oO-McM" id="6Uj-cy-dZ2"/>
@@ -122,4 +131,7 @@
             <point key="canvasLocation" x="-522" y="-36.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="photo.png" width="225" height="225"/>
+    </resources>
 </document>

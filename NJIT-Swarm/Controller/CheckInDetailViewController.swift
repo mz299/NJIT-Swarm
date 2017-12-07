@@ -67,6 +67,21 @@ class CheckInDetailViewController: UIViewController {
         self.reviewLabel.text = checkIn?.message
         self.ratingLabel.text = "\(checkIn?.rating ?? 0.0)"
         self.dateLabel.text = Global.convertTimestampToDateTime(timeInterval: (checkIn?.timestamp)!)
+        
+        if checkIn?.checkin_image_url != "" {
+            let url = URL(string: (checkIn?.checkin_image_url)!)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    if let image = UIImage(data: data!) {
+                        DispatchQueue.main.async {
+                            self.checkInPicture.image = image
+                        }
+                    }
+                }
+            }).resume()
+        }
     }
 
     @IBAction func closeButtonClicked(_ sender: Any) {
