@@ -11,9 +11,17 @@ import MapKit
 import CoreLocation
 import Firebase
 
+protocol HandleHomeMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate{
    
+    // testing
+    var selectedPin:MKPlacemark? = nil
+    
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var timelineTableView: UITableView!
@@ -31,6 +39,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             
         }
         
+        //testing
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+
+        //testing
+        locationSearchTable.handleHomeMapSearchDelegate = self
+        
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: nil)
         timelineTableView.register(nib, forCellReuseIdentifier: "timelineCell")
         
@@ -38,8 +52,41 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             
    }
     
+    
+    @IBAction func buttonFriendlocation(_ sender: Any) {
+//        mapView.removeAnnotations(mapView.annotations)
+        updateFriendLocation()
+        
+    }
+    @IBAction func buttonGotoCurrentLocation(_ sender: Any) {
+        getCurrentLocation()
+    }
+    
+    @IBAction func buttonSOS(_ sender: UIButton) {
+        let frienddatas = FriendsData.Instance.Data
+        var nearbyUserIds = Array<String>()
+        
+        for data in frienddatas
+        {
+            nearbyUserIds.append(data.uid)
+        }
+        let myname = FriendsData.Instance.getCurrentUserData()!.username
+        DBProvider.Instance.saveNotification(withIds: nearbyUserIds, msg: "\(myname) says - feeling unsafe. Please check my location.")
+    }
     func updateFriendLocation()
     {
+//        let annotations : MKAnnotation
+//        if annotations == mapView.annotations as! MKAnnotation {
+//            for _annotation in annotations {
+//                if let annotation = _annotation as? MKAnnotation
+//                {
+//                    self.mapView.removeAnnotation(annotation)
+//                }
+//            }
+//        }
+        
+        
+        mapView.removeAnnotations(mapView.annotations)
         var friendlocation : CLLocationCoordinate2D
         var pin : pinAnnotation
         let frienddatas = FriendsData.Instance.Data
@@ -48,10 +95,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             if !data.allow_track {
                 continue
             }
+            //handleMapSearchDelegate?.dropPinZoomIn(selectedItem)
             friendlocation  = CLLocationCoordinate2DMake(data.latitude, data.longitude)
             pin = pinAnnotation(title: data.username, subtitle: data.username, coordinate: friendlocation)
             mapView.addAnnotation(pin)
         }
+        
     }
     
     func loadUserData() {
@@ -81,7 +130,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
+           // locationManager.startUpdatingLocation()
+            locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -203,6 +253,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             }
             topController.present(checkInDetail, animated: false, completion: nil)
         }
+        
     }
     
     func loadNewScreen(controller: UIViewController) {
@@ -241,5 +292,51 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             })
         }
       }
+    }
+    @objc func getDirections(){
+        if let selectedPin = selectedPin {
+            let mapItem = MKMapItem(placemark: selectedPin)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }
+    }
+}
+extension HomeViewController: HandleHomeMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "(city) (state)"
+        }
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
+}
+
+extension HomeViewController : MKMapViewDelegate {
+    func mapView(_: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        if annotation is MKUserLocation {
+            //return nil so map view draws "blue dot" for standard user location
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView?.pinTintColor = UIColor.orange
+        pinView?.canShowCallout = true
+        let smallSquare = CGSize(width: 30, height: 30)
+        let button = UIButton(frame: CGRect(origin: CGPoint(x: 0,y :0), size: smallSquare))
+        button.setBackgroundImage(UIImage(named: "car"), for: .normal)
+        button.addTarget(self, action: #selector(HomeViewController.getDirections), for: .touchUpInside)
+        pinView?.leftCalloutAccessoryView = button
+        return pinView
     }
 }
