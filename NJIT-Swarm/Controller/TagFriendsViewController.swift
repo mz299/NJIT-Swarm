@@ -101,6 +101,8 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 self.cleanVariables()
                 
+                self.tabBarController?.selectedIndex = 0
+                
                 //                        }
                 
                 // to put data
