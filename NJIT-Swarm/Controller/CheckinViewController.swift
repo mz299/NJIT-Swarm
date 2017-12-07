@@ -63,7 +63,7 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         
         
-        zoomMapOn(locations: initialLocation)
+        //zoomMapOn(locations: initialLocation)
         
         let sampleStarbucks = Venue(title: "Dummy Starbucks", locationName: "Imagination Street", coordinate: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.431297))
         mapView.addAnnotation(sampleStarbucks)
@@ -325,6 +325,7 @@ extension CheckinViewController: CLLocationManagerDelegate{
         self.mapView.showsUserLocation = true
         zoomMapOn(locations: location)
         currentlocation = location
+        locationManager.stopUpdatingLocation()
         
     }
 }
