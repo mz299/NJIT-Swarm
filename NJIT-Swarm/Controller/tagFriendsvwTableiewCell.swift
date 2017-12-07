@@ -27,13 +27,23 @@ class tagFriendsvwTableViewCell: UITableViewCell {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var buttonTag: UIButton!
     var taggedFriends = ""
+    var tagged = false
     
     @IBAction func tag(_ sender: Any) {
         
         taggedFriends = self.uid
         
-        print(taggedFriends)
-        controller!.setTagFriendId(uid: taggedFriends)
+        if tagged {
+            controller!.removeTagFriendId(uid: taggedFriends)
+            buttonTag.setTitle("Tag", for: .normal)
+            tagged = false
+        } else {
+            
+            print(taggedFriends)
+            controller!.setTagFriendId(uid: taggedFriends)
+            buttonTag.setTitle("Untag", for: .normal)
+            tagged = true
+        }
 //        DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: data.uid)
         
     }

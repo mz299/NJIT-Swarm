@@ -130,7 +130,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
-           // locationManager.startUpdatingLocation()
+           //locationManager.startUpdatingLocation()
             locationManager.startMonitoringSignificantLocationChanges()
     }
     
