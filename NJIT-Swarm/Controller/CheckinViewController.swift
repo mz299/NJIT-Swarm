@@ -92,6 +92,24 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func TagFriends(_ sender: UIButton) {
+        if titleName == nil || titleName == "" {
+            let alert = UIAlertController(title: "Alert", message: "The location should not be empty.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if let rating = NumberFormatter().number(from: ratingValue.text!)?.floatValue {
+            Rating = rating
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "The rating is not valid. Please enter a number.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         performSegue(withIdentifier: "gotToTagFriends", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -101,6 +119,7 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
         destvc.Rating = Rating
         destvc.Review = ReviewText.text
         destvc.titleName = titleName
+        destvc.checkinImage = checkinImage
     }
     
     
@@ -137,16 +156,26 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     
     func Checkin(taggedfrienddataone: String){
-        
-        if ratingValue.text != ""{
-            Rating = Float(ratingValue.text!)!
-        } else {
-            Rating = 5.0
-        }
-        
-        
         CLGeocoder().reverseGeocodeLocation(currentlocation, completionHandler: {(placemarks, error) -> Void in
             //            print(self.currentlocation)
+            
+            if self.titleName == nil || self.titleName == "" {
+                let alert = UIAlertController(title: "Alert", message: "The location should not be empty.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            if let rating = NumberFormatter().number(from: self.ratingValue.text!)?.floatValue {
+                self.Rating = rating
+            } else {
+                let alert = UIAlertController(title: "Alert", message: "The rating is not valid. Please enter a number.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             
             if error != nil {
                 print("Reverse geocoder failed with error" + (error!.localizedDescription))
@@ -359,7 +388,9 @@ extension CheckinViewController: HandleMapSearch {
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
         titleName = placemark.name!
-        locality = placemark.locality!
+        if let local = placemark.locality {
+            locality = local
+        }
         if let city = placemark.locality,
             let state = placemark.administrativeArea {
             annotation.subtitle = "(city) (state)"

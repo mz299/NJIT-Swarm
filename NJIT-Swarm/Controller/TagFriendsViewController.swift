@@ -22,7 +22,8 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
     var taggedFreindsUID = Array<String>()
     var Review: String = ""
     var Rating: Float = 4.0
-     var currentlocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
+    var checkinImage: Data? = nil
+    var currentlocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
     
     
     
@@ -36,8 +37,13 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         print(self.lattitude)
         print(self.Rating)
         
-        
-        
+        if self.titleName == nil || self.titleName == "" {
+            let alert = UIAlertController(title: "Alert", message: "The location should not be empty.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         
         let alert = UIAlertController(title: "Confirm Checkin", message: "Would you like to Checkin?", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -56,7 +62,14 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                 //                        }else{
                 //
 //                DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
-                DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: self.Review, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: self.taggedFreindsUID, rating: self.Rating)
+                let checkinId = DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: self.Review, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: self.taggedFreindsUID, rating: self.Rating)
+                
+                if let image = self.checkinImage {
+                    StorageProvider.Instance.uploadCheckinPic(image: image, checkinId: checkinId, handler: { (url) in
+                        DBProvider.Instance.saveCheckinImageUrl(checkinId: checkinId, url: url!)
+                    })
+                }
+                
                 //                        }
                 
                 // to put data
@@ -116,6 +129,22 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         let data = FriendsData.Instance.Data[indexPath.row]
         
         cell.setData(data: data, controller: self)
+        
+        if(indexPath.row % 2 == 0){
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xCC00) >> 8) / 256.0
+            let blue = Double((0x76)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        else{
+            let red = Double((0xFF0000) >> 16) / 256.0
+            let green = Double((0xAA00) >> 8) / 256.0
+            let blue = Double((0x16)) / 256.0
+            
+            cell.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 0.5)
+        }
+        
         return cell
     }
     
