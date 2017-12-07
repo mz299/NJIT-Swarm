@@ -91,9 +91,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         var pin : pinAnnotation
         let frienddatas = FriendsData.Instance.Data
         for data in frienddatas {
-           // data.username
-            //data.latitude
-            //data.longitude
             
             if !data.allow_track {
                 continue
