@@ -25,6 +25,7 @@ class tagFriendsvwTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var buttonTag: UIButton!
     var taggedFriends = ""
     
     @IBAction func tag(_ sender: Any) {
@@ -56,6 +57,10 @@ class tagFriendsvwTableViewCell: UITableViewCell {
                     }
                 }
             }).resume()
+        }
+        
+        if !data.allow_tag {
+            buttonTag.isEnabled = false
         }
     }
     
