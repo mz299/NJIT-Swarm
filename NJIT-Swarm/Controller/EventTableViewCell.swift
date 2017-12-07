@@ -34,7 +34,7 @@ class EventTableViewCell: UITableViewCell {
         eventData = data
         labelEvent.text = "Event: \(data.eventname)"
         labelLocation.text = "Location: \(data.location)"
-        labelTime.text = "Time: \(Global.convertTimestampToDateTime(timeInterval: data.startDate))"
+        labelTime.text = "Time: \(Global.convertTimestampToDateTime(timeInterval: data.startDate)) - \(Global.convertTimestampToDateTime(timeInterval: data.endDate))"
         textViewDescription.text = data.description
         
         for uids in eventData.joinIds {
