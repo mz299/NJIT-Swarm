@@ -54,15 +54,10 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             case .default:
                 print("continue")
                 
-                
-              
-                //                        if taggedfrienddataone != ""{
-                //                            let taguids = self.taggedfrienddata.split(separator: "_")
-                //                             DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: taguids)
-                //                        }else{
-                //
-//                DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
                 let checkinId = DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: self.Review, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: self.taggedFreindsUID, rating: self.Rating)
+                
+                    let myName = FriendsData.Instance.getCurrentUserData()!.username
+                DBProvider.Instance.saveNotification(withIds: self.taggedFreindsUID, msg: myName+" has tagged you")
                 
                 if let image = self.checkinImage {
                     StorageProvider.Instance.uploadCheckinPic(image: image, checkinId: checkinId, handler: { (url) in
@@ -73,8 +68,6 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                 //                        }
                 
                 // to put data
-                
-             
                 
             case .cancel:
                 print("byebye")
@@ -96,7 +89,6 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     
@@ -104,14 +96,7 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func setTagFriendId(uid: String) {
         
-
         taggedFreindsUID.append(uid)
-        
-//        if tagFriendId != nil{
-//            tagFriendId = "\(String(describing: tagFriendId))_\(uid)"
-//        }else{
-//              tagFriendId = uid
-//        }
   
     }
     
@@ -120,12 +105,8 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    //@IBOutlet weak var searchTextfield: UITextField!
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseTagFriendCell", for: indexPath) as! tagFriendsvwTableViewCell
-        //cell.index = indexPath.row
         let data = FriendsData.Instance.Data[indexPath.row]
         
         cell.setData(data: data, controller: self)
@@ -148,45 +129,22 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
-//    @IBOutlet weak var BackPressed: UIButton!
     
     @IBOutlet weak var searchTablevw: UITableView!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    @IBAction func BackPressed(_ sender: UIButton) {
-//        print("test")
-//         performSegue(withIdentifier: "getTaggednames", sender: self)
-//    }
+
     @IBAction func Back(_ sender: UIBarButtonItem) {
       
         
-//        performSegue(withIdentifier: "getTaggednames", sender: self)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destVC = segue.destination as! CheckinViewController
-//        print("below is the tagfriend id")
-//        print(tagFriendId!)
-//        destVC.taggedfriends = tagFriendId!
-//    }
-    
-//    @IBAction func search(_ sender: Any) {
-//        if searchTextfield.text != "" {
-//            SearchFriendsData.Instance.searchFriends(withKey: Constants.EMAIL, value: searchTextfield.text!, handler: { (friends) in
-//                self.searchTablevw.reloadData()
-//            })
-//        }
-//    }
     
     /*
      // MARK: - Navigation

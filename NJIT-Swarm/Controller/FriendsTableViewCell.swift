@@ -51,9 +51,10 @@ class FriendsTableViewCell: UITableViewCell {
             } else {
                 DBProvider.Instance.saveFriend(withID: AuthProvider.Instance.getUserID()!, friendID: self.friendData.uid)
             }
-            self.addButton.setTitleColor(UIColor.darkGray, for: .normal)
-            self.addButton.isUserInteractionEnabled = false
-        }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Friend"), object: nil)
+//            self.addButton.setTitleColor(UIColor.darkGray, for: .normal)
+//            self.addButton.isUserInteractionEnabled = false
+       }
         alert.addAction(ok)
         let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(cancel)
