@@ -1309,7 +1309,6 @@
         <image name="swarm.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mdj-bc-1as"/>
         <segue reference="blc-6D-iHg"/>
         <segue reference="hk7-a1-b50"/>
     </inferredMetricsTieBreakers>

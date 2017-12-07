@@ -135,11 +135,7 @@ class FriendsData {
     }
     
     func getCurrentUserData() -> FriendData? {
-        if let uid = AuthProvider.Instance.getUserID() {
-            return getData(uid: uid)
-        } else {
-            return nil
-        }
+        return _userdata
     }
     
     func getFriendIds() -> Array<String> {
