@@ -136,6 +136,12 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
   
     }
     
+    func removeTagFriendId(uid: String) {
+        taggedFreindsUID = taggedFreindsUID.filter({ (id) -> Bool in
+            id != uid
+        })
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return FriendsData.Instance.Data.count
         
