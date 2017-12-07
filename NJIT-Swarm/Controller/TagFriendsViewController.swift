@@ -29,6 +29,7 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         titleName = nil
     }
     
+   
     @IBAction func CheckinTagFreinds(_ sender: UIButton) {
         
 //        tagFriendId = "\(String(describing: tagFriendId))_"

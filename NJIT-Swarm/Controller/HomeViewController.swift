@@ -38,8 +38,41 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             
    }
     
+    
+    @IBAction func buttonFriendlocation(_ sender: Any) {
+//        mapView.removeAnnotations(mapView.annotations)
+        updateFriendLocation()
+        
+    }
+    @IBAction func buttonGotoCurrentLocation(_ sender: Any) {
+        getCurrentLocation()
+    }
+    
+    @IBAction func buttonSOS(_ sender: UIButton) {
+        let frienddatas = FriendsData.Instance.Data
+        var nearbyUserIds = Array<String>()
+        
+        for data in frienddatas
+        {
+            nearbyUserIds.append(data.uid)
+        }
+        let myname = FriendsData.Instance.getCurrentUserData()!.username
+        DBProvider.Instance.saveNotification(withIds: nearbyUserIds, msg: "\(myname) says - feeling unsafe. Please check my location.")
+    }
     func updateFriendLocation()
     {
+//        let annotations : MKAnnotation
+//        if annotations == mapView.annotations as! MKAnnotation {
+//            for _annotation in annotations {
+//                if let annotation = _annotation as? MKAnnotation
+//                {
+//                    self.mapView.removeAnnotation(annotation)
+//                }
+//            }
+//        }
+        
+        
+        mapView.removeAnnotations(mapView.annotations)
         var friendlocation : CLLocationCoordinate2D
         var pin : pinAnnotation
         let frienddatas = FriendsData.Instance.Data
@@ -55,6 +88,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             pin = pinAnnotation(title: data.username, subtitle: data.username, coordinate: friendlocation)
             mapView.addAnnotation(pin)
         }
+        
     }
     
     func loadUserData() {
@@ -84,7 +118,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
+           // locationManager.startUpdatingLocation()
+            locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
