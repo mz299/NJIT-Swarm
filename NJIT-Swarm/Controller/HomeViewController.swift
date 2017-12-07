@@ -133,8 +133,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
-           //locationManager.startUpdatingLocation()
-            locationManager.startMonitoringSignificantLocationChanges()
+            locationManager.startUpdatingLocation()
+            //locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
