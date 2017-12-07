@@ -277,6 +277,8 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
                                 DBProvider.Instance.saveCheckinImageUrl(checkinId: checkinId, url: url!)
                             })
                         }
+                        
+                        self.cleanVariables()
 //                        }
                         
                         // to put data
@@ -324,7 +326,6 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         })
         mapView.delegate = self
-        cleanVariables()
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -98,7 +98,7 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                 let myname = FriendsData.Instance.getCurrentUserData()!.username
                 DBProvider.Instance.saveNotification(withIds: nearbyUserIds, msg: "\(myname) checked in near you.")
                 
-                
+                self.cleanVariables()
                 
                 //                        }
                 
@@ -124,7 +124,6 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
-        cleanVariables()
     }
     
     
