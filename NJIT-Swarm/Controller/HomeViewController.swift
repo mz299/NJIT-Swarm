@@ -47,6 +47,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
            // data.username
             //data.latitude
             //data.longitude
+            
             if !data.allow_track {
                 continue
             }

@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Foundation
+import CoreLocation
 //import Cosmos
 
 protocol HandleMapSearch {
@@ -40,7 +41,9 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
    
     //@IBOutlet weak var RatingInput: CosmosView!
     
-    
+    func cleanVariables(){
+        titleName = nil
+    }
     @IBAction func ratingChanged(_ sender: Any) {
         print("Raitng Changed")
     }
@@ -234,6 +237,41 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
 //                            
                         let checkinId = DBProvider.Instance.saveCheckin(withID: AuthProvider.Instance.getUserID()!, place: self.titleName!, message: Review!, latitude: self.lattitude!, longitude: self.longitude!, taggedUids: nil, rating: self.Rating)
                         
+                        // to do
+                        var friendCoordinate: CLLocation
+                        var distanceinMeters: Double
+                        
+                        let myselfLocation = CLLocation(latitude : self.lattitude!, longitude : self.longitude!)
+                        let frienddatas = FriendsData.Instance.Data
+                        var nearbyUserIds = Array<String>()
+                        for data in frienddatas
+                        {
+                            // data.username
+                            //data.latitude
+                            //data.longitude
+                            
+                            if !data.allow_track {
+                                continue
+                            }
+                            friendCoordinate  = CLLocation(latitude : data.latitude,longitude :  data.longitude)
+                            distanceinMeters = myselfLocation.distance(from: friendCoordinate)
+                            if(distanceinMeters<=8045){
+                                nearbyUserIds.append(data.uid)
+                            }
+                            else{
+                                
+                            }
+                            
+                           // pin = pinAnnotation(title: data.username, subtitle: data.username, coordinate: friendlocation)
+                           
+                        }
+                        
+                        let myname = FriendsData.Instance.getCurrentUserData()!.username
+                        DBProvider.Instance.saveNotification(withIds: nearbyUserIds, msg: "\(myname) checked in near you.")
+                        
+                        // to dont
+                        
+                        
                         if let image = self.checkinImage {
                             StorageProvider.Instance.uploadCheckinPic(image: image, checkinId: checkinId, handler: { (url) in
                                 DBProvider.Instance.saveCheckinImageUrl(checkinId: checkinId, url: url!)
@@ -286,6 +324,7 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         })
         mapView.delegate = self
+        cleanVariables()
     }
     
     override func viewDidAppear(_ animated: Bool) {
