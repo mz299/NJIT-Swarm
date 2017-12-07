@@ -57,6 +57,7 @@
 		E5B06EA71FB2D930008B773B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B06EA51FB2D930008B773B /* HistoryViewController.swift */; };
 		E5B06EA81FB2D930008B773B /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B06EA61FB2D930008B773B /* HistoryViewController.xib */; };
 		E5B6ACFB1FD8FC6B00B59EC3 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B6ACFA1FD8FC6B00B59EC3 /* photo.png */; };
+		E5B6ACFD1FD904FA00B59EC3 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B6ACFC1FD904FA00B59EC3 /* photo.png */; };
 		E5B736441FAFD24C009442AD /* TimelineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */; };
 		E5B736481FAFD955009442AD /* samplePP.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5B736471FAFD955009442AD /* samplePP.jpg */; };
 		E5B7364A1FAFDBD0009442AD /* check-In.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B736491FAFDBD0009442AD /* check-In.png */; };
@@ -157,6 +158,7 @@
 		E5B06EA51FB2D930008B773B /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E5B06EA61FB2D930008B773B /* HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
 		E5B6ACFA1FD8FC6B00B59EC3 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photo.png; path = ../../../Downloads/photo.png; sourceTree = "<group>"; };
+		E5B6ACFC1FD904FA00B59EC3 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		E5B736411FAFD24C009442AD /* TimelineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTableViewCell.xib; sourceTree = "<group>"; };
 		E5B736471FAFD955009442AD /* samplePP.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = samplePP.jpg; sourceTree = "<group>"; };
 		E5B736491FAFDBD0009442AD /* check-In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-In.png"; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				E5B6ACFA1FD8FC6B00B59EC3 /* photo.png */,
+				E5B6ACFC1FD904FA00B59EC3 /* photo.png */,
 				E5B7364F1FAFDBE9009442AD /* plan-trip.png */,
 				E5B7364D1FAFDBE2009442AD /* notification.png */,
 				E5B7364B1FAFDBD9009442AD /* home.png */,
@@ -499,6 +502,7 @@
 			files = (
 				E5B7364E1FAFDBE3009442AD /* notification.png in Resources */,
 				E5B736501FAFDBE9009442AD /* plan-trip.png in Resources */,
+				E5B6ACFD1FD904FA00B59EC3 /* photo.png in Resources */,
 				E5B736481FAFD955009442AD /* samplePP.jpg in Resources */,
 				E5D5B4351FB01C6800BE6669 /* LikesViewController.xib in Resources */,
 				E5E399B91FB0388100BCB408 /* CommentTableViewCell.xib in Resources */,
