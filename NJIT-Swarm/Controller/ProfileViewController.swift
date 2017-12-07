@@ -87,8 +87,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if AuthProvider.Instance.logout() {
             checkFile()
             dictionary = NSMutableDictionary(contentsOfFile: path)
-            self.dictionary.setValue("", forKey: "username")
-            self.dictionary.setValue("", forKey: "password")
+            if self.dictionary != nil {
+                self.dictionary.setValue("", forKey: "username")
+                self.dictionary.setValue("", forKey: "password")
+            }
             self.performSegue(withIdentifier: "unwindToViewController", sender: self)
         } else {
             showAlert(message: LOGOUT_FAILED)
@@ -216,12 +218,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func checkFile() {
         if !fileManager.fileExists(atPath: path) {
-            let srcPath = Bundle.main.path(forResource: "user-info", ofType: "plist")
-            do {
-                //Copy the project plist file to the documents directory.
-                try fileManager.copyItem(atPath: srcPath!, toPath: path)
-            } catch {
-                print("File copy error!")
+            if let srcPath = Bundle.main.path(forResource: "user-info", ofType: "plist") {
+                do {
+                    //Copy the project plist file to the documents directory.
+                    try fileManager.copyItem(atPath: srcPath, toPath: path)
+                } catch {
+                    print("File copy error!")
+                }
             }
         }
     }
