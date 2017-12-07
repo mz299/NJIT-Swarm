@@ -137,16 +137,26 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     
     func Checkin(taggedfrienddataone: String){
-        
-        if ratingValue.text != ""{
-            Rating = Float(ratingValue.text!)!
-        } else {
-            Rating = 5.0
-        }
-        
-        
         CLGeocoder().reverseGeocodeLocation(currentlocation, completionHandler: {(placemarks, error) -> Void in
             //            print(self.currentlocation)
+            
+            if self.titleName == nil || self.titleName == "" {
+                let alert = UIAlertController(title: "Alert", message: "The location should not be empty.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            if let rating = NumberFormatter().number(from: self.ratingValue.text!)?.floatValue {
+                self.Rating = rating
+            } else {
+                let alert = UIAlertController(title: "Alert", message: "The rating is not valid. Please enter a number.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             
             if error != nil {
                 print("Reverse geocoder failed with error" + (error!.localizedDescription))
