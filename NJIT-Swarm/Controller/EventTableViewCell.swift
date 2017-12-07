@@ -16,7 +16,7 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var labelEvent: UILabel!
     @IBOutlet weak var labelLocation: UILabel!
     @IBOutlet weak var labelTime: UILabel!
-    @IBOutlet weak var textViewDescription: UITextView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var buttonJoin: UIButton!
     
     override func awakeFromNib() {
@@ -32,10 +32,10 @@ class EventTableViewCell: UITableViewCell {
 
     func setData(data: EventData) {
         eventData = data
-        labelEvent.text = "Event: \(data.eventname)"
-        labelLocation.text = "Location: \(data.location)"
-        labelTime.text = "Time: \(Global.convertTimestampToDateTime(timeInterval: data.startDate)) - \(Global.convertTimestampToDateTime(timeInterval: data.endDate))"
-        textViewDescription.text = data.description
+        labelEvent.text = "Event \(data.eventname)"
+        labelLocation.text = "Location \(data.location)"
+        labelTime.text = "Time \(Global.convertTimestampToDateTime(timeInterval: data.startDate)) - \(Global.convertTimestampToDateTime(timeInterval: data.endDate))"
+        descriptionLabel.text = data.description
         
         for uids in eventData.joinIds {
             if AuthProvider.Instance.getUserID() == uids {

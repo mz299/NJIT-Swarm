@@ -279,6 +279,8 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
                         }
                         
                         self.cleanVariables()
+                        
+                        self.tabBarController?.selectedIndex = 0
 //                        }
                         
                         // to put data
