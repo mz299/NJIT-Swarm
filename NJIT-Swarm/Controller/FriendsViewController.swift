@@ -75,7 +75,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "Friend"), object: nil)
         
         /*FriendsData.Instance.update { (friends) in
             friendTableView.reloadData()
@@ -104,6 +104,13 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
+    
+    @objc func loadList(){
+        FriendsData.Instance.update { (friends) in
+            self.tableView.reloadData()
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
