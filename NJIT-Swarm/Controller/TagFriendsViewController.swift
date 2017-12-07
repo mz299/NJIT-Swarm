@@ -25,7 +25,9 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
     var checkinImage: Data? = nil
     var currentlocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
     
-    
+    func cleanVariables(){
+        titleName = nil
+    }
     
     @IBAction func CheckinTagFreinds(_ sender: UIButton) {
         
@@ -65,6 +67,39 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                     })
                 }
                 
+                // to do
+                var friendCoordinate: CLLocation
+                var distanceinMeters: Double
+                
+                let myselfLocation = CLLocation(latitude : self.lattitude!, longitude : self.longitude!)
+                let frienddatas = FriendsData.Instance.Data
+                var nearbyUserIds = Array<String>()
+                for data in frienddatas
+                {
+                    // data.username
+                    //data.latitude
+                    //data.longitude
+                    
+                    if !data.allow_track {
+                        continue
+                    }
+                    friendCoordinate  = CLLocation(latitude : data.latitude,longitude :  data.longitude)
+                    distanceinMeters = myselfLocation.distance(from: friendCoordinate)
+                    if(distanceinMeters<=8045){
+                        nearbyUserIds.append(data.uid)
+                    }
+                    else{
+                        
+                    }
+                    
+                    // pin = pinAnnotation(title: data.username, subtitle: data.username, coordinate: friendlocation)
+                    
+                }
+                let myname = FriendsData.Instance.getCurrentUserData()!.username
+                DBProvider.Instance.saveNotification(withIds: nearbyUserIds, msg: "\(myname) checked in near you.")
+                
+                
+                
                 //                        }
                 
                 // to put data
@@ -89,6 +124,7 @@ class TagFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
+        cleanVariables()
     }
     
     

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NJIT-Swarm/Controller/CheckinViewController.swift"
-            timestampString = "534310300.229896"
+            timestampString = "534315129.174453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "Checkin(taggedfrienddataone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,45 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NJIT-Swarm/Controller/CheckinViewController.swift"
-            timestampString = "534310300.230318"
+            timestampString = "534315129.174953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "imagePickerControllerDidCancel(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NJIT_Swarm.CheckinViewController.Checkin(taggedfrienddataone: Swift.String) -&gt; ()"
-                  moduleName = "NJIT-Swarm"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apoorvareed/Desktop/CollegeProject/NJIT-Swarm/NJIT-Swarm/Controller/CheckinViewController.swift"
-                  timestampString = "534310280.72387"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "148"
-                  endingLineNumber = "148"
-                  offsetFromSymbolStart = "1347">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__ObjC.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NJIT_Swarm.CheckinViewController.Checkin(taggedfrienddataone: Swift.String) -&gt; ()"
-                  moduleName = "NJIT-Swarm"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apoorvareed/Desktop/CollegeProject/NJIT-Swarm/NJIT-Swarm/Controller/CheckinViewController.swift"
-                  timestampString = "534310280.726738"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "37">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -128,6 +96,38 @@
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "tag(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NJIT-Swarm/Controller/CheckinViewController.swift"
+            timestampString = "534315129.175351"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "Checkin(taggedfrienddataone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NJIT-Swarm/Controller/CheckinViewController.swift"
+            timestampString = "534315129.17562"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "Checkin(taggedfrienddataone:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
