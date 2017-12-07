@@ -62,7 +62,7 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
        // taggedfrienddata = taggedfriends
         
         print(taggedfrienddata)
-        let initialLocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
+        //let initialLocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
         
         
         

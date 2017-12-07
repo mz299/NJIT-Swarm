@@ -971,7 +971,7 @@
                                 <color key="backgroundColor" red="1" green="0.8666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhi-QU-FOm">
-                                <rect key="frame" x="308" y="26" width="46" height="30"/>
+                                <rect key="frame" x="316" y="26" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.74232630079999995" green="0.2196233548" blue="0.23072750240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -983,20 +983,20 @@
                                     <action selector="buttonSOS:" destination="PEJ-5J-vEZ" eventType="touchUpInside" id="MaP-pG-KAo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-sf-MPy">
-                                <rect key="frame" x="308" y="195" width="39" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="mylocation"/>
-                                <connections>
-                                    <action selector="buttonGotoCurrentLocation:" destination="PEJ-5J-vEZ" eventType="touchUpInside" id="bAB-cl-KGC"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdm-0l-v3W">
-                                <rect key="frame" x="16" y="195" width="42" height="34"/>
+                                <rect key="frame" x="16" y="195" width="46" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="friendlocation"/>
                                 <connections>
                                     <action selector="buttonFriendlocation:" destination="PEJ-5J-vEZ" eventType="touchUpInside" id="aeh-1t-Q4A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-sf-MPy">
+                                <rect key="frame" x="324" y="195" width="33" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="mylocation"/>
+                                <connections>
+                                    <action selector="buttonGotoCurrentLocation:" destination="PEJ-5J-vEZ" eventType="touchUpInside" id="bAB-cl-KGC"/>
                                 </connections>
                             </button>
                         </subviews>
