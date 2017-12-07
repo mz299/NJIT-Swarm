@@ -28,12 +28,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         if (CLLocationManager.locationServicesEnabled())
         {
             getCurrentLocation()
+            
         }
         
         let nib = UINib(nibName: "TimelineTableViewCell", bundle: nil)
         timelineTableView.register(nib, forCellReuseIdentifier: "timelineCell")
+        
+        
             
    }
+    
+    func updateFriendLocation()
+    {
+        var friendlocation : CLLocationCoordinate2D
+        var pin : pinAnnotation
+        let frienddatas = FriendsData.Instance.Data
+        for data in frienddatas {
+           // data.username
+            //data.latitude
+            //data.longitude
+            if !data.allow_track {
+                continue
+            }
+            friendlocation  = CLLocationCoordinate2DMake(data.latitude, data.longitude)
+            pin = pinAnnotation(title: data.username, subtitle: data.username, coordinate: friendlocation)
+            mapView.addAnnotation(pin)
+        }
+    }
     
     func loadUserData() {
         
@@ -71,6 +92,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         
         mapView.setRegion(region, animated: true)
+        DBProvider.Instance.saveUserLocation(withId: AuthProvider.Instance.getUserID()!, latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        locationManager.stopUpdatingLocation()
+        
+        
     }
     
     private func locationManager(manager: CLLocationManager, didFailWithError error: Error)
@@ -198,11 +223,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         if AuthProvider.Instance.getUserID() != nil {
         FriendsData.Instance.update{ (friends) in
             CheckinsData.Instance.update(handler: {(checkins) in
                 self.loadUserData()
                 self.timelineTableView.reloadData()
+                self.updateFriendLocation()
             })
         }
       }

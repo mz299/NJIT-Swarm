@@ -275,9 +275,8 @@ public class DBProvider {
     }
     
     func saveUserLocation(withId: String, latitude: Double, longitude: Double) {
-        let data = [Constants.LATITUDE: latitude,
-                    Constants.LONGITUDE: longitude]
-        userRef.child(withId).setValue(data)
+        userRef.child(withId).child(Constants.LATITUDE).setValue(latitude)
+        userRef.child(withId).child(Constants.LONGITUDE).setValue(longitude)
     }
     
     func saveCheckinImageUrl(checkinId: String, url: String) {
