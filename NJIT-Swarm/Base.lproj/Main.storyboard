@@ -1230,6 +1230,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonTag" destination="1cY-rC-j5H" id="SBd-67-ZD0"/>
                                             <outlet property="emailLabel" destination="WfA-d4-feo" id="Rog-r3-Nxa"/>
                                             <outlet property="nameLabel" destination="5vO-2l-kCi" id="aGf-TG-qsD"/>
                                             <outlet property="phoneLabel" destination="cFh-vX-6HZ" id="b0Y-Z6-0b1"/>
