@@ -20,7 +20,6 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
         super.viewDidLoad()
         self.commentButton.isEnabled = false
         self.commentButton.setTitleColor(UIColor.gray, for: .normal)
-        self.setNotificationKeyboard()
         
         let nib = UINib(nibName: "CommentTableViewCell", bundle: nil)
         commentsTableView.register(nib, forCellReuseIdentifier: "commentsCell")
@@ -37,28 +36,6 @@ class CommentViewController: UIViewController, UITextFieldDelegate, UITableViewD
             self.commentsData = CheckinsData.Instance.getComments(byCheckinId: self.checkInKey)!
             self.commentsTableView.reloadData()
         })
-    }
-    
-    // Notification when keyboard show
-    func setNotificationKeyboard ()  {
-        NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

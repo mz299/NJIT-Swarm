@@ -17,7 +17,8 @@ protocol HandleMapSearch {
 }
 
 
-class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+    
     var selectedPin:MKPlacemark? = nil
     var lattitude: Double? = nil
     var longitude: Double? = nil
@@ -39,11 +40,19 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
     //@IBOutlet weak var RatingInput: CosmosView!
     
     func cleanVariables(){
         titleName = nil
     }
+    
     @IBAction func ratingChanged(_ sender: Any) {
         print("Raitng Changed")
     }
@@ -116,6 +125,10 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
         destvc.checkinImage = checkinImage
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.ratingValue.resignFirstResponder()
+        return true
+    }
     
     @IBAction func addPhoto(_ sender: UIButton) {
         let picker = UIImagePickerController()

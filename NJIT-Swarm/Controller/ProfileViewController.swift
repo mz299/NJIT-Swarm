@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     private let CAN_NOT_BE_EMPTY = "It Can Not Be Empty"
     private let LOAD_DATA_FAILED = "Load Data Failed"
@@ -227,6 +227,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.passwordTextfield.resignFirstResponder()
+        self.userNameTextfield.resignFirstResponder()
+        self.emailTextfield.resignFirstResponder()
+        self.phoneTextField.resignFirstResponder()
+        return true
     }
     
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     let SIGNUP_TO_HOME_SEGUE = "signupToHome"
     
@@ -20,6 +20,15 @@ class SignUpViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.nameTxt.resignFirstResponder()
+        self.emailTxt.resignFirstResponder()
+        self.passwordTxt.resignFirstResponder()
+        self.confirmPasswordTextField.resignFirstResponder()
+        self.phoneNumTxt.resignFirstResponder()
+        return true
     }
     
     @IBOutlet weak var nameTxt: UITextField!

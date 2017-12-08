@@ -9,13 +9,17 @@
 import UIKit
 
 
-class AddFriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddFriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SearchFriendsData.Instance.Data.count
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchTextfield.resignFirstResponder()
+        return true
+    }
     @IBOutlet weak var searchTextfield: UITextField!
     
     

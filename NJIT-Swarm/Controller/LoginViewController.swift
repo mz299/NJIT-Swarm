@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private let HOME_PAGE_SEGUE = "homePage"
     private let SIGN_UP_SEGUE = "signUpPage"
@@ -104,5 +104,11 @@ class LoginViewController: UIViewController {
             print(self.path)
             print(self.dictionary)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        return true
     }
 }

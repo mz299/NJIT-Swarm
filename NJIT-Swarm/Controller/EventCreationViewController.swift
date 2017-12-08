@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventCreationViewController: UIViewController {
+class EventCreationViewController: UIViewController,UITextFieldDelegate, UITextViewDelegate {
 
     
     @IBOutlet weak var eventName: UITextField!
@@ -28,7 +28,23 @@ class EventCreationViewController: UIViewController {
         eventEndDate.minimumDate = Date()
         
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.eventName.resignFirstResponder()
+        self.eventLocation.resignFirstResponder()
+        self.eventDescription.resignFirstResponder()
+        self.eventStartDate.resignFirstResponder()
+        self.eventEndDate.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
