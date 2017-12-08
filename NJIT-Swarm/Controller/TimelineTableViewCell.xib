@@ -31,18 +31,8 @@
                             <action selector="commentCountButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gvJ-TG-chr"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gdL-SE-y1h">
-                        <rect key="frame" x="52" y="154" width="65" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <state key="normal" title="likeCount">
-                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="likeCountButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W37-4h-n9s"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DmL-N1-fug">
-                        <rect key="frame" x="17" y="153" width="30" height="31"/>
+                        <rect key="frame" x="17" y="155" width="44" height="31"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <state key="normal" title="Like"/>
                         <connections>
@@ -111,6 +101,16 @@
                         <state key="normal" title="Button" image="photo.png"/>
                         <connections>
                             <action selector="photoButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="150-Y5-57U"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gdL-SE-y1h">
+                        <rect key="frame" x="63" y="156" width="65" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <state key="normal" title="likeCount">
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="likeCountButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W37-4h-n9s"/>
                         </connections>
                     </button>
                 </subviews>
