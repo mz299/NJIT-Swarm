@@ -72,6 +72,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
         let myname = FriendsData.Instance.getCurrentUserData()!.username
         DBProvider.Instance.saveNotification(withIds: nearbyUserIds, msg: "\(myname) says - feeling unsafe. Please check my location.")
+        
+        let alert = UIAlertController(title: "SOS", message: "An alert has been sent to your friends", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
     func updateFriendLocation()
     {
@@ -130,8 +135,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
-           //locationManager.startUpdatingLocation()
-            locationManager.startMonitoringSignificantLocationChanges()
+            locationManager.startUpdatingLocation()
+            //locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

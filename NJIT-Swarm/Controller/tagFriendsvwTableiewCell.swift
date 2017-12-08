@@ -54,6 +54,14 @@ class tagFriendsvwTableViewCell: UITableViewCell {
         nameLabel.text = data.username
         emailLabel.text = data.email
         phoneLabel.text = data.phone
+        
+        if !data.show_email {
+            emailLabel.isHidden = true
+        }
+        if !data.show_phone {
+            phoneLabel.isHidden = true
+        }
+        
         if data.profile_image_url != "" {
             let url = URL(string: data.profile_image_url)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
