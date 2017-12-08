@@ -59,15 +59,6 @@ class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // taggedfrienddata = taggedfriends
-        
-        print(taggedfrienddata)
-        //let initialLocation = CLLocation(latitude: 37.7749, longitude: -122.431297)
-        
-        
-        
-        //zoomMapOn(locations: initialLocation)
-        
         let sampleStarbucks = Venue(title: "Dummy Starbucks", locationName: "Imagination Street", coordinate: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.431297))
         mapView.addAnnotation(sampleStarbucks)
         mapView.delegate = self
